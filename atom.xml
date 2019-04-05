@@ -6,7 +6,7 @@
   <link href="/bbs.github.io/atom.xml" rel="self"/>
   
   <link href="https://yangtiancheng.github.io/bbs.github.io/"/>
-  <updated>2019-04-05T14:47:39.565Z</updated>
+  <updated>2019-04-05T17:03:45.737Z</updated>
   <id>https://yangtiancheng.github.io/bbs.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo的坑汇总</title>
+    <link href="https://yangtiancheng.github.io/bbs.github.io/hexo%E7%9A%84%E5%9D%91%E6%B1%87%E6%80%BB/"/>
+    <id>https://yangtiancheng.github.io/bbs.github.io/hexo的坑汇总/</id>
+    <published>2019-04-06T00:55:28.000Z</published>
+    <updated>2019-04-05T17:03:45.737Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="删除hexo工程"><a href="#删除hexo工程" class="headerlink" title="删除hexo工程"></a>删除hexo工程</h2><p>手动rm -rf hexo工程 后，发现了一个问题，虽然绑定了github page,但是hexo工程的源码并没有了，<br>目前是没发现什么恢复的方式。</p><p>推荐大家使用pycharm编写，就算rm -rf 删除了工程，我们可以mkdir 同名hexo<br>工程文件，然后右击文件上选择Local History,找到一个历史点，选择Revert，这时候工程就恢复到了历史点。<br><a id="more"></a></p><h2 id="推荐使用方式"><a href="#推荐使用方式" class="headerlink" title="推荐使用方式"></a>推荐使用方式</h2><ol><li>使用pycharm编辑</li><li>使用git仓库管理，定时上传hexo工程代码</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;删除hexo工程&quot;&gt;&lt;a href=&quot;#删除hexo工程&quot; class=&quot;headerlink&quot; title=&quot;删除hexo工程&quot;&gt;&lt;/a&gt;删除hexo工程&lt;/h2&gt;&lt;p&gt;手动rm -rf hexo工程 后，发现了一个问题，虽然绑定了github page,但是hexo工程的源码并没有了，&lt;br&gt;目前是没发现什么恢复的方式。&lt;/p&gt;
+&lt;p&gt;推荐大家使用pycharm编写，就算rm -rf 删除了工程，我们可以mkdir 同名hexo&lt;br&gt;工程文件，然后右击文件上选择Local History,找到一个历史点，选择Revert，这时候工程就恢复到了历史点。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="hexo" scheme="https://yangtiancheng.github.io/bbs.github.io/tags/hexo/"/>
+    
+  </entry>
   
   <entry>
     <title>npm切换国内源</title>
@@ -441,37 +462,6 @@
     
     
       <category term="Odoo" scheme="https://yangtiancheng.github.io/bbs.github.io/tags/Odoo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Gitbook使用</title>
-    <link href="https://yangtiancheng.github.io/bbs.github.io/Gitbook%E4%BD%BF%E7%94%A8/"/>
-    <id>https://yangtiancheng.github.io/bbs.github.io/Gitbook使用/</id>
-    <published>2019-04-05T21:25:45.000Z</published>
-    <updated>2019-04-05T14:47:39.544Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="使用说明文档"><a href="#使用说明文档" class="headerlink" title="使用说明文档"></a>使用说明文档</h1><h2 id="安装流程"><a href="#安装流程" class="headerlink" title="安装流程"></a>安装流程</h2><ol><li>首先在你的本地需要如下软件：<br> Git<sup> ① </sup>、Gitbook Editor<sup> ② </sup></li><li><p>下载安装完成后，选择一个对应的目录，获取对应书籍:</p><p> 2.1 Windows获取方式：<br> <br><br> &emsp;&emsp;1. 选择一个适当的目录，鼠标点击右键，选择[]</p><p> &emsp;&emsp;2. 输入：git clone <a href="https://rdc.hand-china.com/gitlab/13035/gitbook_test.git" target="_blank" rel="noopener">https://rdc.hand-china.com/gitlab/13035/gitbook_test.git</a></p><p> 2.2 Mac获取方式：<br> <br><br> &emsp;&emsp;打开终端，选择一个合适的目录，比如 /User/用户名/XXX,在终端执行：<br><br> &emsp;&emsp;&emsp;&emsp; 1. cd /User/用户名/XX<br></p><p> &emsp;&emsp;&emsp;&emsp; 2. git clone <a href="https://rdc.hand-china.com/gitlab/13035/gitbook_test.git" target="_blank" rel="noopener">https://rdc.hand-china.com/gitlab/13035/gitbook_test.git</a></p></li></ol><p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <img src="/assets/git pull mac.jpg" style="width:400px;" alt="Gitbook" title="Gitbook"></p><pre><code>安装过程中可能需要输入账户/密码(工号/handhand)</code></pre><a id="more"></a>  <h2 id="使用流程"><a href="#使用流程" class="headerlink" title="使用流程"></a>使用流程</h2><p>   &emsp;&emsp;正在努力编写中…</p><h2 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h2><p>&emsp;&emsp;①&emsp;<a href="https://git-scm.com/" target="_blank" rel="noopener">Git下载地址</a> </p><p>&emsp;&emsp;②&emsp;<a href="https://legacy.gitbook.com/editor/windows" target="_blank" rel="noopener">Gitbook Editor下载地址</a></p><p>&emsp;&emsp;&emsp;&emsp;上述连接如果下载速度慢请移步:</p><p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<a href="http://tianchengyang.b0.upaiyun.com/Dingyi/Git-2.20.1-64-bit.exe" target="_blank" rel="noopener">Git-Windows64位</a></p><p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<a href="http://tianchengyang.b0.upaiyun.com/Dingyi/GitBook.Editor.Setup.exe" target="_blank" rel="noopener">Git-MacOS暂时未上传</a></p><p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<a href="http://tianchengyang.b0.upaiyun.com/Dingyi/GitBook.Editor.Setup.exe" target="_blank" rel="noopener">Gitbook Editor - Windows64位</a></p><p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<a href="http://tianchengyang.b0.upaiyun.com/Dingyi/gitbook-editor-7.0.12-osx-x64.dmg" target="_blank" rel="noopener">Gitbook Editor - MacOS位</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;使用说明文档&quot;&gt;&lt;a href=&quot;#使用说明文档&quot; class=&quot;headerlink&quot; title=&quot;使用说明文档&quot;&gt;&lt;/a&gt;使用说明文档&lt;/h1&gt;&lt;h2 id=&quot;安装流程&quot;&gt;&lt;a href=&quot;#安装流程&quot; class=&quot;headerlink&quot; title=&quot;安装流程&quot;&gt;&lt;/a&gt;安装流程&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;首先在你的本地需要如下软件：&lt;br&gt; Git&lt;sup&gt; ① &lt;/sup&gt;、Gitbook Editor&lt;sup&gt; ② &lt;/sup&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;下载安装完成后，选择一个对应的目录，获取对应书籍:&lt;/p&gt;
-&lt;p&gt; 2.1 Windows获取方式：&lt;br&gt; &lt;br&gt;&lt;br&gt; &amp;emsp;&amp;emsp;1. 选择一个适当的目录，鼠标点击右键，选择[]&lt;/p&gt;
-&lt;p&gt; &amp;emsp;&amp;emsp;2. 输入：git clone &lt;a href=&quot;https://rdc.hand-china.com/gitlab/13035/gitbook_test.git&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://rdc.hand-china.com/gitlab/13035/gitbook_test.git&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt; 2.2 Mac获取方式：&lt;br&gt; &lt;br&gt;&lt;br&gt; &amp;emsp;&amp;emsp;打开终端，选择一个合适的目录，比如 /User/用户名/XXX,在终端执行：&lt;br&gt;&lt;br&gt; &amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp; 1. cd /User/用户名/XX&lt;br&gt;&lt;/p&gt;
-&lt;p&gt; &amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp; 2. git clone &lt;a href=&quot;https://rdc.hand-china.com/gitlab/13035/gitbook_test.git&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://rdc.hand-china.com/gitlab/13035/gitbook_test.git&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp; &lt;img src=&quot;/assets/git pull mac.jpg&quot; style=&quot;width:400px;&quot; alt=&quot;Gitbook&quot; title=&quot;Gitbook&quot;&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;安装过程中可能需要输入账户/密码(工号/handhand)
-&lt;/code&gt;&lt;/pre&gt;
-    
-    </summary>
-    
-    
-      <category term="Gitbook" scheme="https://yangtiancheng.github.io/bbs.github.io/tags/Gitbook/"/>
     
   </entry>
   
