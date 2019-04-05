@@ -7,18 +7,18 @@
   
   <title>ir_sequence序列 | 技术小哥</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="修改序列分析一下，系统中的序列ir.sequence最终还是使用的postgresql的sequence,我们可以通过查找pg_class,通过ir_sequence_(odoo的ir_sequence对应记录的id),">
+  <meta name="description" content="ir_sequence修改序列分析一下，系统中的序列ir.sequence最终还是使用的postgresql的sequence,我们可以通过查找pg_class,通过ir_sequence_(odoo的ir_sequence对应记录的id),">
 <meta name="keywords" content="Odoo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ir_sequence序列">
 <meta property="og:url" content="https://yangtiancheng.github.io/bbs.github.io/ir-sequence序列/index.html">
 <meta property="og:site_name" content="技术小哥">
-<meta property="og:description" content="修改序列分析一下，系统中的序列ir.sequence最终还是使用的postgresql的sequence,我们可以通过查找pg_class,通过ir_sequence_(odoo的ir_sequence对应记录的id),">
+<meta property="og:description" content="ir_sequence修改序列分析一下，系统中的序列ir.sequence最终还是使用的postgresql的sequence,我们可以通过查找pg_class,通过ir_sequence_(odoo的ir_sequence对应记录的id),">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-05T14:57:06.574Z">
+<meta property="og:updated_time" content="2019-04-05T14:47:39.546Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ir_sequence序列">
-<meta name="twitter:description" content="修改序列分析一下，系统中的序列ir.sequence最终还是使用的postgresql的sequence,我们可以通过查找pg_class,通过ir_sequence_(odoo的ir_sequence对应记录的id),">
+<meta name="twitter:description" content="ir_sequence修改序列分析一下，系统中的序列ir.sequence最终还是使用的postgresql的sequence,我们可以通过查找pg_class,通过ir_sequence_(odoo的ir_sequence对应记录的id),">
   
   
     <link rel="icon" href="/favicon.png">
@@ -87,12 +87,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="修改序列"><a href="#修改序列" class="headerlink" title="修改序列"></a>修改序列</h2><p>分析一下，系统中的序列ir.sequence最终还是使用的postgresql的sequence,我们可以通过查找pg_class,通过ir_sequence_(odoo的ir_sequence对应记录的id),<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">举个例子,总账凭证序列号维护在公司的配置页签上:</span><br><span class="line">    1. 我们取到这个序列的ID:</span><br><span class="line">    sequence_id = self.env[&apos;res.company&apos;].sequence.id</span><br><span class="line"></span><br><span class="line">    2. 拼接这个序列在pg_class中的序列记录名称:</span><br><span class="line">    seq_name = &apos;ir_sequence_%03d&apos; % (sequence_id,)</span><br><span class="line"></span><br><span class="line">    3. 我们尝试着去修改对应的序列开始序号:</span><br><span class="line">    next_number = 10</span><br><span class="line">    &quot;ALTER SEQUENCE %s RESTART WITH %d;&quot; % (seq_name,next_number)</span><br></pre></td></tr></table></figure></p>
+        <h1 id="ir-sequence"><a href="#ir-sequence" class="headerlink" title="ir_sequence"></a>ir_sequence</h1><h2 id="修改序列"><a href="#修改序列" class="headerlink" title="修改序列"></a>修改序列</h2><p>分析一下，系统中的序列ir.sequence最终还是使用的postgresql的sequence,我们可以通过查找pg_class,通过ir_sequence_(odoo的ir_sequence对应记录的id),<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">举个例子,总账凭证序列号维护在公司的配置页签上:</span><br><span class="line">    1. 我们取到这个序列的ID:</span><br><span class="line">    sequence_id = self.env[&apos;res.company&apos;].sequence.id</span><br><span class="line"></span><br><span class="line">    2. 拼接这个序列在pg_class中的序列记录名称:</span><br><span class="line">    seq_name = &apos;ir_sequence_%03d&apos; % (sequence_id,)</span><br><span class="line"></span><br><span class="line">    3. 我们尝试着去修改对应的序列开始序号:</span><br><span class="line">    next_number = 10</span><br><span class="line">    &quot;ALTER SEQUENCE %s RESTART WITH %d;&quot; % (seq_name,next_number)</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://yangtiancheng.github.io/bbs.github.io/ir-sequence序列/" data-id="cju47edlj00167fhsczzll4xi" class="article-share-link">分享</a>
+      <a data-url="https://yangtiancheng.github.io/bbs.github.io/ir-sequence序列/" data-id="cju4b15950016n9hsdhy8hc92" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/bbs.github.io/tags/Odoo/">Odoo</a></li></ul>
