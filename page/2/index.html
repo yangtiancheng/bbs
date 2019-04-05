@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>技术小哥</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="技术小哥的私房菜">
+<meta name="keywords" content="Odoo,Python,XML">
+<meta property="og:type" content="website">
+<meta property="og:title" content="技术小哥">
+<meta property="og:url" content="https://yangtiancheng.github.io/bbs.github.io/page/2/index.html">
+<meta property="og:site_name" content="技术小哥">
+<meta property="og:description" content="技术小哥的私房菜">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="技术小哥">
+<meta name="twitter:description" content="技术小哥的私房菜">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/bbs.github.io/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/bbs.github.io/" id="logo">技术小哥</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/bbs.github.io/" id="subtitle">总结一尺，成长一寸</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/bbs.github.io/">主页</a>
+        
+          <a class="main-nav-link" href="/bbs.github.io/archives">文章</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://yangtiancheng.github.io/bbs.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-Odoo8-JS小记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/bbs.github.io/Odoo8-JS小记/" class="article-date">
+  <time datetime="2019-04-05T21:46:34.000Z" itemprop="datePublished">2019-04-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/bbs.github.io/Odoo8-JS小记/">Odoo8-JS小记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="JS-基础"><a href="#JS-基础" class="headerlink" title="JS - 基础"></a>JS - 基础</h1><h2 id="入门理解"><a href="#入门理解" class="headerlink" title="入门理解"></a>入门理解</h2><ol>
+<li>定义ir.action.client 带tag 与绑定的菜单对象<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">openerp</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">data</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">record</span> <span class="attr">id</span>=<span class="string">"widget_menu_action"</span> <span class="attr">model</span>=<span class="string">"ir.actions.client"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"name"</span>&gt;</span>Widget Menu Action<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"tag"</span>&gt;</span>tps_widget.widget_menu<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">record</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">menuitem</span> <span class="attr">id</span>=<span class="string">"tps_widget_top_menu"</span></span></span><br><span class="line"><span class="tag">                  <span class="attr">name</span>=<span class="string">"Widget Top Menu"</span></span></span><br><span class="line"><span class="tag">                  <span class="attr">sequence</span>=<span class="string">"10"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">menuitem</span> <span class="attr">id</span>=<span class="string">"tps_widget_sub_menu"</span></span></span><br><span class="line"><span class="tag">                  <span class="attr">name</span>=<span class="string">"Widget Sub Menu"</span></span></span><br><span class="line"><span class="tag">                  <span class="attr">parent</span>=<span class="string">"tps_widget_top_menu"</span></span></span><br><span class="line"><span class="tag">                  <span class="attr">sequence</span>=<span class="string">"10"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">menuitem</span> <span class="attr">id</span>=<span class="string">"tps_widget_func_menu"</span></span></span><br><span class="line"><span class="tag">                  <span class="attr">name</span>=<span class="string">"Widget Func Menu"</span></span></span><br><span class="line"><span class="tag">                  <span class="attr">parent</span>=<span class="string">"tps_widget_sub_menu"</span></span></span><br><span class="line"><span class="tag">                  <span class="attr">action</span>=<span class="string">"widget_menu_action"</span></span></span><br><span class="line"><span class="tag">                  <span class="attr">sequence</span>=<span class="string">"10"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">data</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">openerp</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+        
+          <p class="article-more-link">
+            <a href="/bbs.github.io/Odoo8-JS小记/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://yangtiancheng.github.io/bbs.github.io/Odoo8-JS小记/" data-id="cju47edla000m7fhsisyz9r3d" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/bbs.github.io/tags/Odoo-JS/">Odoo-JS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-git基本操作指令笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/bbs.github.io/git基本操作指令笔记/" class="article-date">
+  <time datetime="2019-04-05T21:44:51.000Z" itemprop="datePublished">2019-04-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/bbs.github.io/git基本操作指令笔记/">git基本操作指令笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><h2 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h2><p>git clone url</p>
+<p>git checkout -b T1</p>
+<p>git checkout T1<br>
+        
+          </p><p class="article-more-link">
+            <a href="/bbs.github.io/git基本操作指令笔记/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://yangtiancheng.github.io/bbs.github.io/git基本操作指令笔记/" data-id="cju47edli00127fhs3veznaub" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/bbs.github.io/tags/Git/">Git</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Odoo-翻译" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/bbs.github.io/Odoo-翻译/" class="article-date">
+  <time datetime="2019-04-05T21:43:56.000Z" itemprop="datePublished">2019-04-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/bbs.github.io/Odoo-翻译/">Odoo-翻译</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="ir-translation简章"><a href="#ir-translation简章" class="headerlink" title="ir_translation简章"></a>ir_translation简章</h1><p>[字段]<br>lang<br>src<br>name<br>res_id<br>module<br>state<br>comments<br>value<br>type<br>
+        
+          </p><p class="article-more-link">
+            <a href="/bbs.github.io/Odoo-翻译/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://yangtiancheng.github.io/bbs.github.io/Odoo-翻译/" data-id="cju47edl8000i7fhsgtt26lyo" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/bbs.github.io/tags/Odoo/">Odoo</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Odoo-XML" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/bbs.github.io/Odoo-XML/" class="article-date">
+  <time datetime="2019-04-05T21:37:51.000Z" itemprop="datePublished">2019-04-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/bbs.github.io/Odoo-XML/">Odoo-XML</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="xml"><a href="#xml" class="headerlink" title="xml"></a>xml</h1><h2 id="data文件初始化中的知识点"><a href="#data文件初始化中的知识点" class="headerlink" title="data文件初始化中的知识点"></a>data文件初始化中的知识点</h2><h3 id="1-结构"><a href="#1-结构" class="headerlink" title="1.结构"></a>1.结构</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">openerp</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">data</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">record</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">filed</span>&gt;</span><span class="tag">&lt;/<span class="name">filed</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">record</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">data</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">data</span>&gt;</span>...<span class="tag">&lt;/<span class="name">data</span>&gt;</span></span><br><span class="line">    ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">openerp</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="属性篇"><a href="#属性篇" class="headerlink" title="属性篇"></a>属性篇</h2><h3 id="attrs-公共属性"><a href="#attrs-公共属性" class="headerlink" title="attrs(公共属性)"></a>attrs(公共属性)</h3>
+        
+          <p class="article-more-link">
+            <a href="/bbs.github.io/Odoo-XML/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://yangtiancheng.github.io/bbs.github.io/Odoo-XML/" data-id="cju47edls001m7fhsjeb389ji" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/bbs.github.io/tags/Odoo-XML/">Odoo-XML</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Odoo-onchange的动态domain" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/bbs.github.io/Odoo-onchange的动态domain/" class="article-date">
+  <time datetime="2019-04-05T21:36:53.000Z" itemprop="datePublished">2019-04-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/bbs.github.io/Odoo-onchange的动态domain/">Odoo-onchange的动态domain</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="onchange的动态domain"><a href="#onchange的动态domain" class="headerlink" title="onchange的动态domain"></a>onchange的动态domain</h1><h2 id="Onchange函数可以返回一个字典"><a href="#Onchange函数可以返回一个字典" class="headerlink" title="Onchange函数可以返回一个字典"></a>Onchange函数可以返回一个字典</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">on_change in OpenERP has 3 possible values returned finally in a dictionary or a &#123;&#125; .</span><br><span class="line"></span><br><span class="line">1: The value dictionary i.e &#123;field1:value1,field2:value2&#125;</span><br><span class="line"></span><br><span class="line">2: The domain dictionary i.e &#123;field1:domain1&#125;</span><br><span class="line"></span><br><span class="line">3: The warning</span><br><span class="line"></span><br><span class="line">Syntax:</span><br><span class="line"></span><br><span class="line">res = &#123;&apos;value&apos;:&#123;&#125;,&apos;domain&apos;:&#123;&#125;,&apos;warning&apos;:&apos;Warning Message&apos;&#125;</span><br><span class="line">According to your case add this to the return dictionary.</span><br><span class="line"></span><br><span class="line">&#123;&apos;domain&apos;:&#123;&apos;partner_id&apos;:[(&apos;customer&apos;,&apos;=&apos;,True)]&#125;&#125;</span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/bbs.github.io/Odoo-onchange的动态domain/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://yangtiancheng.github.io/bbs.github.io/Odoo-onchange的动态domain/" data-id="cju47edl4000a7fhsto90nvx9" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/bbs.github.io/tags/Odoo/">Odoo</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Odoo-后台任务" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/bbs.github.io/Odoo-后台任务/" class="article-date">
+  <time datetime="2019-04-05T21:36:20.000Z" itemprop="datePublished">2019-04-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/bbs.github.io/Odoo-后台任务/">Odoo-后台任务</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="后台任务"><a href="#后台任务" class="headerlink" title="后台任务"></a>后台任务</h1><h2 id="目前后台任务分为三种"><a href="#目前后台任务分为三种" class="headerlink" title="目前后台任务分为三种:"></a>目前后台任务分为三种:</h2><hr>
+
+<h3 id="自动化任务"><a href="#自动化任务" class="headerlink" title="自动化任务"></a>自动化任务</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># - 获取cron_job对象</span></span><br><span class="line">hrp_cron_job_obj = self.env[<span class="string">'hrp.cron.job'</span>]</span><br><span class="line"><span class="comment"># - 定义延时执行的时间</span></span><br><span class="line">cron_job_date = fields.Datetime.to_string(datetime.now() + timedelta(seconds=<span class="number">30</span>))</span><br><span class="line"><span class="comment"># - 直接执行不走cron_job的方法(前期测试使用)</span></span><br><span class="line"><span class="comment"># self.create_asset_acceptance_account_move(args)</span></span><br><span class="line"><span class="comment"># - 延时凭证生成的方法 必须有需要生成的数据项 这里args如果没有数据 也同样会被封装成 元组|所以需要做一个判断</span></span><br><span class="line"><span class="keyword">if</span> len(args) &gt; <span class="number">0</span> <span class="keyword">and</span> len(args[<span class="number">0</span>]) &gt; <span class="number">0</span>:</span><br><span class="line">    hrp_cron_job_obj.run_by_cron(_(<span class="string">"Create Asset Receiving Account Move"</span>),<span class="comment"># 自动化任务名称</span></span><br><span class="line">                                 <span class="string">'hrp.asset.receiving.application'</span>,<span class="comment"># 自动化任务需要调用的方法所在model</span></span><br><span class="line">                                 <span class="string">'create_asset_acceptance_account_move'</span>,<span class="comment"># 方法名</span></span><br><span class="line">                                 [args],<span class="comment"># 参数</span></span><br><span class="line">                                 date_created=cron_job_date)<span class="comment"># 延时时间</span></span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/bbs.github.io/Odoo-后台任务/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://yangtiancheng.github.io/bbs.github.io/Odoo-后台任务/" data-id="cju47edl5000d7fhsj1o3a5xr" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/bbs.github.io/tags/Odoo/">Odoo</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-name-get" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/bbs.github.io/name-get/" class="article-date">
+  <time datetime="2019-04-05T21:35:11.000Z" itemprop="datePublished">2019-04-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/bbs.github.io/name-get/">name_get</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="数据筛选"><a href="#数据筛选" class="headerlink" title="数据筛选"></a>数据筛选</h2><p>通常我们使用的数据筛选，可能是通过某一个字段A关联的字段范围，来控制B字段的取值，常见的方式就是<br>以添加compute字段的m2m辅助字段来限制B字段的取值范围。这样可能会因为辅助字段上存在_id或者_ids<br>的字段，而使得前台界面加载几十次对应的name_get而转圈。<br>替换方式，去掉辅助字段，在需要被限制字段的XML视图定义中加入相应的context，然后在相应的name_search方法中，<br>获取context，通过中间传入的参数进行数据获取判断后拼接domain，使得界面的值域被修正。<br>例如:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"partner_id"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">options</span>=<span class="string">"&#123;'no_create_edit':'1','no_create':'1','no_open':'1'&#125;"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">attrs</span>=<span class="string">"&#123;'required':[('partner_force_analytic','=',True)]&#125;"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">context</span>=<span class="string">"&#123;'display_name_and_code':True，'account_id':account_id&#125;"</span>/&gt;</span></span><br></pre></td></tr></table></figure></p>
+        
+          <p class="article-more-link">
+            <a href="/bbs.github.io/name-get/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://yangtiancheng.github.io/bbs.github.io/name-get/" data-id="cju47edlm00187fhs6d3b7s93" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/bbs.github.io/tags/Odoo/">Odoo</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ir-sequence序列" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/bbs.github.io/ir-sequence序列/" class="article-date">
+  <time datetime="2019-04-05T21:34:09.000Z" itemprop="datePublished">2019-04-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/bbs.github.io/ir-sequence序列/">ir_sequence序列</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="修改序列"><a href="#修改序列" class="headerlink" title="修改序列"></a>修改序列</h2><p>分析一下，系统中的序列ir.sequence最终还是使用的postgresql的sequence,我们可以通过查找pg_class,通过ir_sequence_(odoo的ir_sequence对应记录的id),<br>
+        
+          </p><p class="article-more-link">
+            <a href="/bbs.github.io/ir-sequence序列/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://yangtiancheng.github.io/bbs.github.io/ir-sequence序列/" data-id="cju47edlj00167fhsczzll4xi" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/bbs.github.io/tags/Odoo/">Odoo</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Odoo-安装" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/bbs.github.io/Odoo-安装/" class="article-date">
+  <time datetime="2019-04-05T21:31:32.000Z" itemprop="datePublished">2019-04-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/bbs.github.io/Odoo-安装/">Odoo-安装</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="Odoo10-Windows-Install"><a href="#Odoo10-Windows-Install" class="headerlink" title="Odoo10 - Windows - Install"></a>Odoo10 - Windows - Install</h2><p>1.获取github源码，(<a href="https://github.com/odoo/odoo" target="_blank" rel="noopener">github地址</a>)</p>
+<p>2.通过clone获取v10源代码<br>git clone <a href="https://www.github.com/odoo/odoo" target="_blank" rel="noopener">https://www.github.com/odoo/odoo</a> –depth 1 –branch 10.0 –single-branch odoo10<br>
+        
+          </p><p class="article-more-link">
+            <a href="/bbs.github.io/Odoo-安装/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://yangtiancheng.github.io/bbs.github.io/Odoo-安装/" data-id="cju47edl6000f7fhstkxnxtbx" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/bbs.github.io/tags/Odoo/">Odoo</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Gitbook使用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/bbs.github.io/Gitbook使用/" class="article-date">
+  <time datetime="2019-04-05T21:25:45.000Z" itemprop="datePublished">2019-04-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/bbs.github.io/Gitbook使用/">Gitbook使用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="使用说明文档"><a href="#使用说明文档" class="headerlink" title="使用说明文档"></a>使用说明文档</h1><h2 id="安装流程"><a href="#安装流程" class="headerlink" title="安装流程"></a>安装流程</h2><ol>
+<li>首先在你的本地需要如下软件：<br> Git<sup> ① </sup>、Gitbook Editor<sup> ② </sup></li>
+<li><p>下载安装完成后，选择一个对应的目录，获取对应书籍:</p>
+<p> 2.1 Windows获取方式：<br> <br><br> &emsp;&emsp;1. 选择一个适当的目录，鼠标点击右键，选择[]</p>
+<p> &emsp;&emsp;2. 输入：git clone <a href="https://rdc.hand-china.com/gitlab/13035/gitbook_test.git" target="_blank" rel="noopener">https://rdc.hand-china.com/gitlab/13035/gitbook_test.git</a></p>
+<p> 2.2 Mac获取方式：<br> <br><br> &emsp;&emsp;打开终端，选择一个合适的目录，比如 /User/用户名/XXX,在终端执行：<br><br> &emsp;&emsp;&emsp;&emsp; 1. cd /User/用户名/XX<br></p>
+<p> &emsp;&emsp;&emsp;&emsp; 2. git clone <a href="https://rdc.hand-china.com/gitlab/13035/gitbook_test.git" target="_blank" rel="noopener">https://rdc.hand-china.com/gitlab/13035/gitbook_test.git</a></p>
+</li>
+</ol>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <img src="/assets/git pull mac.jpg" style="width:400px;" alt="Gitbook" title="Gitbook"></p>
+<pre><code>安装过程中可能需要输入账户/密码(工号/handhand)
+</code></pre>
+        
+          <p class="article-more-link">
+            <a href="/bbs.github.io/Gitbook使用/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://yangtiancheng.github.io/bbs.github.io/Gitbook使用/" data-id="cju47edkw00017fhshu1dxbj8" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/bbs.github.io/tags/Gitbook/">Gitbook</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/bbs.github.io/">&laquo; 上一页</a><a class="page-number" href="/bbs.github.io/">1</a><span class="page-number current">2</span><a class="page-number" href="/bbs.github.io/page/3/">3</a><a class="extend next" rel="next" href="/bbs.github.io/page/3/">下一页 &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Gitbook/">Gitbook</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Odoo/">Odoo</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Odoo-JS/">Odoo-JS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Odoo-Qweb/">Odoo-Qweb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Odoo-XML/">Odoo-XML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Postgresql/">Postgresql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Python/">Python</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Ubuntu/">Ubuntu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/linux/">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/npm/">npm</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/bbs.github.io/tags/Git/" style="font-size: 10px;">Git</a> <a href="/bbs.github.io/tags/Gitbook/" style="font-size: 10px;">Gitbook</a> <a href="/bbs.github.io/tags/Odoo/" style="font-size: 20px;">Odoo</a> <a href="/bbs.github.io/tags/Odoo-JS/" style="font-size: 10px;">Odoo-JS</a> <a href="/bbs.github.io/tags/Odoo-Qweb/" style="font-size: 10px;">Odoo-Qweb</a> <a href="/bbs.github.io/tags/Odoo-XML/" style="font-size: 10px;">Odoo-XML</a> <a href="/bbs.github.io/tags/Postgresql/" style="font-size: 10px;">Postgresql</a> <a href="/bbs.github.io/tags/Python/" style="font-size: 15px;">Python</a> <a href="/bbs.github.io/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/bbs.github.io/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/bbs.github.io/tags/linux/" style="font-size: 10px;">linux</a> <a href="/bbs.github.io/tags/npm/" style="font-size: 10px;">npm</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/bbs.github.io/archives/2019/04/">四月 2019</a><span class="archive-list-count">25</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/bbs.github.io/npm切换国内源/">npm切换国内源</a>
+          </li>
+        
+          <li>
+            <a href="/bbs.github.io/PEP8必须学习/">PEP8必须学习</a>
+          </li>
+        
+          <li>
+            <a href="/bbs.github.io/Postgresql10持续学习-ing/">Postgresql10持续学习(ing)</a>
+          </li>
+        
+          <li>
+            <a href="/bbs.github.io/Odoo12-启动持续分析-ing/">Odoo12-启动持续分析(ing)</a>
+          </li>
+        
+          <li>
+            <a href="/bbs.github.io/Python统计文件行数/">Python统计文件行数</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 杨天成<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      <br>
+      <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+      邮箱 tiancheng.yang@hand-china.com
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/bbs.github.io/" class="mobile-nav-link">主页</a>
+  
+    <a href="/bbs.github.io/archives" class="mobile-nav-link">文章</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/bbs.github.io/fancybox/jquery.fancybox.css">
+  <script src="/bbs.github.io/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/bbs.github.io/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

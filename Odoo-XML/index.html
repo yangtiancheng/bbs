@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Odoo-XML | 技术小哥</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="xmldata文件初始化中的知识点1.结构123456789&amp;lt;openerp&amp;gt;    &amp;lt;data&amp;gt;        &amp;lt;record&amp;gt;            &amp;lt;filed&amp;gt;&amp;lt;/filed&amp;gt;        &amp;lt;/record&amp;gt;    &amp;lt;/data&amp;gt;    &amp;lt;data&amp;gt;...&amp;lt;/data&amp;gt;    ..">
+<meta name="keywords" content="Odoo-XML">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Odoo-XML">
+<meta property="og:url" content="https://yangtiancheng.github.io/bbs.github.io/Odoo-XML/index.html">
+<meta property="og:site_name" content="技术小哥">
+<meta property="og:description" content="xmldata文件初始化中的知识点1.结构123456789&amp;lt;openerp&amp;gt;    &amp;lt;data&amp;gt;        &amp;lt;record&amp;gt;            &amp;lt;filed&amp;gt;&amp;lt;/filed&amp;gt;        &amp;lt;/record&amp;gt;    &amp;lt;/data&amp;gt;    &amp;lt;data&amp;gt;...&amp;lt;/data&amp;gt;    ..">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-05T14:47:39.562Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Odoo-XML">
+<meta name="twitter:description" content="xmldata文件初始化中的知识点1.结构123456789&amp;lt;openerp&amp;gt;    &amp;lt;data&amp;gt;        &amp;lt;record&amp;gt;            &amp;lt;filed&amp;gt;&amp;lt;/filed&amp;gt;        &amp;lt;/record&amp;gt;    &amp;lt;/data&amp;gt;    &amp;lt;data&amp;gt;...&amp;lt;/data&amp;gt;    ..">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/bbs.github.io/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/bbs.github.io/" id="logo">技术小哥</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/bbs.github.io/" id="subtitle">总结一尺，成长一寸</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/bbs.github.io/">主页</a>
+        
+          <a class="main-nav-link" href="/bbs.github.io/archives">文章</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://yangtiancheng.github.io/bbs.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Odoo-XML" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/bbs.github.io/Odoo-XML/" class="article-date">
+  <time datetime="2019-04-05T21:37:51.000Z" itemprop="datePublished">2019-04-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Odoo-XML
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="xml"><a href="#xml" class="headerlink" title="xml"></a>xml</h1><h2 id="data文件初始化中的知识点"><a href="#data文件初始化中的知识点" class="headerlink" title="data文件初始化中的知识点"></a>data文件初始化中的知识点</h2><h3 id="1-结构"><a href="#1-结构" class="headerlink" title="1.结构"></a>1.结构</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">openerp</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">data</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">record</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">filed</span>&gt;</span><span class="tag">&lt;/<span class="name">filed</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">record</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">data</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">data</span>&gt;</span>...<span class="tag">&lt;/<span class="name">data</span>&gt;</span></span><br><span class="line">    ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">openerp</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="属性篇"><a href="#属性篇" class="headerlink" title="属性篇"></a>属性篇</h2><h3 id="attrs-公共属性"><a href="#attrs-公共属性" class="headerlink" title="attrs(公共属性)"></a>attrs(公共属性)</h3><a id="more"></a>
+<blockquote>
+<p>invisible<br>:影藏组件。</p>
+</blockquote>
+<blockquote>
+<p>required<br>:组件必须有值。</p>
+</blockquote>
+<blockquote>
+<p>readonly<br>:组件只读不可编辑(onchange过来的值不会被保存，需要在create/write方法中加入到vals中，或者开发个性化readonly存储挂件，例如:readonly_by_pass)。</p>
+</blockquote>
+<p style="color:red"><br>如果后面的条件是类似domain形式的，那么[(A,’OP’,B)]中，A是一个可选的字段，但是这个字段不能像py中的domain，它不能使用A.b这样的字段引用关系。<br>所以如果我们需要把这样的A.b字段在我们的模型中定义一个related字段，并把它放在xml中，这就是我们所谓的</p><b>辅助字段</b>。<br><br>&gt; noupdate - forcecreate<br>    noupdate - 属于data的标签属性<br>    forcecreate - 属于record的标签属性<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">作用：</span><br><span class="line">    noupdate主要用于data块里的record记录初始化，这些记录都会有一个ExtendID，也就是record上所谓的id,在ir_module_data上唯一。</span><br><span class="line">    noupdate的主要功能是初始化一遍数据，如果之后对XML数据定义修改了，再升级，这些数值是不会变化的，依旧保持第一次上来的样子。</span><br><span class="line">    但是如果你在界面删除了初始化的数据，那么下次升级模块，这些数据就会以修改后的XML数据为基础创建。</span><br><span class="line">    </span><br><span class="line">    如果只想数据第一次初始化进来，以后不改变，并且就算被删掉后，希望升级后也不要出现，那么就给对应的record记录上，</span><br><span class="line">    写forcecreate=&apos;false&apos;,这样就能保证模块安装初始化上来的数据，不会被任何情况修改更新，删除后不再创建。</span><br><span class="line">    </span><br><span class="line">    forcecreate必须绑定在noupdate中才生效,noupdate保持已有数据不更新，forcecreate保证数据删除，升级不创建。</span><br></pre></td></tr></table></figure><br><br><p style="color:red">如果删除了noupdate块中data文件初始化的数据记录，然后你重新更新它不重置，你可以看一下ir_module_data表，<br>对应的data块外部id记录中，noupdate=True,把那条记录删除再升级就出来了。</p>
+
+<h3 id="options-m2o关系字段属性"><a href="#options-m2o关系字段属性" class="headerlink" title="options(m2o关系字段属性)"></a>options(m2o关系字段属性)</h3><blockquote>
+<p>no_create_edit<br>:关系字段不允许在当前界面创建这个字段对应的模型记录。</p>
+</blockquote>
+<blockquote>
+<p>no_create<br>:不允许直接在当前界面创建字段对应的模型记录(从代码中看no_create_edit和no_create逻辑一样)。</p>
+</blockquote>
+<blockquote>
+<p>no_open<br>:不允许打开关系字段后面对应的单据。</p>
+</blockquote>
+<h5 style="color:red;">注意：最好用no_open:True/False，不要过度使用no_open:’0’/‘1’,经过测试[‘0’ == ‘1’ == True]</h5>
+
+<h3 id="options-o2m关系字段属性"><a href="#options-o2m关系字段属性" class="headerlink" title="options(o2m关系字段属性)"></a>options(o2m关系字段属性)</h3><blockquote>
+<p>no_edit_no_open<br>:关系字段不允许在当前界打开对应记录的form界面。</p>
+</blockquote>
+<h3 id="批量添加"><a href="#批量添加" class="headerlink" title="批量添加"></a>批量添加</h3><blockquote>
+<p>1.batch_add(新开发js挂件非原生)</p>
+</blockquote>
+<pre><code>直接在o2m的XML字段属性上挂载batch_add=&quot;true&quot;即可。
+</code></pre><blockquote>
+<p>2.ids_select</p>
+</blockquote>
+<pre><code>这个比较复杂:
+1.首先在py文件的头行结构中，定义一个头字段ids_select,字段属性定义如下:
+ids_select = fields.Char(string=&apos;ids&apos;, help=&apos;This id is to get ids of multiple select of one2many&apos;)
+
+2.然后再XML的头部放入ids_select字段，可影藏，字段定义如下:
+&lt;field name=&quot;ids_select&quot; class=&quot;oe_o2mx&quot; invisible=&quot;1&quot; on_change=&quot;updateLines(ids_select,o2m_filed,context)&quot;/&gt;
+
+3.绑定对应的o2m字段，将挂件 widget=&quot;o2mx&quot; 加到XML字段属性定义中。对应需o2m_filed的tree上要批量添加的主体字段(m2o_field)挂载 multiple_selection=&quot;true&quot; 属性。
+
+4.对ids_select定义on_change的方法updateLines进行逻辑处理:
+- 通用结构:
+    if not ids_select: return 0
+    selected_ids = ids_select.split(&apos;,&apos;)
+    if len(o2m_filed) == 1:
+        change_line = False
+        o2m_filed = self.o2m_filed.browse(o2m_filed[0][2])
+    else:
+        change_line = True
+        o2m_filed = map(lambda x: x[2], filter(lambda x: x[2], o2m_filed))
+
+    res = []
+    old_value = []
+    add_ids = []
+    line_number = 0
+    for line in o2m_filed:
+        line_number += 1
+        m2o_field = change_line and line[&apos;m2o_field&apos;] or line.m2o_field.id
+        old_value.append({
+            &apos;line_number&apos;:line_number,
+            &apos;m2o_field&apos;: m2o_field,
+            &apos;field1&apos;: field1,
+            &apos;field2&apos;: field2,
+            &apos;field3&apos;: field3,
+            ...
+        })
+        add_ids.append(m2o_field)
+
+    for id in selected_ids:
+        line = self.env[&apos;selected_ids_model&apos;].browse(int(id))
+        if int(id) not in add_ids:
+            line_number += 1
+            res.append({
+                &apos;line_number&apos;: line_number,
+                &apos;m2o_field&apos;: line.m2o_field.id or False,
+                &apos;field1&apos;: line.field1,
+                &apos;field2&apos;: line.field2,
+                &apos;field3&apos;: line.field3,
+                ...
+            })
+    if res:
+        return {&apos;value&apos;: {&apos;invoice_detail_ids&apos;: old_value + res}}
+
+
+-
+</code></pre><h3 id="普通"><a href="#普通" class="headerlink" title="普通"></a>普通</h3><blockquote>
+<p>自动递增 递增间隔 最开始的值</p>
+</blockquote>
+<field name="line_number" required="1" options="{'line_number':1,'interval':10,'initial':10}">
+
+<h3 id="Domain"><a href="#Domain" class="headerlink" title="Domain"></a>Domain</h3><ul>
+<li>XML定义的domain会覆盖字段定义的domain</li>
+</ul>
+<h3 id="ir-actions-act-window"><a href="#ir-actions-act-window" class="headerlink" title="ir.actions.act_window"></a>ir.actions.act_window</h3><p>[参数]</p>
+<p>src_model：</p>
+<blockquote>
+<p>来源模型<br><br>这个动作应该放在哪个可见的对象可选模型名称(绑定到哪个模型上显示)</p>
+</blockquote>
+<p>res_model：</p>
+<blockquote>
+<p>目标模型<br><br>在视图窗口中打开的对象的模型名称(打开的wizard模型)</p>
+</blockquote>
+<p>context:</p>
+<blockquote>
+<p>search_default_字段名称:</p>
+</blockquote>
+<blockquote>
+<p>display_filter:<br><br>在wizard的action上定义如: context=”{‘display_filter’:’invoice_form_view’}”<br><br>在对应的绑定模型中的context中写入如：context=”{‘invoice_form_view’:1’}”<br><br>对应绑定的action在限制了view_id,那么这个wizard就唯一绑定在了这个对应的视图上,同模型的其他视图上不显示(一模型多菜单多视图模式)。</p>
+</blockquote>
+<blockquote>
+<p>execute_method:<br><br>在wizard的action上定义如: context=”{‘execute_method’:’invoice_execute_method’}”<br><br>触发action时会直接执行invoice_execute_method方法，但是执行了这个方法就不会直接跳转视图了，你需要在执行的方法中return跳转视图的action。</p>
+</blockquote>
+<blockquote>
+<p>‘clear_breadcrumbs’<br>  ‘clear_breadcrumbs’:True可以在视图上隐藏列标题。</p>
+</blockquote>
+<p>res_model:</p>
+<blockquote>
+<p>目标模型<br></p>
+</blockquote>
+<p>src_model:</p>
+<blockquote>
+<p>原始模型<br></p>
+</blockquote>
+<p>views:</p>
+<blockquote>
+<p>定义视图类别引用ref</p>
+</blockquote>
+<p>view_id:</p>
+<blockquote>
+<p>定义默认打开视图引用ref</p>
+</blockquote>
+<h3 id="ir-actions-act-window-view"><a href="#ir-actions-act-window-view" class="headerlink" title="ir.actions.act_window.view"></a>ir.actions.act_window.view</h3><blockquote>
+<p>此模型实际是view_ids的绑定模型,可以通过初始化act_window的view_ids挂在属性值,来控制多个菜单公用一个model,但是打开的是对应的tree、form、<br>search等模型。<br><!--举个例子 action固定绑定视图引用对象--></p>
+</blockquote>
+<p>1.定义一个action<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">record</span> <span class="attr">model</span>=<span class="string">"ir.actions.act_window"</span> <span class="attr">id</span>=<span class="string">"hrp_payment_preparation_action"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"name"</span>&gt;</span>Payment Preparation<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"res_model"</span>&gt;</span>hrp.payment.request<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"view_type"</span>&gt;</span>form<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"view_mode"</span>&gt;</span>tree,form<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"search_view_id"</span> <span class="attr">ref</span>=<span class="string">"hrp_payment_preparation_search"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"domain"</span>&gt;</span>[('state','in',['approved','paying','paid'])]<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"context"</span>&gt;</span>&#123;'readonly_by_pass':['company_id','total_amount','invoice_detail_ids','supplier_id','supplier_category_id',</span><br><span class="line">        'invoice_date','date_due','payment_method_id','original_amount','open_amount']&#125;<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">record</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>2.在action上绑定对应类型的视图外部引用对象<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--供应商预付款申请界面tree视图指定--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">record</span> <span class="attr">id</span>=<span class="string">"hrp_payment_preparation_tree_view"</span> <span class="attr">model</span>=<span class="string">"ir.actions.act_window.view"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">eval</span>=<span class="string">"1"</span> <span class="attr">name</span>=<span class="string">"sequence"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"view_mode"</span>&gt;</span>tree<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"view_id"</span> <span class="attr">ref</span>=<span class="string">"hrp_payment_preparation_tree"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"act_window_id"</span> <span class="attr">ref</span>=<span class="string">"hrp_payment_preparation_action"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">record</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--供应商预付款申请界面form视图指定--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">record</span> <span class="attr">id</span>=<span class="string">"hrp_payment_preparation_form_view"</span> <span class="attr">model</span>=<span class="string">"ir.actions.act_window.view"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">eval</span>=<span class="string">"2"</span> <span class="attr">name</span>=<span class="string">"sequence"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"view_mode"</span>&gt;</span>form<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"view_id"</span> <span class="attr">ref</span>=<span class="string">"hrp_payment_preparation_form"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"act_window_id"</span> <span class="attr">ref</span>=<span class="string">"hrp_payment_preparation_action"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">record</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>3.这时候就算一个model上有多个tree视图、多个form视图,甚至是多个search视图等,只要绑定好就会直接打开对应的视图界面,不会打开错咯.</p>
+<p>4.如果出现记录单据被通过M2O字段链接的形式跳转过去，那么很可能出现错误，因为点击事件调用了get_formview_action方法，默认获取对应类型视图的view界面，<br>为了在这种情况下不出现错误，我们必须重写get_formview_action方法，提供正确的return导向，也许这里是用的odoo7的写法，在新写法中，我们通过封装@api.v7装饰器，<br>来重载方法，达到我们的目的。</p>
+</field>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://yangtiancheng.github.io/bbs.github.io/Odoo-XML/" data-id="cju47edls001m7fhsjeb389ji" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/bbs.github.io/tags/Odoo-XML/">Odoo-XML</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/bbs.github.io/Odoo-翻译/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Odoo-翻译
+        
+      </div>
+    </a>
+  
+  
+    <a href="/bbs.github.io/Odoo-onchange的动态domain/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Odoo-onchange的动态domain</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Gitbook/">Gitbook</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Odoo/">Odoo</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Odoo-JS/">Odoo-JS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Odoo-Qweb/">Odoo-Qweb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Odoo-XML/">Odoo-XML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Postgresql/">Postgresql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Python/">Python</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Ubuntu/">Ubuntu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/linux/">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/npm/">npm</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/bbs.github.io/tags/Git/" style="font-size: 10px;">Git</a> <a href="/bbs.github.io/tags/Gitbook/" style="font-size: 10px;">Gitbook</a> <a href="/bbs.github.io/tags/Odoo/" style="font-size: 20px;">Odoo</a> <a href="/bbs.github.io/tags/Odoo-JS/" style="font-size: 10px;">Odoo-JS</a> <a href="/bbs.github.io/tags/Odoo-Qweb/" style="font-size: 10px;">Odoo-Qweb</a> <a href="/bbs.github.io/tags/Odoo-XML/" style="font-size: 10px;">Odoo-XML</a> <a href="/bbs.github.io/tags/Postgresql/" style="font-size: 10px;">Postgresql</a> <a href="/bbs.github.io/tags/Python/" style="font-size: 15px;">Python</a> <a href="/bbs.github.io/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/bbs.github.io/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/bbs.github.io/tags/linux/" style="font-size: 10px;">linux</a> <a href="/bbs.github.io/tags/npm/" style="font-size: 10px;">npm</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/bbs.github.io/archives/2019/04/">四月 2019</a><span class="archive-list-count">25</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/bbs.github.io/npm切换国内源/">npm切换国内源</a>
+          </li>
+        
+          <li>
+            <a href="/bbs.github.io/PEP8必须学习/">PEP8必须学习</a>
+          </li>
+        
+          <li>
+            <a href="/bbs.github.io/Postgresql10持续学习-ing/">Postgresql10持续学习(ing)</a>
+          </li>
+        
+          <li>
+            <a href="/bbs.github.io/Odoo12-启动持续分析-ing/">Odoo12-启动持续分析(ing)</a>
+          </li>
+        
+          <li>
+            <a href="/bbs.github.io/Python统计文件行数/">Python统计文件行数</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 杨天成<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      <br>
+      <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+      邮箱 tiancheng.yang@hand-china.com
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/bbs.github.io/" class="mobile-nav-link">主页</a>
+  
+    <a href="/bbs.github.io/archives" class="mobile-nav-link">文章</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/bbs.github.io/fancybox/jquery.fancybox.css">
+  <script src="/bbs.github.io/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/bbs.github.io/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Odoo8-JS小记 | 技术小哥</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="JS - 基础入门理解 定义ir.action.client 带tag 与绑定的菜单对象123456789101112131415161718192021&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&amp;gt;&amp;lt;openerp&amp;gt;    &amp;lt;data&amp;gt;        &amp;lt;record id=&quot;widget_menu_action&quot; mode">
+<meta name="keywords" content="Odoo-JS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Odoo8-JS小记">
+<meta property="og:url" content="https://yangtiancheng.github.io/bbs.github.io/Odoo8-JS小记/index.html">
+<meta property="og:site_name" content="技术小哥">
+<meta property="og:description" content="JS - 基础入门理解 定义ir.action.client 带tag 与绑定的菜单对象123456789101112131415161718192021&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&amp;gt;&amp;lt;openerp&amp;gt;    &amp;lt;data&amp;gt;        &amp;lt;record id=&quot;widget_menu_action&quot; mode">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-05T14:47:39.586Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Odoo8-JS小记">
+<meta name="twitter:description" content="JS - 基础入门理解 定义ir.action.client 带tag 与绑定的菜单对象123456789101112131415161718192021&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&amp;gt;&amp;lt;openerp&amp;gt;    &amp;lt;data&amp;gt;        &amp;lt;record id=&quot;widget_menu_action&quot; mode">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/bbs.github.io/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/bbs.github.io/" id="logo">技术小哥</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/bbs.github.io/" id="subtitle">总结一尺，成长一寸</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/bbs.github.io/">主页</a>
+        
+          <a class="main-nav-link" href="/bbs.github.io/archives">文章</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://yangtiancheng.github.io/bbs.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Odoo8-JS小记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/bbs.github.io/Odoo8-JS小记/" class="article-date">
+  <time datetime="2019-04-05T21:46:34.000Z" itemprop="datePublished">2019-04-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Odoo8-JS小记
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="JS-基础"><a href="#JS-基础" class="headerlink" title="JS - 基础"></a>JS - 基础</h1><h2 id="入门理解"><a href="#入门理解" class="headerlink" title="入门理解"></a>入门理解</h2><ol>
+<li>定义ir.action.client 带tag 与绑定的菜单对象<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">openerp</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">data</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">record</span> <span class="attr">id</span>=<span class="string">"widget_menu_action"</span> <span class="attr">model</span>=<span class="string">"ir.actions.client"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"name"</span>&gt;</span>Widget Menu Action<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"tag"</span>&gt;</span>tps_widget.widget_menu<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">record</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">menuitem</span> <span class="attr">id</span>=<span class="string">"tps_widget_top_menu"</span></span></span><br><span class="line"><span class="tag">                  <span class="attr">name</span>=<span class="string">"Widget Top Menu"</span></span></span><br><span class="line"><span class="tag">                  <span class="attr">sequence</span>=<span class="string">"10"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">menuitem</span> <span class="attr">id</span>=<span class="string">"tps_widget_sub_menu"</span></span></span><br><span class="line"><span class="tag">                  <span class="attr">name</span>=<span class="string">"Widget Sub Menu"</span></span></span><br><span class="line"><span class="tag">                  <span class="attr">parent</span>=<span class="string">"tps_widget_top_menu"</span></span></span><br><span class="line"><span class="tag">                  <span class="attr">sequence</span>=<span class="string">"10"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">menuitem</span> <span class="attr">id</span>=<span class="string">"tps_widget_func_menu"</span></span></span><br><span class="line"><span class="tag">                  <span class="attr">name</span>=<span class="string">"Widget Func Menu"</span></span></span><br><span class="line"><span class="tag">                  <span class="attr">parent</span>=<span class="string">"tps_widget_sub_menu"</span></span></span><br><span class="line"><span class="tag">                  <span class="attr">action</span>=<span class="string">"widget_menu_action"</span></span></span><br><span class="line"><span class="tag">                  <span class="attr">sequence</span>=<span class="string">"10"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">data</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">openerp</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<a id="more"></a>
+<ol start="2">
+<li><p>定义一个js文件 - extend_widget.js 包含content：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">openerp.tps_widget = <span class="function"><span class="keyword">function</span> (<span class="params">instance, local</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> _t = instance.web._t,</span><br><span class="line">        _lt = instance.web._lt;</span><br><span class="line">    <span class="keyword">var</span> QWeb = instance.web.qweb;</span><br><span class="line"></span><br><span class="line">    local.MyWidget = instance.Widget.extend(&#123;</span><br><span class="line">        start: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"load Mywidget."</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">//第一个参数是tag 第二个参数是widget的完整地址</span></span><br><span class="line">    instance.web.client_actions.add(<span class="string">'tps_widget.widget_menu'</span>, <span class="string">'instance.MyWidget'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>引入js文件，定义一个xml<br>views/xxx_template.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">openerp</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">data</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">template</span> <span class="attr">id</span>=<span class="string">"assets_backend"</span> <span class="attr">name</span>=<span class="string">"tps_widget"</span> <span class="attr">inherit_id</span>=<span class="string">"web.assets_backend"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">xpath</span> <span class="attr">expr</span>=<span class="string">"."</span> <span class="attr">position</span>=<span class="string">"inside"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/tps_widget/static/js/extend_widget.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">xpath</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">data</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">openerp</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注意这里暂时没有py文件，但是xml文件需要在<strong>openerp</strong>.py中注册[定义菜单的xml 和 引入js的xml]。</p>
+</li>
+</ol>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><blockquote>
+<p>this</p>
+</blockquote>
+<blockquote>
+<p>this.$el</p>
+</blockquote>
+<blockquote>
+<p>ob.appendTo(this.$el)</p>
+</blockquote>
+<blockquote>
+<p>this.getParent().$el</p>
+</blockquote>
+<blockquote>
+<p>this.getChildren()[0].$el</p>
+</blockquote>
+<h1 id="JS-挂件"><a href="#JS-挂件" class="headerlink" title="JS - 挂件"></a>JS - 挂件</h1><h2 id="o2m-unique"><a href="#o2m-unique" class="headerlink" title="o2m_unique"></a>o2m_unique</h2><p>o2m中的主数据字段，每张单据只能选一次，唯一性处理。</p>
+<h2 id="many2many-tag"><a href="#many2many-tag" class="headerlink" title="many2many_tag"></a>many2many_tag</h2><p>m2m单据数据排列组合不可重复</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://yangtiancheng.github.io/bbs.github.io/Odoo8-JS小记/" data-id="cju47edla000m7fhsisyz9r3d" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/bbs.github.io/tags/Odoo-JS/">Odoo-JS</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/bbs.github.io/Excel下载/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Odoo-Excel下载
+        
+      </div>
+    </a>
+  
+  
+    <a href="/bbs.github.io/git基本操作指令笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">git基本操作指令笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Gitbook/">Gitbook</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Odoo/">Odoo</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Odoo-JS/">Odoo-JS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Odoo-Qweb/">Odoo-Qweb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Odoo-XML/">Odoo-XML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Postgresql/">Postgresql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Python/">Python</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Ubuntu/">Ubuntu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/linux/">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/npm/">npm</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/bbs.github.io/tags/Git/" style="font-size: 10px;">Git</a> <a href="/bbs.github.io/tags/Gitbook/" style="font-size: 10px;">Gitbook</a> <a href="/bbs.github.io/tags/Odoo/" style="font-size: 20px;">Odoo</a> <a href="/bbs.github.io/tags/Odoo-JS/" style="font-size: 10px;">Odoo-JS</a> <a href="/bbs.github.io/tags/Odoo-Qweb/" style="font-size: 10px;">Odoo-Qweb</a> <a href="/bbs.github.io/tags/Odoo-XML/" style="font-size: 10px;">Odoo-XML</a> <a href="/bbs.github.io/tags/Postgresql/" style="font-size: 10px;">Postgresql</a> <a href="/bbs.github.io/tags/Python/" style="font-size: 15px;">Python</a> <a href="/bbs.github.io/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/bbs.github.io/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/bbs.github.io/tags/linux/" style="font-size: 10px;">linux</a> <a href="/bbs.github.io/tags/npm/" style="font-size: 10px;">npm</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/bbs.github.io/archives/2019/04/">四月 2019</a><span class="archive-list-count">25</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/bbs.github.io/npm切换国内源/">npm切换国内源</a>
+          </li>
+        
+          <li>
+            <a href="/bbs.github.io/PEP8必须学习/">PEP8必须学习</a>
+          </li>
+        
+          <li>
+            <a href="/bbs.github.io/Postgresql10持续学习-ing/">Postgresql10持续学习(ing)</a>
+          </li>
+        
+          <li>
+            <a href="/bbs.github.io/Odoo12-启动持续分析-ing/">Odoo12-启动持续分析(ing)</a>
+          </li>
+        
+          <li>
+            <a href="/bbs.github.io/Python统计文件行数/">Python统计文件行数</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 杨天成<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      <br>
+      <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+      邮箱 tiancheng.yang@hand-china.com
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/bbs.github.io/" class="mobile-nav-link">主页</a>
+  
+    <a href="/bbs.github.io/archives" class="mobile-nav-link">文章</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/bbs.github.io/fancybox/jquery.fancybox.css">
+  <script src="/bbs.github.io/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/bbs.github.io/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

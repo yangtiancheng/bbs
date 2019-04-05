@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Odoo-Excel下载 | 技术小哥</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="excel下载结构class inherit_report_xls(report_xls)①class inherit_rml_parse(report_sxw.rml_parse)②  第一个python类class继承report_xls,用于控制界面样式调整，主要是重写继承类report_xls中的generate_xls_report方法。继承report_xls类的class初始化。">
+<meta name="keywords" content="Odoo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Odoo-Excel下载">
+<meta property="og:url" content="https://yangtiancheng.github.io/bbs.github.io/Excel下载/index.html">
+<meta property="og:site_name" content="技术小哥">
+<meta property="og:description" content="excel下载结构class inherit_report_xls(report_xls)①class inherit_rml_parse(report_sxw.rml_parse)②  第一个python类class继承report_xls,用于控制界面样式调整，主要是重写继承类report_xls中的generate_xls_report方法。继承report_xls类的class初始化。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://yangtiancheng.github.io/bbs.github.io/Excel下载/src/img/register.jpg">
+<meta property="og:image" content="https://yangtiancheng.github.io/bbs.github.io/Excel下载/src/img/objects.png">
+<meta property="og:updated_time" content="2019-04-05T14:45:14.552Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Odoo-Excel下载">
+<meta name="twitter:description" content="excel下载结构class inherit_report_xls(report_xls)①class inherit_rml_parse(report_sxw.rml_parse)②  第一个python类class继承report_xls,用于控制界面样式调整，主要是重写继承类report_xls中的generate_xls_report方法。继承report_xls类的class初始化。">
+<meta name="twitter:image" content="https://yangtiancheng.github.io/bbs.github.io/Excel下载/src/img/register.jpg">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/bbs.github.io/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/bbs.github.io/" id="logo">技术小哥</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/bbs.github.io/" id="subtitle">总结一尺，成长一寸</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/bbs.github.io/">主页</a>
+        
+          <a class="main-nav-link" href="/bbs.github.io/archives">文章</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://yangtiancheng.github.io/bbs.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Excel下载" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/bbs.github.io/Excel下载/" class="article-date">
+  <time datetime="2019-04-05T21:47:42.000Z" itemprop="datePublished">2019-04-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Odoo-Excel下载
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="excel下载"><a href="#excel下载" class="headerlink" title="excel下载"></a>excel下载</h1><h3 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h3><p>class inherit_report_xls(report_xls)<sup>①</sup><br><br>class inherit_rml_parse(report_sxw.rml_parse)<sup>②</sup></p>
+<ol>
+<li><p>第一个python类class继承report_xls,用于控制界面样式调整，主要是重写继承类report_xls中的generate_xls_report方法。<br><br>继承report_xls类的class初始化。</p>
+</li>
+<li><p>第二个python类class用于基础数据获取与传递功能。<br><br>就是文中的</p><p style="color:red;">_p</p><p></p>
+<a id="more"></a></li>
+<li><p>一个odoo类class用于使用odoo的ORM或方法定义获取对应的数据集合。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">另外:大多数报表都有相应的弹出界面选择功能，对应的可以使用这个class去定义一些弹出框的选择字段，用作筛选条件。</span><br><span class="line">总之，这个class就是用于各种数据逻辑处理的模型。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实例化第一个report_xls类，用于注册使用。<br><br>inherit_report_xls(‘report.report_name’<sup>③</sup>,’报表定义的model’<sup>④</sup>,’inherit_rml_parse’<sup>⑤</sup>)</p>
+</li>
+<li><p>一个XML,用于定义form弹窗相关的Acion、Form、Report与模型进行绑定</p>
+</li>
+<li><p>流程：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">实现流程：</span><br><span class="line"></span><br><span class="line">    创建report_xls的继承类和report_sxw.rml_parse的继承类。</span><br><span class="line">    </span><br><span class="line">    实例化report_xls继承类</span><br><span class="line">    </span><br><span class="line">    创建odoo的class定义字段、写各种方法(例如获取数据下载报表方法print_report，打开报表选择页面的action方法等)。</span><br><span class="line">    </span><br><span class="line">    创建XML来个性化弹出框与选择条件，定义一个print_report按钮，定义一个连接数据对象。</span><br><span class="line">   </span><br><span class="line">操作流程:</span><br><span class="line">    点击报表菜单 - 弹出一个form界面(可能有参数选择) - 完成后点击打印按钮(print_report) - 报表打印</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><br>另外:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">return &#123;</span><br><span class="line">    &apos;type&apos;: &apos;ir.actions.report.xml&apos;,</span><br><span class="line">    &apos;report_name&apos;: &apos;nov.account.journal.xls&apos;,</span><br><span class="line">    &apos;datas&apos;: datas,</span><br><span class="line">    &apos;context&apos;:self.env.context&#125;</span><br></pre></td></tr></table></figure></p>
+<p>直接return调用report_name的报表，有时候回使用一下context传点个性化的参数。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">record</span> <span class="attr">id</span>=<span class="string">"action_import_move_line_details_xls"</span> <span class="attr">model</span>=<span class="string">"ir.actions.report.xml"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"name"</span>&gt;</span>Import Move Line Details<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"model"</span>&gt;</span>hrp.account.gl.account.move<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"type"</span>&gt;</span>ir.actions.report.xml<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"report_name"</span>&gt;</span>import.move.line.details.xls<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"report_type"</span>&gt;</span>xls<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"auto"</span> <span class="attr">eval</span>=<span class="string">"False"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">record</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>重要的是model，report_name,report_type：<br>    model目前我是默认写的objects挂载的模型，和注册中的model名称相同。(后续了解ir.act.report.xml看看model是用来干啥的)<br>    report_name:python代码中return调用的xls，其实就是ir.act.report.xml的唯一属性。<br>    report_type:是报表支持的类型，qweb-pdf、qweb-html、pdf、xls、xlsx等。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&apos;name&apos;: &#123;</span><br><span class="line">    &apos;header&apos;: [1, 25, &apos;text&apos;, _render(&quot;_(&apos;Name&apos;)&quot;)],</span><br><span class="line">    &apos;lines&apos;: [1, 0, &apos;text&apos;, _render(&quot;line[&apos;name&apos;] or &apos;&apos;&quot;)],</span><br><span class="line">    &apos;totals&apos;: [1, 0, &apos;text&apos;, None]&#125;,</span><br></pre></td></tr></table></figure>
+<p>’text’那个位置是用来判断初始化的 ‘’</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import_move_line_details_xls(&apos;report.import.move.line.details.xls&apos;,</span><br><span class="line">                             &apos;hrp.account.gl.account.move&apos;,</span><br><span class="line">                             parser=import_move_line_details_xls_parser)</span><br></pre></td></tr></table></figure>
+<p>格式：report_xls继承类(‘xls名称’,’objects挂载模型’,’parser对象’)<br>objects挂载模型的意思是，我们excel的数据取值是通过对应的记录来取值的，这里必须选择取数逻辑的model.<br><img src="./src/img/register.jpg" alt="img"><br><img src="./src/img/objects.png" alt="img"><br>我们可以发现它直接定位到了我们打印的单据数据，当然这是在form上或者通过form的一个按钮打开一个Transation的model来打印报表的，如果是那种<br>放在’更多’中的批量数据打印，我们还需要相应的做一些context的处理。</p>
+<p><sup>逐步理解中…</sup></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://yangtiancheng.github.io/bbs.github.io/Excel下载/" data-id="cju47edkt00007fhsivmclosd" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/bbs.github.io/tags/Odoo/">Odoo</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/bbs.github.io/Odoo-报表/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Odoo-报表
+        
+      </div>
+    </a>
+  
+  
+    <a href="/bbs.github.io/Odoo8-JS小记/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Odoo8-JS小记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Gitbook/">Gitbook</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Odoo/">Odoo</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Odoo-JS/">Odoo-JS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Odoo-Qweb/">Odoo-Qweb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Odoo-XML/">Odoo-XML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Postgresql/">Postgresql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Python/">Python</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Ubuntu/">Ubuntu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/linux/">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/npm/">npm</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/bbs.github.io/tags/Git/" style="font-size: 10px;">Git</a> <a href="/bbs.github.io/tags/Gitbook/" style="font-size: 10px;">Gitbook</a> <a href="/bbs.github.io/tags/Odoo/" style="font-size: 20px;">Odoo</a> <a href="/bbs.github.io/tags/Odoo-JS/" style="font-size: 10px;">Odoo-JS</a> <a href="/bbs.github.io/tags/Odoo-Qweb/" style="font-size: 10px;">Odoo-Qweb</a> <a href="/bbs.github.io/tags/Odoo-XML/" style="font-size: 10px;">Odoo-XML</a> <a href="/bbs.github.io/tags/Postgresql/" style="font-size: 10px;">Postgresql</a> <a href="/bbs.github.io/tags/Python/" style="font-size: 15px;">Python</a> <a href="/bbs.github.io/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/bbs.github.io/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/bbs.github.io/tags/linux/" style="font-size: 10px;">linux</a> <a href="/bbs.github.io/tags/npm/" style="font-size: 10px;">npm</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/bbs.github.io/archives/2019/04/">四月 2019</a><span class="archive-list-count">25</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/bbs.github.io/npm切换国内源/">npm切换国内源</a>
+          </li>
+        
+          <li>
+            <a href="/bbs.github.io/PEP8必须学习/">PEP8必须学习</a>
+          </li>
+        
+          <li>
+            <a href="/bbs.github.io/Postgresql10持续学习-ing/">Postgresql10持续学习(ing)</a>
+          </li>
+        
+          <li>
+            <a href="/bbs.github.io/Odoo12-启动持续分析-ing/">Odoo12-启动持续分析(ing)</a>
+          </li>
+        
+          <li>
+            <a href="/bbs.github.io/Python统计文件行数/">Python统计文件行数</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 杨天成<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      <br>
+      <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+      邮箱 tiancheng.yang@hand-china.com
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/bbs.github.io/" class="mobile-nav-link">主页</a>
+  
+    <a href="/bbs.github.io/archives" class="mobile-nav-link">文章</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/bbs.github.io/fancybox/jquery.fancybox.css">
+  <script src="/bbs.github.io/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/bbs.github.io/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

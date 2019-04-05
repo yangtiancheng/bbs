@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Odoo-报表 | 技术小哥</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="pdf报表PDF报表结构 一个XML数据配置文件 一个py文件  Odoo原生的报表通过HTML或者QWeb定义，可以通过Qweb控制流工具，使用wkhtmltopdf来注册pdf。定义一个报表的主要需要定义1.报表 2.报表模板 3.可以个性化格式 4.可以客户化class来为报表的数据服务">
+<meta name="keywords" content="Odoo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Odoo-报表">
+<meta property="og:url" content="https://yangtiancheng.github.io/bbs.github.io/Odoo-报表/index.html">
+<meta property="og:site_name" content="技术小哥">
+<meta property="og:description" content="pdf报表PDF报表结构 一个XML数据配置文件 一个py文件  Odoo原生的报表通过HTML或者QWeb定义，可以通过Qweb控制流工具，使用wkhtmltopdf来注册pdf。定义一个报表的主要需要定义1.报表 2.报表模板 3.可以个性化格式 4.可以客户化class来为报表的数据服务">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-05T14:47:39.582Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Odoo-报表">
+<meta name="twitter:description" content="pdf报表PDF报表结构 一个XML数据配置文件 一个py文件  Odoo原生的报表通过HTML或者QWeb定义，可以通过Qweb控制流工具，使用wkhtmltopdf来注册pdf。定义一个报表的主要需要定义1.报表 2.报表模板 3.可以个性化格式 4.可以客户化class来为报表的数据服务">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/bbs.github.io/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/bbs.github.io/" id="logo">技术小哥</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/bbs.github.io/" id="subtitle">总结一尺，成长一寸</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/bbs.github.io/">主页</a>
+        
+          <a class="main-nav-link" href="/bbs.github.io/archives">文章</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://yangtiancheng.github.io/bbs.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Odoo-报表" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/bbs.github.io/Odoo-报表/" class="article-date">
+  <time datetime="2019-04-05T21:48:41.000Z" itemprop="datePublished">2019-04-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Odoo-报表
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="pdf报表"><a href="#pdf报表" class="headerlink" title="pdf报表"></a>pdf报表</h1><h2 id="PDF报表结构"><a href="#PDF报表结构" class="headerlink" title="PDF报表结构"></a>PDF报表结构</h2><ul>
+<li>一个XML数据配置文件</li>
+<li>一个py文件</li>
+</ul>
+<p>Odoo原生的报表通过HTML或者QWeb定义，可以通过Qweb控制流工具，使用wkhtmltopdf来注册pdf。<br>定义一个报表的主要需要定义1.报表 2.报表模板 3.可以个性化格式 4.可以客户化class来为报表的数据服务<br><a id="more"></a></p>
+<h2 id="Report"><a href="#Report" class="headerlink" title="Report"></a>Report</h2><ol>
+<li>报表都需要定义一个 report_action：<br> 可以通过一个<report>标签来定义 report_action.格式定义：<br> id - 是report_action的外部ID(ir_model_data可查)<br> name(必输) - 数据库中的report_name 用于对应报表模板的外部ID<br> file - 数据库中的report_file 与name相同<br> string - PDF报表名称 action的下拉名称<br> model(必输) - 报表放那个model的界面上<br> report_type(必输) - 报表类型 目前我们认为它只有两种打印PDF的qweb-pdf、和打印HTML的qweb-html.<br> report_name - 报表名称 输出报表的名字<br> groups - 组权限控制 哪个对应的用户组能够触发报表操作<br> attachment_use - bool(true/false) 如果设置成True则会将打印的报表以附件attachment的形式存储在系统的附件系统中，用于一次使用，需要测试。<br> attachment - python逻辑赋值表达式，用来定义附件存储的文件名称 可使用一定的逻辑判断赋值。<br> paperformat - 默认定义为公司下的纸张格式 如果有特殊需要可以自定义纸张格式。</report></li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">report</span></span></span><br><span class="line"><span class="tag">    <span class="attr">id</span>=<span class="string">"account_invoices"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">model</span>=<span class="string">"account.invoice"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">string</span>=<span class="string">"Invoices"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">report_type</span>=<span class="string">"qweb-pdf"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">name</span>=<span class="string">"account.report_invoice"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">file</span>=<span class="string">"account.report_invoice"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">attachment_use</span>=<span class="string">"True"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">attachment</span>=<span class="string">"(object.state in ('open','paid')) and</span></span></span><br><span class="line"><span class="tag"><span class="string">        ('INV'+(object.number or '').replace('/','')+'.pdf')"</span></span></span><br><span class="line"><span class="tag">/&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Report-Template"><a href="#Report-Template" class="headerlink" title="Report Template"></a>Report Template</h2><ol>
+<li><p>报表模板中call外部布局样式，它将添加默认的报表头和报表尾。PDF报表体江北包含在<div class="page">标签中，template的外部id必须符合报表定义规则，从Qweb模板中，能够通过docs访问对象包含的所有字段。</div></p>
+</li>
+<li><p>报表中有一些特定的变量:<br> docs - 当前报表的记录集合(数据)<br> doc_ids - 当前报表的记录集合的ids列表<br> doc_model - docs包含的数据记录来源model<br> time - 从python标准库中引用的time对象<br> user - 打印报表的用户<br> res_company - 当前打印报表用户对应公司<br> 如果需要访问其他模型的记录集，可以关注后续的客户话报表。</p>
+</li>
+<li><p>Translatable Templates(可翻译的模板)<br>如果需要根据业务伙伴的语言来打印对应语言格式的报表，需要定义两个模板。</p>
+</li>
+</ol>
+<ul>
+<li>主报表模板</li>
+<li>可翻译的文件</li>
+</ul>
+<p>可以在主报表模板中加入t-lang属性设置语言来直接调用翻译文件，如果需要对使用的字段等进行翻译，可以对字段附属的对象传入相应的context参数，使对象变的可翻译。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">如果没有想要翻译，最好不写，因为写入会重读记录，影响打印效率</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Main template --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">id</span>=<span class="string">"report_saleorder"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">t</span> <span class="attr">t-call</span>=<span class="string">"web.html_container"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">t</span> <span class="attr">t-foreach</span>=<span class="string">"docs"</span> <span class="attr">t-as</span>=<span class="string">"doc"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">t</span> <span class="attr">t-call</span>=<span class="string">"sale.report_saleorder_document"</span> <span class="attr">t-lang</span>=<span class="string">"doc.partner_id.lang"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">t</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">t</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- Translatable template --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">id</span>=<span class="string">"report_saleorder_document"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- Re-browse of the record with the partner lang --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">t</span> <span class="attr">t-set</span>=<span class="string">"doc"</span> <span class="attr">t-value</span>=<span class="string">"doc.with_context(&#123;'lang':doc.partner_id.lang&#125;)"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">t</span> <span class="attr">t-call</span>=<span class="string">"web.external_layout"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"page"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"oe_structure"</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-xs-6"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">strong</span> <span class="attr">t-if</span>=<span class="string">"doc.partner_shipping_id == doc.partner_invoice_id"</span>&gt;</span>Invoice and shipping address:<span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">strong</span> <span class="attr">t-if</span>=<span class="string">"doc.partner_shipping_id != doc.partner_invoice_id"</span>&gt;</span>Invoice address:<span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">t-field</span>=<span class="string">"doc.partner_invoice_id"</span> <span class="attr">t-options</span>=<span class="string">"&#123;&amp;quot;no_marker&amp;quot;: True&#125;"</span>/&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">...</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"oe_structure"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">t</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>解释一下:主报表模板调用附加context属性t-lang为doc.partner_id.lang 的翻译模板，这样就会被对应的语言渲染。这样的话，报表就会打印成对应业务伙伴语言的报表。如果只需要转换报表体内容而不动报表头/尾部分，可以：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">t</span> <span class="attr">t-call</span>=<span class="string">"web.external_layout"</span> <span class="attr">t-lang</span>=<span class="string">"en_US"</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="Barcodes-条形码"><a href="#Barcodes-条形码" class="headerlink" title="Barcodes(条形码)"></a>Barcodes(条形码)</h2><p>可以很方便的借助Qweb的语法将条形码嵌入到模板中<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">t-att-src</span>=<span class="string">"'/report/barcode/QR/%s' % 'My text in qr code'"</span>/&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>可以传递一些参数：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">t-att-src</span>=<span class="string">"'/report/barcode/?</span></span></span><br><span class="line"><span class="tag"><span class="string">    type=%s&amp;value=%s&amp;width=%s&amp;height=%s'%('QR', 'text', 200, 200)"</span>/&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="Useful-Remarks-有效的语法"><a href="#Useful-Remarks-有效的语法" class="headerlink" title="Useful Remarks(有效的语法)"></a>Useful Remarks(有效的语法)</h2><ol>
+<li>Report Template可以使用Twitter Bootstrap 和 FontAwesome类来渲染。</li>
+<li>本地CSS可以在Template中使用。</li>
+<li>可以通过继承主报表样式来插入到我们的css中。</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">id</span>=<span class="string">"report_saleorder_style"</span> <span class="attr">inherit_id</span>=<span class="string">"report.style"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">xpath</span> <span class="attr">expr</span>=<span class="string">"."</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">t</span>&gt;</span></span><br><span class="line">      .example-css-class &#123;</span><br><span class="line">        background-color: red;</span><br><span class="line">      &#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">t</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">xpath</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Paper-Format-纸张格式"><a href="#Paper-Format-纸张格式" class="headerlink" title="Paper Format(纸张格式)"></a>Paper Format(纸张格式)</h2><p>报表格式是report.paperformat对象的记录，它们经常包括如下几个参数:<br>    name(必输) - 可标识样板格式的简要名称<br>    description - 对样板简短的介绍<br>    format - 预定义格式A0-A9 B0-B9 Legal Letter Tabloid… 默认是A4，如果定义了这个参数将无法使用个性化的格式。<br>    dpi - 输出的DPI 默认为90<br>    margin_top, margin_bottom, margin_left, margin_right - 边距大小默认单位mm<br>    page_height , page_width - 页面尺寸 默认单位mm<br>    orientation - Landscape 或者 Portrait<br>    header_line - 布尔值 是否显示头行<br>    header_spacing - 头空间 默认单位mm</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">record</span> <span class="attr">id</span>=<span class="string">"paperformat_frenchcheck"</span> <span class="attr">model</span>=<span class="string">"report.paperformat"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"name"</span>&gt;</span>French Bank Check<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"default"</span> <span class="attr">eval</span>=<span class="string">"True"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"format"</span>&gt;</span>custom<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"page_height"</span>&gt;</span>80<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"page_width"</span>&gt;</span>175<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"orientation"</span>&gt;</span>Portrait<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"margin_top"</span>&gt;</span>3<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"margin_bottom"</span>&gt;</span>3<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"margin_left"</span>&gt;</span>3<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"margin_right"</span>&gt;</span>3<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"header_line"</span> <span class="attr">eval</span>=<span class="string">"False"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"header_spacing"</span>&gt;</span>3<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"dpi"</span>&gt;</span>80<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">record</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="客户化报表"><a href="#客户化报表" class="headerlink" title="客户化报表"></a>客户化报表</h2><p>报表model有一个get_html方法，就是通过report.{module.report_name}来寻找客户化报表model，如果找到的话，将使用找到的这个类来调用Qweb引擎,否则就调用默认方法。如果希望客户化一个包含了各种项的报表模板，就可以定义这个model，重写render_html方法，并且在docargs列表中传递数据。</p>
+<h2 id="报表都可以在web页面上显示"><a href="#报表都可以在web页面上显示" class="headerlink" title="报表都可以在web页面上显示"></a>报表都可以在web页面上显示</h2><p>可以通过例如:<br>http://<server-address>/report/html/sale.report_saleorder/38<br>http://<server-address>/report/pdf/sale.report_saleorder/38<br>如上方式访问html/pdf的报表</server-address></server-address></p>
+<h2 id="Odoo11-PDF报表实例流程"><a href="#Odoo11-PDF报表实例流程" class="headerlink" title="Odoo11 PDF报表实例流程"></a>Odoo11 PDF报表实例流程</h2><h3 id="1-创建一个ir-actions-report对象"><a href="#1-创建一个ir-actions-report对象" class="headerlink" title="1.创建一个ir.actions.report对象"></a>1.创建一个ir.actions.report对象</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">report</span></span></span><br><span class="line"><span class="tag">    <span class="attr">string</span>=<span class="string">"界面打印下拉框处显示的文字"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">id</span>=<span class="string">"ir_model_data表中创建的数据记录name 其实就是外部id①"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">model</span>=<span class="string">"报表绑定的model 在哪个界面上显示"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">report_type</span>=<span class="string">"报表类别/qweb-pdf"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">name</span>=<span class="string">"hrp_asset.report_asset_transfer_application"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">file</span>=<span class="string">"hrp_asset.report_asset_transfer_application"</span></span></span><br><span class="line"><span class="tag">/&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="XML文件中"><a href="#XML文件中" class="headerlink" title="XML文件中"></a>XML文件中</h3><ol>
+<li><p>首先介绍一下XML文件中的基础格式:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">openerp</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">data</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">data</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">openerp</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>初始化一个report数据项:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">report</span></span></span><br><span class="line"><span class="tag">    <span class="attr">string</span>=<span class="string">"界面打印下拉框处显示的文字"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">id</span>=<span class="string">"ir_model_data表中创建的数据记录name 其实就是外部id①"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">model</span>=<span class="string">"报表绑定的model 在哪个界面上显示"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">report_type</span>=<span class="string">"报表类别/qweb-pdf"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">name</span>=<span class="string">"hrp_asset.report_asset_transfer_application"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">file</span>=<span class="string">"hrp_asset.report_asset_transfer_application"</span></span></span><br><span class="line"><span class="tag">/&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对report项绑定一个数据模板，paperformat_id来自于report.paperformat:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">record</span> <span class="attr">id</span>=<span class="string">"ir_model_data表中创建的数据记录name 其实就是外部id①"</span> <span class="attr">model</span>=<span class="string">"ir.actions.report.xml"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"paperformat_id"</span> <span class="attr">ref</span>=<span class="string">"hrp_base.paperformat_horizontal_A4"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">record</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>注:这里的paperformat可以自行定义样式</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://yangtiancheng.github.io/bbs.github.io/Odoo-报表/" data-id="cju47edls001n7fhskc8zb61k" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/bbs.github.io/tags/Odoo/">Odoo</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/bbs.github.io/Odoo-QWeb/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Odoo-QWeb
+        
+      </div>
+    </a>
+  
+  
+    <a href="/bbs.github.io/Excel下载/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Odoo-Excel下载</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Gitbook/">Gitbook</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Odoo/">Odoo</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Odoo-JS/">Odoo-JS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Odoo-Qweb/">Odoo-Qweb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Odoo-XML/">Odoo-XML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Postgresql/">Postgresql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Python/">Python</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/Ubuntu/">Ubuntu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/linux/">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bbs.github.io/tags/npm/">npm</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/bbs.github.io/tags/Git/" style="font-size: 10px;">Git</a> <a href="/bbs.github.io/tags/Gitbook/" style="font-size: 10px;">Gitbook</a> <a href="/bbs.github.io/tags/Odoo/" style="font-size: 20px;">Odoo</a> <a href="/bbs.github.io/tags/Odoo-JS/" style="font-size: 10px;">Odoo-JS</a> <a href="/bbs.github.io/tags/Odoo-Qweb/" style="font-size: 10px;">Odoo-Qweb</a> <a href="/bbs.github.io/tags/Odoo-XML/" style="font-size: 10px;">Odoo-XML</a> <a href="/bbs.github.io/tags/Postgresql/" style="font-size: 10px;">Postgresql</a> <a href="/bbs.github.io/tags/Python/" style="font-size: 15px;">Python</a> <a href="/bbs.github.io/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/bbs.github.io/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/bbs.github.io/tags/linux/" style="font-size: 10px;">linux</a> <a href="/bbs.github.io/tags/npm/" style="font-size: 10px;">npm</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/bbs.github.io/archives/2019/04/">四月 2019</a><span class="archive-list-count">25</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/bbs.github.io/npm切换国内源/">npm切换国内源</a>
+          </li>
+        
+          <li>
+            <a href="/bbs.github.io/PEP8必须学习/">PEP8必须学习</a>
+          </li>
+        
+          <li>
+            <a href="/bbs.github.io/Postgresql10持续学习-ing/">Postgresql10持续学习(ing)</a>
+          </li>
+        
+          <li>
+            <a href="/bbs.github.io/Odoo12-启动持续分析-ing/">Odoo12-启动持续分析(ing)</a>
+          </li>
+        
+          <li>
+            <a href="/bbs.github.io/Python统计文件行数/">Python统计文件行数</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 杨天成<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      <br>
+      <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+      邮箱 tiancheng.yang@hand-china.com
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/bbs.github.io/" class="mobile-nav-link">主页</a>
+  
+    <a href="/bbs.github.io/archives" class="mobile-nav-link">文章</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/bbs.github.io/fancybox/jquery.fancybox.css">
+  <script src="/bbs.github.io/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/bbs.github.io/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
