@@ -6,7 +6,7 @@
   <link href="/bbs.github.io/atom.xml" rel="self"/>
   
   <link href="https://yangtiancheng.github.io/bbs.github.io/"/>
-  <updated>2019-04-06T01:14:28.778Z</updated>
+  <updated>2019-04-06T01:17:42.340Z</updated>
   <id>https://yangtiancheng.github.io/bbs.github.io/</id>
   
   <author>
@@ -21,17 +21,15 @@
     <link href="https://yangtiancheng.github.io/bbs.github.io/Odoo-%E6%B5%85%E8%B0%88Odoo%E6%8F%90%E4%BE%9B%E7%9A%84%E9%99%84%E4%BB%B6%E6%9C%BA%E5%88%B6/"/>
     <id>https://yangtiancheng.github.io/bbs.github.io/Odoo-浅谈Odoo提供的附件机制/</id>
     <published>2019-04-06T09:13:38.000Z</published>
-    <updated>2019-04-06T01:14:28.778Z</updated>
+    <updated>2019-04-06T01:17:42.340Z</updated>
     
-    <content type="html"><![CDATA[<p>Odoo提供的附件机制</p><p><img src="https://img-blog.csdn.net/20180326101437554?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5NjU0MzI1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p><p>存储位置可配置：<br>&emsp;&emsp;通过 设置-参数-系统参数 定义的关键字ir_attachment.location来控制附件的存储方式。<br><img src="https://img-blog.csdn.net/2018032610183484?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5NjU0MzI1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p><ul><li>1.如果未维护记录或者维护记录值不为db，默认存储路径为应用服务器上的/var/lib/odoo/filestore/数据库名称/文件夹,例如/var/lib/odoo/filestore/ 868/9c。</li></ul><ul><li>2.将文件的路径写入store_fname字段，file_size表示文件大小，db_datas表示文件以二进制的形式存储在数据库中(这里为空)。</li></ul><ul><li>3.如果维护记录值为db，则以binary的形式存储在数据库表db_datas中。</li></ul><h2 id="个人总结"><a href="#个人总结" class="headerlink" title="个人总结"></a>个人总结</h2><ol><li><p>可配置存储方式:<br>我们的所有附件数据可以选择保存在数据库db_datas中，还是应用服务器/var/lib/odoo/数据库名/sha1[:2]中。<br>如果保存在应用服务器中，系统的数据库会更加轻便，而且附件使用base64编码文件，通过sha1方式给每一个附件文件标定为唯一的记录datas_fname，如果上传相同的文件，数据库store_fname记录只需要放入文件的服务器软地址，不需要再将文件上传，加速了上传的效率。</p></li><li><p>同一记录单或不同记录单，相同的文件只会上传一次:<br>数据库记录只需要放入相关的访问地址，需要时直接读取，防止多余的空间流失。HRP现有的资质的附件上传方式，采用数据库直接存取二进制文件形式，上传文件就接收，不校验，不智能，数据冗余，使得数据库臃肿不堪。</p></li><li><p>权限检查-更安全：<br>对系统附件的每一种类型的操作，odoo源码附件机制都会检验权限是否满足，只有附件上传者、超级管理员、管理组用户才可以对相关附件进行高级操作，保证了操作附件的安全性。</p></li></ol><ol start="4"><li><p>不易丢失:<br>选择应用服务器保存附件，极端情况下，当数据库数据丢失或损坏时，存储在服务器端的附件不会受到波及，防止数据丢失。</p></li><li><p>异步备份：<br>虽然看起来既要备份数据库，又要备份应用服务器的附件部分，操作步骤变多了。但分步备份保证了数据库快速备份，服务器附件传输要求并不像数据库备份时，要求快速、轻便，所以这样的机制更适合</p></li></ol><p>###如有理解错误的地方，请大家指正.</p>]]></content>
+    <content type="html"><![CDATA[<p>Odoo提供的附件机制</p><p><img src="https://img-blog.csdn.net/20180326101437554?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5NjU0MzI1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p><p>存储位置可配置：<br>&emsp;&emsp;通过 设置-参数-系统参数 定义的关键字ir_attachment.location来控制附件的存储方式。<br><img src="https://img-blog.csdn.net/2018032610183484?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5NjU0MzI1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"><br><a id="more"></a></p><ul><li>1.如果未维护记录或者维护记录值不为db，默认存储路径为应用服务器上的/var/lib/odoo/filestore/数据库名称/文件夹,例如/var/lib/odoo/filestore/ 868/9c。</li></ul><ul><li>2.将文件的路径写入store_fname字段，file_size表示文件大小，db_datas表示文件以二进制的形式存储在数据库中(这里为空)。</li></ul><ul><li>3.如果维护记录值为db，则以binary的形式存储在数据库表db_datas中。</li></ul><h2 id="个人总结"><a href="#个人总结" class="headerlink" title="个人总结"></a>个人总结</h2><ol><li><p>可配置存储方式:<br>我们的所有附件数据可以选择保存在数据库db_datas中，还是应用服务器/var/lib/odoo/数据库名/sha1[:2]中。<br>如果保存在应用服务器中，系统的数据库会更加轻便，而且附件使用base64编码文件，通过sha1方式给每一个附件文件标定为唯一的记录datas_fname，如果上传相同的文件，数据库store_fname记录只需要放入文件的服务器软地址，不需要再将文件上传，加速了上传的效率。</p></li><li><p>同一记录单或不同记录单，相同的文件只会上传一次:<br>数据库记录只需要放入相关的访问地址，需要时直接读取，防止多余的空间流失。HRP现有的资质的附件上传方式，采用数据库直接存取二进制文件形式，上传文件就接收，不校验，不智能，数据冗余，使得数据库臃肿不堪。</p></li><li><p>权限检查-更安全：<br>对系统附件的每一种类型的操作，odoo源码附件机制都会检验权限是否满足，只有附件上传者、超级管理员、管理组用户才可以对相关附件进行高级操作，保证了操作附件的安全性。</p></li></ol><ol start="4"><li><p>不易丢失:<br>选择应用服务器保存附件，极端情况下，当数据库数据丢失或损坏时，存储在服务器端的附件不会受到波及，防止数据丢失。</p></li><li><p>异步备份：<br>虽然看起来既要备份数据库，又要备份应用服务器的附件部分，操作步骤变多了。但分步备份保证了数据库快速备份，服务器附件传输要求并不像数据库备份时，要求快速、轻便，所以这样的机制更适合</p></li></ol><p>###如有理解错误的地方，请大家指正.</p>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;Odoo提供的附件机制&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://img-blog.csdn.net/20180326101437554?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5NjU0MzI1/fo
-      
+      &lt;p&gt;Odoo提供的附件机制&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://img-blog.csdn.net/20180326101437554?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5NjU0MzI1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70&quot; alt=&quot;这里写图片描述&quot;&gt;&lt;/p&gt;
+&lt;p&gt;存储位置可配置：&lt;br&gt;&amp;emsp;&amp;emsp;通过 设置-参数-系统参数 定义的关键字ir_attachment.location来控制附件的存储方式。&lt;br&gt;&lt;img src=&quot;https://img-blog.csdn.net/2018032610183484?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5NjU0MzI1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70&quot; alt=&quot;这里写图片描述&quot;&gt;&lt;br&gt;
     
     </summary>
     

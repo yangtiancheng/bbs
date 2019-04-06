@@ -7,20 +7,20 @@
   
   <title>Odoo 浅谈Odoo提供的附件机制 | 技术小哥</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Odoo提供的附件机制  存储位置可配置：&amp;emsp;&amp;emsp;通过 设置-参数-系统参数 定义的关键字ir_attachment.location来控制附件的存储方式。  1.如果未维护记录或者维护记录值不为db，默认存储路径为应用服务器上的/var/lib/odoo/filestore/数据库名称/文件夹,例如/var/lib/odoo/filestore/ 868/9c。   2.将文件的">
+  <meta name="description" content="Odoo提供的附件机制  存储位置可配置：&amp;emsp;&amp;emsp;通过 设置-参数-系统参数 定义的关键字ir_attachment.location来控制附件的存储方式。">
 <meta name="keywords" content="Odoo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Odoo 浅谈Odoo提供的附件机制">
 <meta property="og:url" content="https://yangtiancheng.github.io/bbs.github.io/Odoo-浅谈Odoo提供的附件机制/index.html">
 <meta property="og:site_name" content="技术小哥">
-<meta property="og:description" content="Odoo提供的附件机制  存储位置可配置：&amp;emsp;&amp;emsp;通过 设置-参数-系统参数 定义的关键字ir_attachment.location来控制附件的存储方式。  1.如果未维护记录或者维护记录值不为db，默认存储路径为应用服务器上的/var/lib/odoo/filestore/数据库名称/文件夹,例如/var/lib/odoo/filestore/ 868/9c。   2.将文件的">
+<meta property="og:description" content="Odoo提供的附件机制  存储位置可配置：&amp;emsp;&amp;emsp;通过 设置-参数-系统参数 定义的关键字ir_attachment.location来控制附件的存储方式。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://img-blog.csdn.net/20180326101437554?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5NjU0MzI1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 <meta property="og:image" content="https://img-blog.csdn.net/2018032610183484?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5NjU0MzI1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
-<meta property="og:updated_time" content="2019-04-06T01:14:28.778Z">
+<meta property="og:updated_time" content="2019-04-06T01:17:42.340Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Odoo 浅谈Odoo提供的附件机制">
-<meta name="twitter:description" content="Odoo提供的附件机制  存储位置可配置：&amp;emsp;&amp;emsp;通过 设置-参数-系统参数 定义的关键字ir_attachment.location来控制附件的存储方式。  1.如果未维护记录或者维护记录值不为db，默认存储路径为应用服务器上的/var/lib/odoo/filestore/数据库名称/文件夹,例如/var/lib/odoo/filestore/ 868/9c。   2.将文件的">
+<meta name="twitter:description" content="Odoo提供的附件机制  存储位置可配置：&amp;emsp;&amp;emsp;通过 设置-参数-系统参数 定义的关键字ir_attachment.location来控制附件的存储方式。">
 <meta name="twitter:image" content="https://img-blog.csdn.net/20180326101437554?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5NjU0MzI1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
   
   
@@ -92,7 +92,7 @@
       
         <p>Odoo提供的附件机制</p>
 <p><img src="https://img-blog.csdn.net/20180326101437554?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5NjU0MzI1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
-<p>存储位置可配置：<br>&emsp;&emsp;通过 设置-参数-系统参数 定义的关键字ir_attachment.location来控制附件的存储方式。<br><img src="https://img-blog.csdn.net/2018032610183484?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5NjU0MzI1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
+<p>存储位置可配置：<br>&emsp;&emsp;通过 设置-参数-系统参数 定义的关键字ir_attachment.location来控制附件的存储方式。<br><img src="https://img-blog.csdn.net/2018032610183484?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5NjU0MzI1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"><br><a id="more"></a></p>
 <ul>
 <li>1.如果未维护记录或者维护记录值不为db，默认存储路径为应用服务器上的/var/lib/odoo/filestore/数据库名称/文件夹,例如/var/lib/odoo/filestore/ 868/9c。</li>
 </ul>
