@@ -5,19 +5,20 @@
   
 
   
-  <title>技术小哥</title>
+  <title>Odoo12的数据库表约束变化时如何更新约束(_sql_constraints) | 技术小哥</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="技术小哥的私房菜">
-<meta name="keywords" content="Odoo,Python,XML">
-<meta property="og:type" content="website">
-<meta property="og:title" content="技术小哥">
-<meta property="og:url" content="https://yangtiancheng.github.io/bbs.github.io/index.html">
+  <meta name="description" content="两种方式： 1. 覆盖重写举个🌰： 12345678910111213141516# odoo源码酱紫_sql_constraints = [       (&apos;code_and_name&apos;,        &apos;UNIQUE(code,name)&apos;,        _(&quot;Code and Name must be unique!&quot;)),   ]# 现在变成了 code + company 唯一约束#">
+<meta name="keywords" content="Odoo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Odoo12的数据库表约束变化时如何更新约束(_sql_constraints)">
+<meta property="og:url" content="https://yangtiancheng.github.io/bbs.github.io/Odoo12的数据库表约束变化时如何更新约束-sql-constraints/index.html">
 <meta property="og:site_name" content="技术小哥">
-<meta property="og:description" content="技术小哥的私房菜">
+<meta property="og:description" content="两种方式： 1. 覆盖重写举个🌰： 12345678910111213141516# odoo源码酱紫_sql_constraints = [       (&apos;code_and_name&apos;,        &apos;UNIQUE(code,name)&apos;,        _(&quot;Code and Name must be unique!&quot;)),   ]# 现在变成了 code + company 唯一约束#">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-06T00:54:37.022Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="技术小哥">
-<meta name="twitter:description" content="技术小哥的私房菜">
+<meta name="twitter:title" content="Odoo12的数据库表约束变化时如何更新约束(_sql_constraints)">
+<meta name="twitter:description" content="两种方式： 1. 覆盖重写举个🌰： 12345678910111213141516# odoo源码酱紫_sql_constraints = [       (&apos;code_and_name&apos;,        &apos;UNIQUE(code,name)&apos;,        _(&quot;Code and Name must be unique!&quot;)),   ]# 现在变成了 code + company 唯一约束#">
   
   
     <link rel="icon" href="/favicon.png">
@@ -64,9 +65,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-Odoo12的数据库表约束变化时如何更新约束-sql-constraints" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Odoo12的数据库表约束变化时如何更新约束-sql-constraints" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/bbs.github.io/Odoo12的数据库表约束变化时如何更新约束-sql-constraints/" class="article-date">
   <time datetime="2019-04-06T08:52:39.000Z" itemprop="datePublished">2019-04-06</time>
@@ -79,8 +78,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/bbs.github.io/Odoo12的数据库表约束变化时如何更新约束-sql-constraints/">Odoo12的数据库表约束变化时如何更新约束(_sql_constraints)</a>
+    <h1 class="article-title" itemprop="name">
+      Odoo12的数据库表约束变化时如何更新约束(_sql_constraints)
     </h1>
   
 
@@ -104,193 +103,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-Odoo12个性化模块覆盖源码字段的翻译-i18n" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/bbs.github.io/Odoo12个性化模块覆盖源码字段的翻译-i18n/" class="article-date">
-  <time datetime="2019-04-06T08:52:18.000Z" itemprop="datePublished">2019-04-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/bbs.github.io/Odoo12个性化模块覆盖源码字段的翻译-i18n/">Odoo12个性化模块覆盖源码字段的翻译(i18n)</a>
-    </h1>
+    <a href="/bbs.github.io/Odoo12个性化模块覆盖源码字段的翻译-i18n/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Odoo12个性化模块覆盖源码字段的翻译(i18n)</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h1><p>当我们有一个字段<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 源码 analytic 模块</span></span><br><span class="line"><span class="string">"""py代码"""</span></span><br><span class="line">code = fields.Char(string=<span class="string">'Reference'</span>, index=<span class="literal">True</span>, track_visibility=<span class="string">'onchange'</span>)</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;&quot;po代码&quot;&quot;&quot;</span><br><span class="line">#. module: analytic</span><br><span class="line">#: model:ir.model.fields,field_description:analytic.field_account_analytic_account__code</span><br><span class="line">msgid &quot;Reference&quot;</span><br><span class="line">msgstr &quot;参考&quot;</span><br></pre></td></tr></table></figure>
-<p>现在我们需要将Reference翻译成 “编码参照”<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 个性化 new_module 模块</span></span><br><span class="line"><span class="string">"""py代码"""</span></span><br><span class="line"><span class="comment"># 继承_get_import_cursor方法 将继承模块的翻译替换 启用</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">IrTranslation</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    _inherit = <span class="string">'ir.translation'</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_get_import_cursor</span><span class="params">(self)</span>:</span></span><br><span class="line">        context = self._context.copy()</span><br><span class="line">        context[<span class="string">'overwrite'</span>] = <span class="literal">True</span></span><br><span class="line">        self = self.with_context(context)</span><br><span class="line">        <span class="keyword">return</span> super(IrTranslation, self)._get_import_cursor()</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;&quot;po代码 覆盖原翻译&quot;&quot;&quot;</span><br><span class="line">#. module: analytic</span><br><span class="line">#: model:ir.model.fields,field_description:analytic.field_account_analytic_account__code</span><br><span class="line">msgid &quot;Reference&quot;</span><br><span class="line">msgstr &quot;编码参照&quot;</span><br></pre></td></tr></table></figure>
-<p>其实这个与我们config文件中的 –i18n-overwrite =&gt; config[‘overwrite_existing_translations’] 的配置内容相同。</p>
-<p>这样处理后，我们需要升级我们的个性化模块 new_module ，升级完成后，翻译覆盖成功。<br>值得注意的是：1. 加载翻译不会生效 2. 升级模块后翻译覆盖成功，但是如果再次加载翻译，覆盖的翻译会被还原。</p>
-<pre><code>讨论：如何将源码的翻译替换掉，并且还能拿持久化，如果有好的建议请您指点！
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://yangtiancheng.github.io/bbs.github.io/Odoo12个性化模块覆盖源码字段的翻译-i18n/" data-id="cju4scu7d000m1ohs3we5zffl" class="article-share-link">分享</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/bbs.github.io/tags/Odoo/">Odoo</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-odoo-action页面跳转直接为编辑状态操作" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/bbs.github.io/odoo-action页面跳转直接为编辑状态操作/" class="article-date">
-  <time datetime="2019-04-06T08:40:12.000Z" itemprop="datePublished">2019-04-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/bbs.github.io/odoo-action页面跳转直接为编辑状态操作/">odoo action页面跳转直接为编辑状态操作</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">return &#123;</span><br><span class="line">        &apos;type&apos;: &apos;ir.actions.act_window&apos;,</span><br><span class="line">        &apos;view_type&apos;: &apos;form&apos;,</span><br><span class="line">        &apos;view_mode&apos;: &apos;form&apos;,</span><br><span class="line">        &apos;res_model&apos;: &apos;；module.model_name&apos;,</span><br><span class="line">        &apos;res_id&apos;: self.id,</span><br><span class="line">        &apos;context&apos;: self.env.context,</span><br><span class="line">        &apos;flags&apos;: &#123;&apos;initial_mode&apos;: &apos;edit&apos;&#125;,</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>加上这句：‘flags’: {‘initial_mode’: ‘edit’},<br>
-        
-          </p><p class="article-more-link">
-            <a href="/bbs.github.io/odoo-action页面跳转直接为编辑状态操作/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://yangtiancheng.github.io/bbs.github.io/odoo-action页面跳转直接为编辑状态操作/" data-id="cju4scu7y001j1ohsnwav2g5h" class="article-share-link">分享</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/bbs.github.io/tags/Odoo-XML/">Odoo-XML</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hexo的坑汇总" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/bbs.github.io/hexo的坑汇总/" class="article-date">
-  <time datetime="2019-04-06T00:55:28.000Z" itemprop="datePublished">2019-04-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/bbs.github.io/hexo的坑汇总/">hexo的坑汇总</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="删除hexo工程"><a href="#删除hexo工程" class="headerlink" title="删除hexo工程"></a>删除hexo工程</h2><p>手动rm -rf hexo工程 后，发现了一个问题，虽然绑定了github page,但是hexo工程的源码并没有了，<br>目前是没发现什么恢复的方式。</p>
-<p>推荐大家使用pycharm编写，就算rm -rf 删除了工程，我们可以mkdir 同名hexo<br>工程文件，然后右击文件上选择Local History,找到一个历史点，选择Revert，这时候工程就恢复到了历史点。<br>
-        
-          </p><p class="article-more-link">
-            <a href="/bbs.github.io/hexo的坑汇总/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://yangtiancheng.github.io/bbs.github.io/hexo的坑汇总/" data-id="cju4scu7t001a1ohs2pvm2dlh" class="article-share-link">分享</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/bbs.github.io/tags/hexo/">hexo</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-npm切换国内源" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/bbs.github.io/npm切换国内源/" class="article-date">
-  <time datetime="2019-04-05T22:17:35.000Z" itemprop="datePublished">2019-04-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/bbs.github.io/npm切换国内源/">npm切换国内源</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="切换国内源"><a href="#切换国内源" class="headerlink" title="切换国内源"></a>切换国内源</h1><p>npm install -g cnpm –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a></p>
-<p>cnpm install hexo-cli -g<br>
-        
-          </p><p class="article-more-link">
-            <a href="/bbs.github.io/npm切换国内源/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://yangtiancheng.github.io/bbs.github.io/npm切换国内源/" data-id="cju4scu7x001h1ohsu8iizdq7" class="article-share-link">分享</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/bbs.github.io/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/bbs.github.io/tags/npm/">npm</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/bbs.github.io/page/2/">2</a><a class="page-number" href="/bbs.github.io/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/bbs.github.io/page/6/">6</a><a class="extend next" rel="next" href="/bbs.github.io/page/2/">下一页 &raquo;</a>
-  </nav>
 
 </section>
         
