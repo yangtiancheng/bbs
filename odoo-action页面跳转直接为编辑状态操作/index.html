@@ -5,19 +5,20 @@
   
 
   
-  <title>归档: 2019/4 | 技术小哥</title>
+  <title>odoo action页面跳转直接为编辑状态操作 | 技术小哥</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="技术小哥的私房菜">
-<meta name="keywords" content="Odoo,Python,XML">
-<meta property="og:type" content="website">
-<meta property="og:title" content="技术小哥">
-<meta property="og:url" content="https://yangtiancheng.github.io/bbs.github.io/archives/2019/04/page/3/index.html">
+  <meta name="description" content="123456789return &amp;#123;        &amp;apos;type&amp;apos;: &amp;apos;ir.actions.act_window&amp;apos;,        &amp;apos;view_type&amp;apos;: &amp;apos;form&amp;apos;,        &amp;apos;view_mode&amp;apos;: &amp;apos;form&amp;apos;,        &amp;apos;res_mode">
+<meta name="keywords" content="Odoo-XML">
+<meta property="og:type" content="article">
+<meta property="og:title" content="odoo action页面跳转直接为编辑状态操作">
+<meta property="og:url" content="https://yangtiancheng.github.io/bbs.github.io/odoo-action页面跳转直接为编辑状态操作/index.html">
 <meta property="og:site_name" content="技术小哥">
-<meta property="og:description" content="技术小哥的私房菜">
+<meta property="og:description" content="123456789return &amp;#123;        &amp;apos;type&amp;apos;: &amp;apos;ir.actions.act_window&amp;apos;,        &amp;apos;view_type&amp;apos;: &amp;apos;form&amp;apos;,        &amp;apos;view_mode&amp;apos;: &amp;apos;form&amp;apos;,        &amp;apos;res_mode">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-06T00:42:28.290Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="技术小哥">
-<meta name="twitter:description" content="技术小哥的私房菜">
+<meta name="twitter:title" content="odoo action页面跳转直接为编辑状态操作">
+<meta name="twitter:description" content="123456789return &amp;#123;        &amp;apos;type&amp;apos;: &amp;apos;ir.actions.act_window&amp;apos;,        &amp;apos;view_type&amp;apos;: &amp;apos;form&amp;apos;,        &amp;apos;view_mode&amp;apos;: &amp;apos;form&amp;apos;,        &amp;apos;res_mode">
   
   
     <link rel="icon" href="/favicon.png">
@@ -64,83 +65,56 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/bbs.github.io/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/bbs.github.io/Odoo开发模板/" class="archive-article-date">
-  <time datetime="2019-04-05T18:52:57.000Z" itemprop="datePublished">4月 5</time>
+        <section id="main"><article id="post-odoo-action页面跳转直接为编辑状态操作" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/bbs.github.io/odoo-action页面跳转直接为编辑状态操作/" class="article-date">
+  <time datetime="2019-04-06T08:40:12.000Z" itemprop="datePublished">2019-04-06</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/bbs.github.io/Odoo开发模板/">Odoo开发模板</a>
+    <h1 class="article-title" itemprop="name">
+      odoo action页面跳转直接为编辑状态操作
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/bbs.github.io/hello-world/" class="archive-article-date">
-  <time datetime="2019-04-05T14:47:39.574Z" itemprop="datePublished">4月 5</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/bbs.github.io/hello-world/">Hello World</a>
-    </h1>
-  
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">return &#123;</span><br><span class="line">        &apos;type&apos;: &apos;ir.actions.act_window&apos;,</span><br><span class="line">        &apos;view_type&apos;: &apos;form&apos;,</span><br><span class="line">        &apos;view_mode&apos;: &apos;form&apos;,</span><br><span class="line">        &apos;res_model&apos;: &apos;；module.model_name&apos;,</span><br><span class="line">        &apos;res_id&apos;: self.id,</span><br><span class="line">        &apos;context&apos;: self.env.context,</span><br><span class="line">        &apos;flags&apos;: &#123;&apos;initial_mode&apos;: &apos;edit&apos;&#125;,</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>加上这句：‘flags’: {‘initial_mode’: ‘edit’},</p>
+<p>Odoo12使用：<br>context[‘form_view_initial_mode’] = ‘edit’</p>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/bbs.github.io/Hexo+Gituhb页面搭建博客/" class="archive-article-date">
-  <time datetime="2019-04-04T17:13:53.000Z" itemprop="datePublished">4月 4</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/bbs.github.io/Hexo+Gituhb页面搭建博客/">搭建Github Page + Hexo博客系统</a>
-    </h1>
-  
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://yangtiancheng.github.io/bbs.github.io/odoo-action页面跳转直接为编辑状态操作/" data-id="cju4rxdwv0018s0hsglmqyibn" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/bbs.github.io/tags/Odoo-XML/">Odoo-XML</a></li></ul>
 
-    </header>
+    </footer>
   </div>
-</article>
   
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/bbs.github.io/archives/2019/04/page/2/">&laquo; 上一页</a><a class="page-number" href="/bbs.github.io/archives/2019/04/">1</a><a class="page-number" href="/bbs.github.io/archives/2019/04/page/2/">2</a><span class="page-number current">3</span>
-  </nav>
+<nav id="article-nav">
+  
+  
+    <a href="/bbs.github.io/hexo的坑汇总/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">hexo的坑汇总</div>
+    </a>
+  
+</nav>
+
+  
+</article>
 
 </section>
         

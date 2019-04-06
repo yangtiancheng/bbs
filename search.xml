@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[odoo action页面跳转直接为编辑状态操作]]></title>
+    <url>%2Fbbs.github.io%2Fodoo-action%E9%A1%B5%E9%9D%A2%E8%B7%B3%E8%BD%AC%E7%9B%B4%E6%8E%A5%E4%B8%BA%E7%BC%96%E8%BE%91%E7%8A%B6%E6%80%81%E6%93%8D%E4%BD%9C%2F</url>
+    <content type="text"><![CDATA[123456789return &#123; &apos;type&apos;: &apos;ir.actions.act_window&apos;, &apos;view_type&apos;: &apos;form&apos;, &apos;view_mode&apos;: &apos;form&apos;, &apos;res_model&apos;: &apos;；module.model_name&apos;, &apos;res_id&apos;: self.id, &apos;context&apos;: self.env.context, &apos;flags&apos;: &#123;&apos;initial_mode&apos;: &apos;edit&apos;&#125;, &#125; 加上这句：‘flags’: {‘initial_mode’: ‘edit’}, Odoo12使用：context[‘form_view_initial_mode’] = ‘edit’]]></content>
+      <tags>
+        <tag>Odoo-XML</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[hexo的坑汇总]]></title>
     <url>%2Fbbs.github.io%2Fhexo%E7%9A%84%E5%9D%91%E6%B1%87%E6%80%BB%2F</url>
     <content type="text"><![CDATA[删除hexo工程手动rm -rf hexo工程 后，发现了一个问题，虽然绑定了github page,但是hexo工程的源码并没有了，目前是没发现什么恢复的方式。 推荐大家使用pycharm编写，就算rm -rf 删除了工程，我们可以mkdir 同名hexo工程文件，然后右击文件上选择Local History,找到一个历史点，选择Revert，这时候工程就恢复到了历史点。 推荐使用方式 使用pycharm编辑 使用git仓库管理，定时上传hexo工程代码]]></content>
