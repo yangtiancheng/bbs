@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[SQL的!=和is not NULL]]></title>
+    <url>%2Fbbs.github.io%2FSQL%E7%9A%84-%E5%92%8Cis-not-NULL%2F</url>
+    <content type="text"><![CDATA[!=12select type,*where type != 'normal' SQL的Where语句如果出现!=判断符，DB会将数据中type有值且不等于normal的记录查出，但如果记录中对应的type字段是NULL的话，数据将不会被查出来。 is not NULL12select type,*where type is not NULL 将查出type非空的记录 这里需要特别注意筛选数据时，最好不要用!=，除非特别确认这个字段一定是必输字段。]]></content>
+      <tags>
+        <tag>SQL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Odoo 浅谈Odoo提供的附件机制]]></title>
     <url>%2Fbbs.github.io%2FOdoo-%E6%B5%85%E8%B0%88Odoo%E6%8F%90%E4%BE%9B%E7%9A%84%E9%99%84%E4%BB%B6%E6%9C%BA%E5%88%B6%2F</url>
     <content type="text"><![CDATA[Odoo提供的附件机制 存储位置可配置：&emsp;&emsp;通过 设置-参数-系统参数 定义的关键字ir_attachment.location来控制附件的存储方式。 1.如果未维护记录或者维护记录值不为db，默认存储路径为应用服务器上的/var/lib/odoo/filestore/数据库名称/文件夹,例如/var/lib/odoo/filestore/ 868/9c。 2.将文件的路径写入store_fname字段，file_size表示文件大小，db_datas表示文件以二进制的形式存储在数据库中(这里为空)。 3.如果维护记录值为db，则以binary的形式存储在数据库表db_datas中。 个人总结 可配置存储方式:我们的所有附件数据可以选择保存在数据库db_datas中，还是应用服务器/var/lib/odoo/数据库名/sha1[:2]中。如果保存在应用服务器中，系统的数据库会更加轻便，而且附件使用base64编码文件，通过sha1方式给每一个附件文件标定为唯一的记录datas_fname，如果上传相同的文件，数据库store_fname记录只需要放入文件的服务器软地址，不需要再将文件上传，加速了上传的效率。 同一记录单或不同记录单，相同的文件只会上传一次:数据库记录只需要放入相关的访问地址，需要时直接读取，防止多余的空间流失。HRP现有的资质的附件上传方式，采用数据库直接存取二进制文件形式，上传文件就接收，不校验，不智能，数据冗余，使得数据库臃肿不堪。 权限检查-更安全：对系统附件的每一种类型的操作，odoo源码附件机制都会检验权限是否满足，只有附件上传者、超级管理员、管理组用户才可以对相关附件进行高级操作，保证了操作附件的安全性。 不易丢失:选择应用服务器保存附件，极端情况下，当数据库数据丢失或损坏时，存储在服务器端的附件不会受到波及，防止数据丢失。 异步备份：虽然看起来既要备份数据库，又要备份应用服务器的附件部分，操作步骤变多了。但分步备份保证了数据库快速备份，服务器附件传输要求并不像数据库备份时，要求快速、轻便，所以这样的机制更适合 ###如有理解错误的地方，请大家指正.]]></content>

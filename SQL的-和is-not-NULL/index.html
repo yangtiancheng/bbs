@@ -5,23 +5,20 @@
   
 
   
-  <title>Odoo 浅谈Odoo提供的附件机制 | 技术小哥</title>
+  <title>SQL的!=和is not NULL | 技术小哥</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Odoo提供的附件机制">
-<meta name="keywords" content="Odoo">
+  <meta name="description" content="!=12select type,*where type != &apos;normal&apos; SQL的Where语句如果出现!=判断符，DB会将数据中type有值且不等于normal的记录查出，但如果记录中对应的type字段是NULL的话，数据将不会被查出来。 is not NULL12select type,*where type is not NULL 将查出type非空的记录 这里需要特别注意筛选数据时，">
+<meta name="keywords" content="SQL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Odoo 浅谈Odoo提供的附件机制">
-<meta property="og:url" content="https://yangtiancheng.github.io/bbs.github.io/Odoo-浅谈Odoo提供的附件机制/index.html">
+<meta property="og:title" content="SQL的!=和is not NULL">
+<meta property="og:url" content="https://yangtiancheng.github.io/bbs.github.io/SQL的-和is-not-NULL/index.html">
 <meta property="og:site_name" content="技术小哥">
-<meta property="og:description" content="Odoo提供的附件机制">
+<meta property="og:description" content="!=12select type,*where type != &apos;normal&apos; SQL的Where语句如果出现!=判断符，DB会将数据中type有值且不等于normal的记录查出，但如果记录中对应的type字段是NULL的话，数据将不会被查出来。 is not NULL12select type,*where type is not NULL 将查出type非空的记录 这里需要特别注意筛选数据时，">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://img-blog.csdn.net/20180326101437554?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5NjU0MzI1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
-<meta property="og:image" content="https://img-blog.csdn.net/2018032610183484?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5NjU0MzI1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
-<meta property="og:updated_time" content="2019-04-06T01:18:49.249Z">
+<meta property="og:updated_time" content="2019-04-08T07:14:53.019Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Odoo 浅谈Odoo提供的附件机制">
-<meta name="twitter:description" content="Odoo提供的附件机制">
-<meta name="twitter:image" content="https://img-blog.csdn.net/20180326101437554?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5NjU0MzI1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta name="twitter:title" content="SQL的!=和is not NULL">
+<meta name="twitter:description" content="!=12select type,*where type != &apos;normal&apos; SQL的Where语句如果出现!=判断符，DB会将数据中type有值且不等于normal的记录查出，但如果记录中对应的type字段是NULL的话，数据将不会被查出来。 is not NULL12select type,*where type is not NULL 将查出type非空的记录 这里需要特别注意筛选数据时，">
   
   
     <link rel="icon" href="/favicon.png">
@@ -68,10 +65,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Odoo-浅谈Odoo提供的附件机制" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-SQL的-和is-not-NULL" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/bbs.github.io/Odoo-浅谈Odoo提供的附件机制/" class="article-date">
-  <time datetime="2019-04-06T09:13:38.000Z" itemprop="datePublished">2019-04-06</time>
+    <a href="/bbs.github.io/SQL的-和is-not-NULL/" class="article-date">
+  <time datetime="2019-04-08T15:06:19.000Z" itemprop="datePublished">2019-04-08</time>
 </a>
     
   </div>
@@ -82,7 +79,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Odoo 浅谈Odoo提供的附件机制
+      SQL的!=和is not NULL
     </h1>
   
 
@@ -90,42 +87,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Odoo提供的附件机制</p>
-<p><img src="https://img-blog.csdn.net/20180326101437554?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5NjU0MzI1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
-<a id="more"></a>
-<p>存储位置可配置：<br>&emsp;&emsp;通过 设置-参数-系统参数 定义的关键字ir_attachment.location来控制附件的存储方式。<br><img src="https://img-blog.csdn.net/2018032610183484?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5NjU0MzI1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
-<ul>
-<li>1.如果未维护记录或者维护记录值不为db，默认存储路径为应用服务器上的/var/lib/odoo/filestore/数据库名称/文件夹,例如/var/lib/odoo/filestore/ 868/9c。</li>
-</ul>
-<ul>
-<li>2.将文件的路径写入store_fname字段，file_size表示文件大小，db_datas表示文件以二进制的形式存储在数据库中(这里为空)。</li>
-</ul>
-<ul>
-<li>3.如果维护记录值为db，则以binary的形式存储在数据库表db_datas中。</li>
-</ul>
-<h2 id="个人总结"><a href="#个人总结" class="headerlink" title="个人总结"></a>个人总结</h2><ol>
-<li><p>可配置存储方式:<br>我们的所有附件数据可以选择保存在数据库db_datas中，还是应用服务器/var/lib/odoo/数据库名/sha1[:2]中。<br>如果保存在应用服务器中，系统的数据库会更加轻便，而且附件使用base64编码文件，通过sha1方式给每一个附件文件标定为唯一的记录datas_fname，如果上传相同的文件，数据库store_fname记录只需要放入文件的服务器软地址，不需要再将文件上传，加速了上传的效率。</p>
-</li>
-<li><p>同一记录单或不同记录单，相同的文件只会上传一次:<br>数据库记录只需要放入相关的访问地址，需要时直接读取，防止多余的空间流失。HRP现有的资质的附件上传方式，采用数据库直接存取二进制文件形式，上传文件就接收，不校验，不智能，数据冗余，使得数据库臃肿不堪。</p>
-</li>
-<li><p>权限检查-更安全：<br>对系统附件的每一种类型的操作，odoo源码附件机制都会检验权限是否满足，只有附件上传者、超级管理员、管理组用户才可以对相关附件进行高级操作，保证了操作附件的安全性。</p>
-</li>
-</ol>
-<ol start="4">
-<li><p>不易丢失:<br>选择应用服务器保存附件，极端情况下，当数据库数据丢失或损坏时，存储在服务器端的附件不会受到波及，防止数据丢失。</p>
-</li>
-<li><p>异步备份：<br>虽然看起来既要备份数据库，又要备份应用服务器的附件部分，操作步骤变多了。但分步备份保证了数据库快速备份，服务器附件传输要求并不像数据库备份时，要求快速、轻便，所以这样的机制更适合</p>
-</li>
-</ol>
-<p>###如有理解错误的地方，请大家指正.</p>
+        <h1 id><a href="#" class="headerlink" title="!="></a>!=</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">type</span>,*</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">type</span> != <span class="string">'normal'</span></span><br></pre></td></tr></table></figure>
+<p>SQL的Where语句如果出现!=判断符，DB会将数据中type有值且不等于normal的记录查出，<br>但如果记录中对应的type字段是NULL的话，数据将不会被查出来。</p>
+<h1 id="is-not-NULL"><a href="#is-not-NULL" class="headerlink" title="is not NULL"></a>is not NULL</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">type</span>,*</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">type</span> <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">NULL</span></span><br></pre></td></tr></table></figure>
+<p>将查出type非空的记录</p>
+<p><b>这里需要特别注意筛选数据时，最好不要用!=，除非特别确认这个字段一定是必输字段。</b></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://yangtiancheng.github.io/bbs.github.io/Odoo-浅谈Odoo提供的附件机制/" data-id="cju80tpd5000jy7hs3r2710jj" class="article-share-link">分享</a>
+      <a data-url="https://yangtiancheng.github.io/bbs.github.io/SQL的-和is-not-NULL/" data-id="cju80tpdd0012y7hsehgujrx9" class="article-share-link">分享</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/bbs.github.io/tags/Odoo/">Odoo</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/bbs.github.io/tags/SQL/">SQL</a></li></ul>
 
     </footer>
   </div>
@@ -133,19 +107,10 @@
     
 <nav id="article-nav">
   
-    <a href="/bbs.github.io/SQL的-和is-not-NULL/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          SQL的!=和is not NULL
-        
-      </div>
-    </a>
   
-  
-    <a href="/bbs.github.io/Odoo12-M2m字段添加一行弹出框内容个性化指定视图-action自定义指定视图/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/bbs.github.io/Odoo-浅谈Odoo提供的附件机制/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Odoo12-M2m字段添加一行弹出框内容个性化指定视图+action自定义指定视图</div>
+      <div class="article-nav-title">Odoo 浅谈Odoo提供的附件机制</div>
     </a>
   
 </nav>
