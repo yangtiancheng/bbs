@@ -38,10 +38,12 @@
     <url>%2Fbbs.github.io%2FOdoo12-M2m%E5%AD%97%E6%AE%B5%E6%B7%BB%E5%8A%A0%E4%B8%80%E8%A1%8C%E5%BC%B9%E5%87%BA%E6%A1%86%E5%86%85%E5%AE%B9%E4%B8%AA%E6%80%A7%E5%8C%96%E6%8C%87%E5%AE%9A%E8%A7%86%E5%9B%BE-action%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E5%AE%9A%E8%A7%86%E5%9B%BE%2F</url>
     <content type="text"><![CDATA[m2m字段的context属性接收一个 tree_view_ref 属性，通过它指定特定的打开视图即可。举个例子： 1. 首先自定义一个打开字段模型的tree视图：123456789101112&lt;!--Tree M2M Select View--&gt; &lt;record model="ir.ui.view" id="&#123;tree_id&#125;"&gt; &lt;field name="name"&gt;Tree M2M Select View&lt;/field&gt; &lt;field name="model"&gt;&#123;model_name&#125;&lt;/field&gt; &lt;field name="priority" eval="20"/&gt; &lt;field name="arch" type="xml"&gt; &lt;tree&gt; &lt;field name="name"/&gt; &lt;field name="active_flag"/&gt; &lt;/tree&gt; &lt;/field&gt; &lt;/record&gt; 注意：&emsp;&emsp;最好指定一个priority属性值&gt;16，否则可能会将你原来model的tree视图也跳转到新写的tree上了(odoo8中会出现这个情况 默认值16 加载默认取最新的视图)；或者，你可以在action上指定一个view_ids,保证原生的视图一定连接到对应的类型视图：1234&lt;field name="view_ids" eval="[(5, 0, 0), (0, 0, &#123;'view_mode': 'tree', 'view_id': ref('&#123;module_name&#125;.&#123;tree_view_id&#125;')&#125;), (0, 0, &#123;'view_mode': 'form', 'view_id': ref('&#123;module_name&#125;.&#123;form_view_id&#125;')&#125;)]"/&gt; 2. 在对应的m2m字段上指定视图1&lt;field name="element_ids" context="&#123;'tree_view_ref': '&#123;module_name&#125;.&#123;tree_id&#125;'&#125;"&gt; 简单的总结，就到这里吧，大家如果有更好的方式请分享给我~]]></content>
       <categories>
-        <category>Odoo-XML</category>
+        <category>Odoo</category>
+        <category>XML</category>
       </categories>
       <tags>
-        <tag>Odoo-XML</tag>
+        <tag>Odoo</tag>
+        <tag>XML</tag>
       </tags>
   </entry>
   <entry>
@@ -71,10 +73,12 @@
     <url>%2Fbbs.github.io%2Fodoo-action%E9%A1%B5%E9%9D%A2%E8%B7%B3%E8%BD%AC%E7%9B%B4%E6%8E%A5%E4%B8%BA%E7%BC%96%E8%BE%91%E7%8A%B6%E6%80%81%E6%93%8D%E4%BD%9C%2F</url>
     <content type="text"><![CDATA[123456789return &#123; &apos;type&apos;: &apos;ir.actions.act_window&apos;, &apos;view_type&apos;: &apos;form&apos;, &apos;view_mode&apos;: &apos;form&apos;, &apos;res_model&apos;: &apos;；module.model_name&apos;, &apos;res_id&apos;: self.id, &apos;context&apos;: self.env.context, &apos;flags&apos;: &#123;&apos;initial_mode&apos;: &apos;edit&apos;&#125;, &#125; 加上这句：‘flags’: {‘initial_mode’: ‘edit’}, Odoo12使用：context[‘form_view_initial_mode’] = ‘edit’ 特别感谢技术提供来源URL]]></content>
       <categories>
-        <category>Odoo-XML</category>
+        <category>Odoo</category>
+        <category>XML</category>
       </categories>
       <tags>
-        <tag>Odoo-XML</tag>
+        <tag>Odoo</tag>
+        <tag>XML</tag>
       </tags>
   </entry>
   <entry>
@@ -172,10 +176,12 @@
     <url>%2Fbbs.github.io%2FOdoo-QWeb%2F</url>
     <content type="text"><![CDATA[Base Template /static/src/xml/*.xml 定义模板。 openerp.py的qweb中注册*.xml文件 JS加载模板(两种) QWeb.render(模板名称) template: “模板名称” JS调用模板传参(两种) QWeb.render(模板名称,参数字典) template接收显示\ template: “模板名称” 通过init方法初始化参数,通过this传递(注意parent参数和继承_super方法必须使用)1234init: function(parent) &#123; this._super(parent); this.name = "Mordecai"; &#125;, template接收显示\]]></content>
       <categories>
-        <category>Odoo-Qweb</category>
+        <category>Odoo</category>
+        <category>Qweb</category>
       </categories>
       <tags>
-        <tag>Odoo-Qweb</tag>
+        <tag>Odoo</tag>
+        <tag>Qweb</tag>
       </tags>
   </entry>
   <entry>
@@ -205,10 +211,12 @@
     <url>%2Fbbs.github.io%2FOdoo8-JS%E5%B0%8F%E8%AE%B0%2F</url>
     <content type="text"><![CDATA[JS - 基础入门理解 定义ir.action.client 带tag 与绑定的菜单对象123456789101112131415161718192021&lt;?xml version="1.0" encoding="UTF-8" ?&gt;&lt;openerp&gt; &lt;data&gt; &lt;record id="widget_menu_action" model="ir.actions.client"&gt; &lt;field name="name"&gt;Widget Menu Action&lt;/field&gt; &lt;field name="tag"&gt;tps_widget.widget_menu&lt;/field&gt; &lt;/record&gt; &lt;menuitem id="tps_widget_top_menu" name="Widget Top Menu" sequence="10"/&gt; &lt;menuitem id="tps_widget_sub_menu" name="Widget Sub Menu" parent="tps_widget_top_menu" sequence="10"/&gt; &lt;menuitem id="tps_widget_func_menu" name="Widget Func Menu" parent="tps_widget_sub_menu" action="widget_menu_action" sequence="10"/&gt; &lt;/data&gt;&lt;/openerp&gt; 定义一个js文件 - extend_widget.js 包含content： 12345678910111213openerp.tps_widget = function (instance, local) &#123; var _t = instance.web._t, _lt = instance.web._lt; var QWeb = instance.web.qweb; local.MyWidget = instance.Widget.extend(&#123; start: function () &#123; console.log("load Mywidget.") &#125; &#125;); //第一个参数是tag 第二个参数是widget的完整地址 instance.web.client_actions.add('tps_widget.widget_menu', 'instance.MyWidget');&#125; 引入js文件，定义一个xmlviews/xxx_template.xml 12345678910&lt;?xml version="1.0" encoding="UTF-8" ?&gt;&lt;openerp&gt; &lt;data&gt; &lt;template id="assets_backend" name="tps_widget" inherit_id="web.assets_backend"&gt; &lt;xpath expr="." position="inside"&gt; &lt;script type="text/javascript" src="/tps_widget/static/js/extend_widget.js"&gt;&lt;/script&gt; &lt;/xpath&gt; &lt;/template&gt; &lt;/data&gt;&lt;/openerp&gt; 注意这里暂时没有py文件，但是xml文件需要在openerp.py中注册[定义菜单的xml 和 引入js的xml]。 用法 this this.$el ob.appendTo(this.$el) this.getParent().$el this.getChildren()[0].$el JS - 挂件o2m_uniqueo2m中的主数据字段，每张单据只能选一次，唯一性处理。 many2many_tagm2m单据数据排列组合不可重复]]></content>
       <categories>
-        <category>Odoo-JS</category>
+        <category>Odoo</category>
+        <category>JS</category>
       </categories>
       <tags>
-        <tag>Odoo-JS</tag>
+        <tag>Odoo</tag>
+        <tag>JS</tag>
       </tags>
   </entry>
   <entry>
@@ -234,14 +242,16 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Odoo-XML]]></title>
+    <title><![CDATA[Odoo,XML]]></title>
     <url>%2Fbbs.github.io%2FOdoo-XML%2F</url>
     <content type="text"><![CDATA[xmldata文件初始化中的知识点1.结构123456789&lt;openerp&gt; &lt;data&gt; &lt;record&gt; &lt;filed&gt;&lt;/filed&gt; &lt;/record&gt; &lt;/data&gt; &lt;data&gt;...&lt;/data&gt; ...&lt;/openerp&gt; 属性篇attrs(公共属性) invisible:影藏组件。 required:组件必须有值。 readonly:组件只读不可编辑(onchange过来的值不会被保存，需要在create/write方法中加入到vals中，或者开发个性化readonly存储挂件，例如:readonly_by_pass)。 如果后面的条件是类似domain形式的，那么[(A,’OP’,B)]中，A是一个可选的字段，但是这个字段不能像py中的domain，它不能使用A.b这样的字段引用关系。所以如果我们需要把这样的A.b字段在我们的模型中定义一个related字段，并把它放在xml中，这就是我们所谓的辅助字段。&gt; noupdate - forcecreate noupdate - 属于data的标签属性 forcecreate - 属于record的标签属性123456789作用： noupdate主要用于data块里的record记录初始化，这些记录都会有一个ExtendID，也就是record上所谓的id,在ir_module_data上唯一。 noupdate的主要功能是初始化一遍数据，如果之后对XML数据定义修改了，再升级，这些数值是不会变化的，依旧保持第一次上来的样子。 但是如果你在界面删除了初始化的数据，那么下次升级模块，这些数据就会以修改后的XML数据为基础创建。 如果只想数据第一次初始化进来，以后不改变，并且就算被删掉后，希望升级后也不要出现，那么就给对应的record记录上， 写forcecreate=&apos;false&apos;,这样就能保证模块安装初始化上来的数据，不会被任何情况修改更新，删除后不再创建。 forcecreate必须绑定在noupdate中才生效,noupdate保持已有数据不更新，forcecreate保证数据删除，升级不创建。如果删除了noupdate块中data文件初始化的数据记录，然后你重新更新它不重置，你可以看一下ir_module_data表，对应的data块外部id记录中，noupdate=True,把那条记录删除再升级就出来了。 options(m2o关系字段属性) no_create_edit:关系字段不允许在当前界面创建这个字段对应的模型记录。 no_create:不允许直接在当前界面创建字段对应的模型记录(从代码中看no_create_edit和no_create逻辑一样)。 no_open:不允许打开关系字段后面对应的单据。 注意：最好用no_open:True/False，不要过度使用no_open:’0’/‘1’,经过测试[‘0’ == ‘1’ == True] options(o2m关系字段属性) no_edit_no_open:关系字段不允许在当前界打开对应记录的form界面。 批量添加 1.batch_add(新开发js挂件非原生) 直接在o2m的XML字段属性上挂载batch_add=&quot;true&quot;即可。 2.ids_select 这个比较复杂: 1.首先在py文件的头行结构中，定义一个头字段ids_select,字段属性定义如下: ids_select = fields.Char(string=&apos;ids&apos;, help=&apos;This id is to get ids of multiple select of one2many&apos;) 2.然后再XML的头部放入ids_select字段，可影藏，字段定义如下: &lt;field name=&quot;ids_select&quot; class=&quot;oe_o2mx&quot; invisible=&quot;1&quot; on_change=&quot;updateLines(ids_select,o2m_filed,context)&quot;/&gt; 3.绑定对应的o2m字段，将挂件 widget=&quot;o2mx&quot; 加到XML字段属性定义中。对应需o2m_filed的tree上要批量添加的主体字段(m2o_field)挂载 multiple_selection=&quot;true&quot; 属性。 4.对ids_select定义on_change的方法updateLines进行逻辑处理: - 通用结构: if not ids_select: return 0 selected_ids = ids_select.split(&apos;,&apos;) if len(o2m_filed) == 1: change_line = False o2m_filed = self.o2m_filed.browse(o2m_filed[0][2]) else: change_line = True o2m_filed = map(lambda x: x[2], filter(lambda x: x[2], o2m_filed)) res = [] old_value = [] add_ids = [] line_number = 0 for line in o2m_filed: line_number += 1 m2o_field = change_line and line[&apos;m2o_field&apos;] or line.m2o_field.id old_value.append({ &apos;line_number&apos;:line_number, &apos;m2o_field&apos;: m2o_field, &apos;field1&apos;: field1, &apos;field2&apos;: field2, &apos;field3&apos;: field3, ... }) add_ids.append(m2o_field) for id in selected_ids: line = self.env[&apos;selected_ids_model&apos;].browse(int(id)) if int(id) not in add_ids: line_number += 1 res.append({ &apos;line_number&apos;: line_number, &apos;m2o_field&apos;: line.m2o_field.id or False, &apos;field1&apos;: line.field1, &apos;field2&apos;: line.field2, &apos;field3&apos;: line.field3, ... }) if res: return {&apos;value&apos;: {&apos;invoice_detail_ids&apos;: old_value + res}} - 普通 自动递增 递增间隔 最开始的值 Domain XML定义的domain会覆盖字段定义的domain ir.actions.act_window[参数] src_model： 来源模型这个动作应该放在哪个可见的对象可选模型名称(绑定到哪个模型上显示) res_model： 目标模型在视图窗口中打开的对象的模型名称(打开的wizard模型) context: search_default_字段名称: display_filter:在wizard的action上定义如: context=”{‘display_filter’:’invoice_form_view’}”在对应的绑定模型中的context中写入如：context=”{‘invoice_form_view’:1’}”对应绑定的action在限制了view_id,那么这个wizard就唯一绑定在了这个对应的视图上,同模型的其他视图上不显示(一模型多菜单多视图模式)。 execute_method:在wizard的action上定义如: context=”{‘execute_method’:’invoice_execute_method’}”触发action时会直接执行invoice_execute_method方法，但是执行了这个方法就不会直接跳转视图了，你需要在执行的方法中return跳转视图的action。 ‘clear_breadcrumbs’ ‘clear_breadcrumbs’:True可以在视图上隐藏列标题。 res_model: 目标模型 src_model: 原始模型 views: 定义视图类别引用ref view_id: 定义默认打开视图引用ref ir.actions.act_window.view 此模型实际是view_ids的绑定模型,可以通过初始化act_window的view_ids挂在属性值,来控制多个菜单公用一个model,但是打开的是对应的tree、form、search等模型。 1.定义一个action12345678910&lt;record model="ir.actions.act_window" id="hrp_payment_preparation_action"&gt; &lt;field name="name"&gt;Payment Preparation&lt;/field&gt; &lt;field name="res_model"&gt;hrp.payment.request&lt;/field&gt; &lt;field name="view_type"&gt;form&lt;/field&gt; &lt;field name="view_mode"&gt;tree,form&lt;/field&gt; &lt;field name="search_view_id" ref="hrp_payment_preparation_search"/&gt; &lt;field name="domain"&gt;[('state','in',['approved','paying','paid'])]&lt;/field&gt; &lt;field name="context"&gt;&#123;'readonly_by_pass':['company_id','total_amount','invoice_detail_ids','supplier_id','supplier_category_id', 'invoice_date','date_due','payment_method_id','original_amount','open_amount']&#125;&lt;/field&gt;&lt;/record&gt; 2.在action上绑定对应类型的视图外部引用对象1234567&lt;!--供应商预付款申请界面tree视图指定--&gt;&lt;record id="hrp_payment_preparation_tree_view" model="ir.actions.act_window.view"&gt; &lt;field eval="1" name="sequence"/&gt; &lt;field name="view_mode"&gt;tree&lt;/field&gt; &lt;field name="view_id" ref="hrp_payment_preparation_tree"/&gt; &lt;field name="act_window_id" ref="hrp_payment_preparation_action"/&gt;&lt;/record&gt; 1234567&lt;!--供应商预付款申请界面form视图指定--&gt;&lt;record id="hrp_payment_preparation_form_view" model="ir.actions.act_window.view"&gt; &lt;field eval="2" name="sequence"/&gt; &lt;field name="view_mode"&gt;form&lt;/field&gt; &lt;field name="view_id" ref="hrp_payment_preparation_form"/&gt; &lt;field name="act_window_id" ref="hrp_payment_preparation_action"/&gt;&lt;/record&gt; 3.这时候就算一个model上有多个tree视图、多个form视图,甚至是多个search视图等,只要绑定好就会直接打开对应的视图界面,不会打开错咯. 4.如果出现记录单据被通过M2O字段链接的形式跳转过去，那么很可能出现错误，因为点击事件调用了get_formview_action方法，默认获取对应类型视图的view界面，为了在这种情况下不出现错误，我们必须重写get_formview_action方法，提供正确的return导向，也许这里是用的odoo7的写法，在新写法中，我们通过封装@api.v7装饰器，来重载方法，达到我们的目的。]]></content>
       <categories>
-        <category>Odoo-XML</category>
+        <category>Odoo</category>
+        <category>XML</category>
       </categories>
       <tags>
-        <tag>Odoo-XML</tag>
+        <tag>Odoo</tag>
+        <tag>XML</tag>
       </tags>
   </entry>
   <entry>
