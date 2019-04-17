@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>技术小哥</title>
+  <title>一个玩Odoo的小伙</title>
   
   <subtitle>总结一尺，成长一寸</subtitle>
   <link href="/bbs.github.io/atom.xml" rel="self"/>
   
   <link href="https://yangtiancheng.github.io/bbs.github.io/"/>
-  <updated>2019-04-17T09:03:29.777Z</updated>
+  <updated>2019-04-17T09:15:54.460Z</updated>
   <id>https://yangtiancheng.github.io/bbs.github.io/</id>
   
   <author>
@@ -17,9 +17,34 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>ir.rule</title>
+    <link href="https://yangtiancheng.github.io/bbs.github.io/ir-rule/"/>
+    <id>https://yangtiancheng.github.io/bbs.github.io/ir-rule/</id>
+    <published>2019-04-17T17:04:58.000Z</published>
+    <updated>2019-04-17T09:15:54.460Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="什么是ir-rule"><a href="#什么是ir-rule" class="headerlink" title="什么是ir.rule"></a>什么是ir.rule</h1><p>前面我们讲过了模型访问规则ir.model.access，这里的ir.rule是<br>数据屏蔽规则，简单的说就是谁能看见哪些数据。</p><hr><h2 id="字段"><a href="#字段" class="headerlink" title="字段"></a>字段</h2><p>name - 名称<br>active - 有效性<br>model_id - 模型<br>groups - 组<br>domain_force - 可访问条件域<br>perm_read - 可读<br>perm_write - 可写<br>perm_create - 可创<br>perm_unlink - 可删</p><pre><code>提示：perm = permission(许可)</code></pre><p>## </p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;什么是ir-rule&quot;&gt;&lt;a href=&quot;#什么是ir-rule&quot; class=&quot;headerlink&quot; title=&quot;什么是ir.rule&quot;&gt;&lt;/a&gt;什么是ir.rule&lt;/h1&gt;&lt;p&gt;前面我们讲过了模型访问规则ir.model.access，这里的ir.rul
+      
+    
+    </summary>
+    
+      <category term="Odoo" scheme="https://yangtiancheng.github.io/bbs.github.io/categories/Odoo/"/>
+    
+    
+      <category term="Odoo" scheme="https://yangtiancheng.github.io/bbs.github.io/tags/Odoo/"/>
+    
+  </entry>
+  
+  <entry>
     <title>ir.model.access</title>
-    <link href="https://yangtiancheng.github.io/bbs.github.io/ir-model-access%E5%B0%8F%E8%AE%A1/"/>
-    <id>https://yangtiancheng.github.io/bbs.github.io/ir-model-access小计/</id>
+    <link href="https://yangtiancheng.github.io/bbs.github.io/ir-model-access/"/>
+    <id>https://yangtiancheng.github.io/bbs.github.io/ir-model-access/</id>
     <published>2019-04-13T18:46:42.000Z</published>
     <updated>2019-04-17T09:03:29.777Z</updated>
     
@@ -499,30 +524,6 @@
       <category term="Odoo" scheme="https://yangtiancheng.github.io/bbs.github.io/tags/Odoo/"/>
     
       <category term="JS" scheme="https://yangtiancheng.github.io/bbs.github.io/tags/JS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>git基本操作指令笔记</title>
-    <link href="https://yangtiancheng.github.io/bbs.github.io/git%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%8C%87%E4%BB%A4%E7%AC%94%E8%AE%B0/"/>
-    <id>https://yangtiancheng.github.io/bbs.github.io/git基本操作指令笔记/</id>
-    <published>2019-04-05T21:44:51.000Z</published>
-    <updated>2019-04-17T03:13:30.027Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><h2 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h2><p>git clone url</p><p>git checkout -b T1</p><p>git checkout T1<br><a id="more"></a><br>git checkout .</p><p>git branch </p><p>git branch -D T1</p><p>git branch -m T1</p><p>git status</p><p>git diff</p><p>git add .</p><p>git commit [-m ‘message’]</p><p>git push origin T1</p><p>git fetch origin T1:T1</p><p>git merge –no-ff master-branch</p><p>git reset –mixed HEAD^</p><p>git commit –amend 可以对上一次的提交做修改</p><p>git clean -df</p><h2 id="代码冲突解决流程"><a href="#代码冲突解决流程" class="headerlink" title="代码冲突解决流程"></a>代码冲突解决流程</h2><ol><li>git checkout test</li><li>git pull origin test</li><li>git checkout 任务分支</li><li>git checkout -b 任务分支-1</li><li>git merge –no-ff test</li><li>代码中解决冲突</li><li>git add .</li><li>git commit</li><li>git push origin 任务分支-1</li><li>gitlab上合并 任务分支-1 到 test</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;基本操作&quot;&gt;&lt;a href=&quot;#基本操作&quot; class=&quot;headerlink&quot; title=&quot;基本操作&quot;&gt;&lt;/a&gt;基本操作&lt;/h1&gt;&lt;h2 id=&quot;基本命令&quot;&gt;&lt;a href=&quot;#基本命令&quot; class=&quot;headerlink&quot; title=&quot;基本命令&quot;&gt;&lt;/a&gt;基本命令&lt;/h2&gt;&lt;p&gt;git clone url&lt;/p&gt;
-&lt;p&gt;git checkout -b T1&lt;/p&gt;
-&lt;p&gt;git checkout T1&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Git" scheme="https://yangtiancheng.github.io/bbs.github.io/categories/Git/"/>
-    
-    
-      <category term="Git" scheme="https://yangtiancheng.github.io/bbs.github.io/tags/Git/"/>
     
   </entry>
   
