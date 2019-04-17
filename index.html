@@ -340,6 +340,170 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yangtiancheng.github.io/bbs.github.io/bbs.github.io/你不知道的Many2many/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="杨天成">
+      <meta itemprop="description" content="小伙私房菜">
+      <meta itemprop="image" content="/bbs.github.io/images/my_photo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个玩Odoo的小伙">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/bbs.github.io/你不知道的Many2many/" class="post-title-link" itemprop="url">你不知道的Many2many</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-17 19:03:18 / 修改时间：11:13:16" itemprop="dateCreated datePublished" datetime="2019-04-17T19:03:18Z">2019-04-17</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/bbs.github.io/categories/Odoo/" itemprop="url" rel="index"><span itemprop="name">Odoo</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="你关联我，我关联你，我们同用一个relation"><a href="#你关联我，我关联你，我们同用一个relation" class="headerlink" title="你关联我，我关联你，我们同用一个relation"></a>你关联我，我关联你，我们同用一个relation</h1><h2 id="1-举个🌰"><a href="#1-举个🌰" class="headerlink" title="1. 举个🌰"></a>1. 举个🌰</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_name = <span class="string">"res.groups"</span></span><br><span class="line">users = fields.Many2many(<span class="string">'res.users'</span>, <span class="string">'res_groups_users_rel'</span>, <span class="string">'gid'</span>, <span class="string">'uid'</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_name = <span class="string">"res.users"</span></span><br><span class="line">groups_id = fields.Many2many(<span class="string">'res.groups'</span>, <span class="string">'res_groups_users_rel'</span>, <span class="string">'uid'</span>, <span class="string">'gid'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="2-分析"><a href="#2-分析" class="headerlink" title="2. 分析"></a>2. 分析</h2><p>从上面的例子可以看出，两个字段使用了同一个relation(res_groups_users_rel),之前说好的relation唯一 不能和任何表名重复吗?<br></p>
+<p>对，这也没问题。其实m2m本来就是两张表数据存在的一种互相多关联关系，你关联我，我关联你，只要我们对应的数据位置保持一致就行。数据保持一致，就要求column1必须是本模型model的数据，column2必须是关联表模型comodel_name的数据，切记不能写错咯~</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://yangtiancheng.github.io/bbs.github.io/bbs.github.io/ir-rule/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1028,193 +1192,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yangtiancheng.github.io/bbs.github.io/bbs.github.io/Odoo12-M2m字段添加一行弹出框内容个性化指定视图-action自定义指定视图/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="杨天成">
-      <meta itemprop="description" content="小伙私房菜">
-      <meta itemprop="image" content="/bbs.github.io/images/my_photo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一个玩Odoo的小伙">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/bbs.github.io/Odoo12-M2m字段添加一行弹出框内容个性化指定视图-action自定义指定视图/" class="post-title-link" itemprop="url">Odoo12-M2m字段添加一行弹出框内容个性化指定视图+action自定义指定视图</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-04-06 08:58:57" itemprop="dateCreated datePublished" datetime="2019-04-06T08:58:57Z">2019-04-06</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-17 05:00:06" itemprop="dateModified" datetime="2019-04-17T05:00:06Z">2019-04-17</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/bbs.github.io/categories/Odoo/" itemprop="url" rel="index"><span itemprop="name">Odoo</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/bbs.github.io/categories/Odoo/XML/" itemprop="url" rel="index"><span itemprop="name">XML</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>m2m字段的context属性接收一个 tree_view_ref 属性，通过它指定特定的打开视图即可。<br>举个例子：</p>
-<h3 id="1-首先自定义一个打开字段模型的tree视图："><a href="#1-首先自定义一个打开字段模型的tree视图：" class="headerlink" title="1. 首先自定义一个打开字段模型的tree视图："></a>1. 首先自定义一个打开字段模型的tree视图：</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--Tree M2M Select View--&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">record</span> <span class="attr">model</span>=<span class="string">"ir.ui.view"</span> <span class="attr">id</span>=<span class="string">"&#123;tree_id&#125;"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"name"</span>&gt;</span>Tree M2M Select View<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"model"</span>&gt;</span>&#123;model_name&#125;<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"priority"</span>  <span class="attr">eval</span>=<span class="string">"20"</span>/&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"arch"</span> <span class="attr">type</span>=<span class="string">"xml"</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">tree</span>&gt;</span></span><br><span class="line">                  <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"name"</span>/&gt;</span></span><br><span class="line">                  <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"active_flag"</span>/&gt;</span></span><br><span class="line">              <span class="tag">&lt;/<span class="name">tree</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">record</span>&gt;</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/bbs.github.io/Odoo12-M2m字段添加一行弹出框内容个性化指定视图-action自定义指定视图/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1263,7 +1240,7 @@
                 
                   <a href="/bbs.github.io/archives/">
                 
-                    <span class="site-state-item-count">34</span>
+                    <span class="site-state-item-count">35</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

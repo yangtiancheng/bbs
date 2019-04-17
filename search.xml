@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[你不知道的Many2many]]></title>
+    <url>%2Fbbs.github.io%2F%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84Many2many%2F</url>
+    <content type="text"><![CDATA[你关联我，我关联你，我们同用一个relation1. 举个🌰12_name = "res.groups"users = fields.Many2many('res.users', 'res_groups_users_rel', 'gid', 'uid') 12_name = "res.users"groups_id = fields.Many2many('res.groups', 'res_groups_users_rel', 'uid', 'gid') 2. 分析从上面的例子可以看出，两个字段使用了同一个relation(res_groups_users_rel),之前说好的relation唯一 不能和任何表名重复吗? 对，这也没问题。其实m2m本来就是两张表数据存在的一种互相多关联关系，你关联我，我关联你，只要我们对应的数据位置保持一致就行。数据保持一致，就要求column1必须是本模型model的数据，column2必须是关联表模型comodel_name的数据，切记不能写错咯~]]></content>
+      <categories>
+        <category>Odoo</category>
+      </categories>
+      <tags>
+        <tag>Odoo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[ir.rule]]></title>
     <url>%2Fbbs.github.io%2Fir-rule%2F</url>
     <content type="text"><![CDATA[什么是ir.rule前面我们讲过了模型访问规则ir.model.access，这里的ir.rule是数据屏蔽规则，简单的说就是谁能看见哪些数据。 字段name - 名称active - 有效性model_id - 模型groups - 组domain_force - 可访问条件域perm_read - 可读perm_write - 可写perm_create - 可创perm_unlink - 可删 提示：perm = permission(许可) ##]]></content>
