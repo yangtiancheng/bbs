@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/bbs.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/bbs.github.io/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/bbs.github.io/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/bbs.github.io/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/bbs.github.io/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/bbs.github.io/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/bbs.github.io/',
+    scheme: 'Muse',
+    version: '7.1.0',
+    sidebar: {"position":"right","Pisces":240,"width":200,"display":"always","offset":12,"onmobile":false,"dimmer":true},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="function read参数：fields - 记录返回字段列表load - 暂时不知 简介：Read方法其实就是读指定self中字段的数据记录，通常在python代码里用browse方法代替可能会出现异常: 给定的记录当前用户没有可读的权限  首先检查用户对模型的访问权限 check_access_rights 检查用户对字段模型的访问权限 check_field_access_rights">
+<meta name="keywords" content="Odoo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="model文件">
+<meta property="og:url" content="https://yangtiancheng.github.io/bbs.github.io/model文件/index.html">
+<meta property="og:site_name" content="一个玩Odoo的小伙">
+<meta property="og:description" content="function read参数：fields - 记录返回字段列表load - 暂时不知 简介：Read方法其实就是读指定self中字段的数据记录，通常在python代码里用browse方法代替可能会出现异常: 给定的记录当前用户没有可读的权限  首先检查用户对模型的访问权限 check_access_rights 检查用户对字段模型的访问权限 check_field_access_rights">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-20T11:27:31.721Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="model文件">
+<meta name="twitter:description" content="function read参数：fields - 记录返回字段列表load - 暂时不知 简介：Read方法其实就是读指定self中字段的数据记录，通常在python代码里用browse方法代替可能会出现异常: 给定的记录当前用户没有可读的权限  首先检查用户对模型的访问权限 check_access_rights 检查用户对字段模型的访问权限 check_field_access_rights">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://yangtiancheng.github.io/bbs.github.io/model文件/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>model文件 | 一个玩Odoo的小伙</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/bbs.github.io/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">一个玩Odoo的小伙</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">总结一尺，成长一寸</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/bbs.github.io/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/bbs.github.io/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/bbs.github.io/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yangtiancheng.github.io/bbs.github.io/bbs.github.io/model文件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="杨天成">
+      <meta itemprop="description" content="小伙私房菜">
+      <meta itemprop="image" content="/bbs.github.io/images/my_photo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个玩Odoo的小伙">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">model文件
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-19 09:26:46" itemprop="dateCreated datePublished" datetime="2019-04-19T09:26:46Z">2019-04-19</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-20 11:27:31" itemprop="dateModified" datetime="2019-04-20T11:27:31Z">2019-04-20</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/bbs.github.io/categories/Odoo/" itemprop="url" rel="index"><span itemprop="name">Odoo</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="function-read"><a href="#function-read" class="headerlink" title="function read"></a>function read</h1><h2 id="参数："><a href="#参数：" class="headerlink" title="参数："></a>参数：</h2><p>fields - 记录返回字段列表<br>load - 暂时不知</p>
+<h2 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h2><p>Read方法其实就是读指定self中字段的数据记录，通常在python代码里用browse方法代替<br>可能会出现异常: 给定的记录当前用户没有可读的权限</p>
+<ol>
+<li>首先检查用户对模型的访问权限 check_access_rights</li>
+<li>检查用户对字段模型的访问权限 check_field_access_rights</li>
+</ol>
+<hr>
+<h1 id="function-check-access-rights"><a href="#function-check-access-rights" class="headerlink" title="function check_access_rights"></a>function check_access_rights</h1><h2 id="参数：-1"><a href="#参数：-1" class="headerlink" title="参数："></a>参数：</h2><p>operation - 操作方式 read\write\create\unlink<br>raise_exception - 异常是否抛出 默认t</p>
+<h2 id="简介：-1"><a href="#简介：-1" class="headerlink" title="简介："></a>简介：</h2><p>查询当前用户对于当前模型是否有相关的权限</p>
+<hr>
+<h1 id="function-check-field-access-rights"><a href="#function-check-field-access-rights" class="headerlink" title="function check_field_access_rights"></a>function check_field_access_rights</h1><h2 id="参数：-2"><a href="#参数：-2" class="headerlink" title="参数："></a>参数：</h2><p>operation - 操作方式 read\write\create\unlink<br>fields - 检查的字段</p>
+<h2 id="简介：-2"><a href="#简介：-2" class="headerlink" title="简介："></a>简介：</h2><p>检查当前用户对给定的字段是否有访问权限，如果没有抛出例外，否则将会返回字段列表</p>
+<ol>
+<li>超级管理员直接返回随影的字段</li>
+<li>普通人员 对于没提供fields参数字段时，查询当前记录的所有字段_fields,并验证每一个字段是否有效(valid)</li>
+<li>将提供的字段分为 存储、继承、计算 三种类型，切记fields中不能出现不属于当前模型的字段名</li>
+<li>对于存储和继承的字段，通过数据库查找 _read_from_database</li>
+</ol>
+<h2 id="内部方法："><a href="#内部方法：" class="headerlink" title="内部方法："></a>内部方法：</h2><h3 id="function-valid"><a href="#function-valid" class="headerlink" title="function valid"></a>function valid</h3><h4 id="参数：-3"><a href="#参数：-3" class="headerlink" title="参数："></a>参数：</h4><p>fname - 字段名称</p>
+<h4 id="简介：-3"><a href="#简介：-3" class="headerlink" title="简介："></a>简介：</h4><p>通过字段是否有组权限，如果有，检查用户有没有这些组权限 user_has_groups。</p>
+<hr>
+<h1 id="function-user-has-groups"><a href="#function-user-has-groups" class="headerlink" title="function user_has_groups"></a>function user_has_groups</h1><h2 id="参数：-4"><a href="#参数：-4" class="headerlink" title="参数："></a>参数：</h2><p>groups - (str)完整的组外部数据记录，通过逗号分隔 例如：base.group_user,base.group_system,每一个组前面可选加感叹号’!’，<br>例如：!base.group_user,!base.group_system</p>
+<p>返回 - 如果当前用户是给定组(非!前缀)的成员，并且不是任何组给定前缀组(!前缀)的成员，返回t<br>简单理解就是：给了组，用户是非!前缀组的成员，并且不是任何!前缀组的成员。</p>
+<h2 id="简介：-4"><a href="#简介：-4" class="headerlink" title="简介："></a>简介：</h2><p>如果用户是“groups”中至少一个组的成员，并且“groups”不是中以“!”开头的任何组的成员，则返回true！<br>通常用于解析视图和模型定义中的“groups”属性。</p>
+<ol>
+<li>首先将groups根据逗号分开，对每一个组外部ID去除空格、换行符。</li>
+<li>将提供的groups分成!前缀组集合not_has_groups(添加时去掉前缀!)，和没有!前缀的组集合has_groups。</li>
+<li>检查not_has_groups中的每一个组<br>3.1 如果是’base.group_no_one’组，检查用户是否在’base.group_no_one’组中，环境栈中是否是debug模式，满足上述条件，返回 False ，因为是not_has_groups<br>3.2 如果是其他组，检查用户是否在当前组内，如果在，返回 False</li>
+<li>上面条件都ok的情况下，检查has_groups中的每一个组<br>4.1 如果是’base.group_no_one’组，检查用户是否在’base.group_no_one’组中，环境栈中是否是debug模式，满足上述条件，返回 True ，因为是has_groups<br>4.2 如果是其他组，检查用户是否在当前组内，如果在，返回 True </li>
+<li>如果没有提供groups参数值，返回 True</li>
+</ol>
+<h1 id="function-read-from-database"><a href="#function-read-from-database" class="headerlink" title="function _read_from_database"></a>function _read_from_database</h1><h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><p>field_names - 存储字段名称列表<br>inherited_field_names - 继承字段名称列表</p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>查询self对应的数据库字段，将结果存储在缓存中、如果有错误也存在缓存中</p>
+<p>如果self没有记录就跳出，</p>
+<h1 id="function-where-calc"><a href="#function-where-calc" class="headerlink" title="function _where_calc"></a>function _where_calc</h1><h2 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h2><p>domain - 域<br>active_test - 是否用active字段筛选 默认t<br>返回 - Query查询对象</p>
+<h2 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h2><p>如果模型有active字段，参数active_test控制是否添加domain -&gt; (‘active’, ‘=’, 1)</p>
+<h1 id="class-expression"><a href="#class-expression" class="headerlink" title="class expression"></a>class expression</h1><h2 id="function-init"><a href="#function-init" class="headerlink" title="function init"></a>function <strong>init</strong></h2><h3 id="参数-2"><a href="#参数-2" class="headerlink" title="参数"></a>参数</h3><p>domain - 域列表<br>model - 模型记录</p>
+<p>### </p>
+<hr>
+<h1 id="function-sudo"><a href="#function-sudo" class="headerlink" title="function sudo"></a>function sudo</h1>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+      <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center;">
+  <img id="wechat_subscriber_qcode" src="/bbs.github.io/images/wechat-qcode.jpg" alt="杨天成 wechat" style="width: 200px; max-width: 100%;">
+  <div>微信扫码关注</div>
+</div>
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div></div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/bbs.github.io/images/wechat-pay.jpg" alt="杨天成 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/bbs.github.io/images/alipay.jpg" alt="杨天成 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/bbs.github.io/tags/Odoo/" rel="tag"># Odoo</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/bbs.github.io/你不知道的Many2many/" rel="next" title="你不知道的Many2many">
+                <i class="fa fa-chevron-left"></i> 你不知道的Many2many
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/bbs.github.io/res-users/" rel="prev" title="res.users">
+                res.users <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80Mzc2My8yMDMwMg=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/bbs.github.io/images/my_photo.jpg" alt="杨天成">
+            
+              <p class="site-author-name" itemprop="name">杨天成</p>
+              <div class="site-description motion-element" itemprop="description">小伙私房菜</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/bbs.github.io/archives/">
+                
+                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/bbs.github.io/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/yangtiancheng" title="GitHub &rarr; https://github.com/yangtiancheng" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:tiancheng.yang@hand-china.com" title="E-Mail &rarr; mailto:tiancheng.yang@hand-china.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#function-read"><span class="nav-number">1.</span> <span class="nav-text">function read</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#参数："><span class="nav-number">1.1.</span> <span class="nav-text">参数：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简介："><span class="nav-number">1.2.</span> <span class="nav-text">简介：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#function-check-access-rights"><span class="nav-number">2.</span> <span class="nav-text">function check_access_rights</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#参数：-1"><span class="nav-number">2.1.</span> <span class="nav-text">参数：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简介：-1"><span class="nav-number">2.2.</span> <span class="nav-text">简介：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#function-check-field-access-rights"><span class="nav-number">3.</span> <span class="nav-text">function check_field_access_rights</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#参数：-2"><span class="nav-number">3.1.</span> <span class="nav-text">参数：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简介：-2"><span class="nav-number">3.2.</span> <span class="nav-text">简介：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内部方法："><span class="nav-number">3.3.</span> <span class="nav-text">内部方法：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#function-valid"><span class="nav-number">3.3.1.</span> <span class="nav-text">function valid</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参数：-3"><span class="nav-number">3.3.1.1.</span> <span class="nav-text">参数：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#简介：-3"><span class="nav-number">3.3.1.2.</span> <span class="nav-text">简介：</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#function-user-has-groups"><span class="nav-number">4.</span> <span class="nav-text">function user_has_groups</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#参数：-4"><span class="nav-number">4.1.</span> <span class="nav-text">参数：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简介：-4"><span class="nav-number">4.2.</span> <span class="nav-text">简介：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#function-read-from-database"><span class="nav-number">5.</span> <span class="nav-text">function _read_from_database</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#参数"><span class="nav-number">5.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">5.2.</span> <span class="nav-text">简介</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#function-where-calc"><span class="nav-number">6.</span> <span class="nav-text">function _where_calc</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#参数-1"><span class="nav-number">6.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简介-1"><span class="nav-number">6.2.</span> <span class="nav-text">简介</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#class-expression"><span class="nav-number">7.</span> <span class="nav-text">class expression</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#function-init"><span class="nav-number">7.1.</span> <span class="nav-text">function init</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数-2"><span class="nav-number">7.1.1.</span> <span class="nav-text">参数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#function-sudo"><span class="nav-number">8.</span> <span class="nav-text">function sudo</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+    <div id="sidebar-dimmer"></div>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨天成</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+  <script>
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=66391805";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+  
+  <script color="0,0,255" opacity="0.5" zindex="-1" count="99" src="/bbs.github.io/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/bbs.github.io/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/bbs.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/bbs.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/bbs.github.io/js/utils.js?v=7.1.0"></script>
+
+  <script src="/bbs.github.io/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/bbs.github.io/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/bbs.github.io/js/scrollspy.js?v=7.1.0"></script>
+<script src="/bbs.github.io/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/bbs.github.io/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script>
+  window.livereOptions = {
+    refer: 'model文件/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/bbs.github.io/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

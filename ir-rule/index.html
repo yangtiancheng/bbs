@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="一个玩Odoo的小伙">
 <meta property="og:description" content="什么是ir.rule前面我们讲过了模型访问规则ir.model.access，这里的ir.rule是数据屏蔽规则，简单的说就是谁能看见哪些数据。  字段name - 名称active - 有效性model_id - 模型groups - 组domain_force - 可访问条件域perm_read - 可读perm_write - 可写perm_create - 可创perm_unlink -">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-17T09:15:54.460Z">
+<meta property="og:updated_time" content="2019-06-10T12:18:21.463Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ir.rule">
 <meta name="twitter:description" content="什么是ir.rule前面我们讲过了模型访问规则ir.model.access，这里的ir.rule是数据屏蔽规则，简单的说就是谁能看见哪些数据。  字段name - 名称active - 有效性model_id - 模型groups - 组domain_force - 可访问条件域perm_read - 可读perm_write - 可写perm_create - 可创perm_unlink -">
@@ -383,12 +383,24 @@
                 
               
 
-              <time title="创建时间：2019-04-17 17:04:58 / 修改时间：09:15:54" itemprop="dateCreated datePublished" datetime="2019-04-17T17:04:58Z">2019-04-17</time>
+              <time title="创建时间：2019-04-17 17:04:58" itemprop="dateCreated datePublished" datetime="2019-04-17T17:04:58Z">2019-04-17</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-10 12:18:21" itemprop="dateModified" datetime="2019-06-10T12:18:21Z">2019-06-10</time>
               
             
           </span>
@@ -444,7 +456,7 @@
 <hr>
 <h2 id="字段"><a href="#字段" class="headerlink" title="字段"></a>字段</h2><p>name - 名称<br>active - 有效性<br>model_id - 模型<br>groups - 组<br>domain_force - 可访问条件域<br>perm_read - 可读<br>perm_write - 可写<br>perm_create - 可创<br>perm_unlink - 可删</p>
 <pre><code>提示：perm = permission(许可)
-</code></pre><p>## </p>
+</code></pre><h2 id="批量写data-xml的权限部分"><a href="#批量写data-xml的权限部分" class="headerlink" title="批量写data.xml的权限部分"></a>批量写data.xml的权限部分</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></span><br><span class="line">    models = [</span><br><span class="line">            <span class="string">'account.account'</span>,</span><br><span class="line">            <span class="string">'account.move'</span>,</span><br><span class="line">            <span class="string">'account.move.line'</span>,</span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    --  用这个SQL可以查到对应 有公司字段且为company_id的model</span></span><br><span class="line"><span class="string">        select model</span></span><br><span class="line"><span class="string">        from ir_model_fields imf</span></span><br><span class="line"><span class="string">        where model in </span></span><br><span class="line"><span class="string">        (</span></span><br><span class="line"><span class="string">            'account.account',</span></span><br><span class="line"><span class="string">            'account.move',</span></span><br><span class="line"><span class="string">            'account.move.line',</span></span><br><span class="line"><span class="string">        )</span></span><br><span class="line"><span class="string">        and ttype='many2one'</span></span><br><span class="line"><span class="string">        and name = 'company_id'</span></span><br><span class="line"><span class="string">        and relation = 'res.company';</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    print(<span class="string">'&lt;data noupdate="1"&gt;'</span>)</span><br><span class="line">    <span class="keyword">for</span> model <span class="keyword">in</span> models:</span><br><span class="line">        print(<span class="string">"""</span></span><br><span class="line"><span class="string">        &lt;record id="&#123;0&#125;" model="ir.rule"&gt;</span></span><br><span class="line"><span class="string">            &lt;field name="name"&gt;&#123;1&#125;&lt;/field&gt;</span></span><br><span class="line"><span class="string">            &lt;field name="model_id" ref="&#123;2&#125;"/&gt;</span></span><br><span class="line"><span class="string">            &lt;field name="global" eval="True"/&gt;</span></span><br><span class="line"><span class="string">            &lt;field name="domain_force"&gt;</span></span><br><span class="line"><span class="string">                ['|',('company_id', '=', False),'&amp;amp;', ('company_id', 'child_of', [user.company_id.id]), ('company_id', 'in', user.company_ids.ids)]</span></span><br><span class="line"><span class="string">            &lt;/field&gt;</span></span><br><span class="line"><span class="string">        &lt;/record&gt;"""</span>.format(model_name_transfor_table_name(<span class="string">'rule_'</span>+model),model_name_transfor_table_name(model+<span class="string">'_rule'</span>),model_name_transfor_table_name(<span class="string">'model_'</span>+model)))</span><br><span class="line">    print(<span class="string">'&lt;/data&gt;'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 模型转表</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">model_name_transfor_table_name</span><span class="params">(model_name)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> model_name.replace(<span class="string">'.'</span>, <span class="string">'_'</span>)</span><br><span class="line">test()</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -608,7 +620,7 @@
                 
                   <a href="/bbs.github.io/archives/">
                 
-                    <span class="site-state-item-count">35</span>
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -651,7 +663,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -754,7 +768,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是ir-rule"><span class="nav-number">1.</span> <span class="nav-text">什么是ir.rule</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#字段"><span class="nav-number">1.1.</span> <span class="nav-text">字段</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是ir-rule"><span class="nav-number">1.</span> <span class="nav-text">什么是ir.rule</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#字段"><span class="nav-number">1.1.</span> <span class="nav-text">字段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#批量写data-xml的权限部分"><span class="nav-number">1.2.</span> <span class="nav-text">批量写data.xml的权限部分</span></a></li></ol></li></ol></div>
             
 
           </div>

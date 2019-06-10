@@ -1,6 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[基础字段用法提示]]></title>
+    <url>%2Fbbs.github.io%2F%E5%9F%BA%E7%A1%80%E5%AD%97%E6%AE%B5%E7%94%A8%E6%B3%95%E6%8F%90%E7%A4%BA%2F</url>
+    <content type="text"><![CDATA[字段default=function123456789@api.modeldef _get_company(self): if 1 == 1: return self.env.user.company_id.id else: return False# 公司company_id = fields.Many2one(comodel_name='res.company', string='Company', help="Company", index=True, default=_get_company) 注意_get_company的方法一般用api.model装饰器修饰，default的属性接收值是对应数据的ID，不是对象，切记!!! 字段domain前后用法]]></content>
+      <categories>
+        <category>Odoo</category>
+      </categories>
+      <tags>
+        <tag>Odoo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[动态显示Selection的选项域]]></title>
+    <url>%2Fbbs.github.io%2F%E5%8A%A8%E6%80%81%E6%98%BE%E7%A4%BASelection%E7%9A%84%E9%80%89%E9%A1%B9%E5%9F%9F%2F</url>
+    <content type="text"><![CDATA[简介一个模型，两个form视图，对应的selection字段值域不同 直接代码上代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950odoo.define('select_hide.hide_selection_units', function (require) &#123; "use strict"; var registry = require('web.field_registry'); var relational_fields = require('web.relational_fields'); var FieldSelection = relational_fields.FieldSelection; var rpc = require('web.rpc'); var select_hide_by_condition = FieldSelection.extend(&#123; _renderEdit: function () &#123; self = this; // model function_model function_name field_name var function_name = self.attrs.function; var value = this.value; if (self.$el[0].options.length == 0) &#123; if (this.field.type === 'selection') &#123; rpc.query(&#123; "model": this.model, "method": function_name, "args": [&#123;'args': this.recordData&#125;], &#125;).then(function (result) &#123; if (!!result) &#123; self.$el.empty(); for (var i = 0; i &lt; result.length; i++) &#123; self.$el.append($('&lt;option/&gt;', &#123; value: JSON.stringify(result[i][0]), text: result[i][1] &#125;)); &#125; &#125; &#125;); &#125; else &#123; for (var i = 0; i &lt; this.field.selection.length; i++) &#123; this.$el.append($('&lt;option/&gt;', &#123; value: JSON.stringify(this.field.selection[i][0]), text: this.field.selection[i][1] &#125;)); &#125; &#125; &#125; if (this.field.type === 'many2one' &amp;&amp; value) &#123; value = value.data.id; &#125; &#125;, &#125;); registry .add('select_hide_by_condition', select_hide_by_condition);&#125;); 1&lt;field name="source_type" widget="select_hide_by_condition" function="select_hide_by_condition"/&gt; 1234567891011121314151617181920@api.modeldef select_hide_by_condition(self, datas): """ 来源类型 选择框数据限制 :param datas: 当前数据行的所有字段信息 :return: 新的选择框值域 """ if datas['args']['XXX']: return [ ('table_item', _('Table Item')), ('code', _('Code')), ('mapping_table', _('Mapping Table')), ] else: return [ ('', ''), ('table_item', _('Table Item')), ('code', _('Code')), ('mapping_table', _('Mapping Table')), ]]]></content>
+      <categories>
+        <category>Odoo,JS,Selection</category>
+      </categories>
+      <tags>
+        <tag>Odoo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[res.users]]></title>
+    <url>%2Fbbs.github.io%2Fres-users%2F</url>
+    <content type="text"><![CDATA[function has_group参数group_ext_id - 组 外部ID]]></content>
+      <categories>
+        <category>Odoo</category>
+      </categories>
+      <tags>
+        <tag>Odoo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[model文件]]></title>
+    <url>%2Fbbs.github.io%2Fmodel%E6%96%87%E4%BB%B6%2F</url>
+    <content type="text"><![CDATA[function read参数：fields - 记录返回字段列表load - 暂时不知 简介：Read方法其实就是读指定self中字段的数据记录，通常在python代码里用browse方法代替可能会出现异常: 给定的记录当前用户没有可读的权限 首先检查用户对模型的访问权限 check_access_rights 检查用户对字段模型的访问权限 check_field_access_rights function check_access_rights参数：operation - 操作方式 read\write\create\unlinkraise_exception - 异常是否抛出 默认t 简介：查询当前用户对于当前模型是否有相关的权限 function check_field_access_rights参数：operation - 操作方式 read\write\create\unlinkfields - 检查的字段 简介：检查当前用户对给定的字段是否有访问权限，如果没有抛出例外，否则将会返回字段列表 超级管理员直接返回随影的字段 普通人员 对于没提供fields参数字段时，查询当前记录的所有字段_fields,并验证每一个字段是否有效(valid) 将提供的字段分为 存储、继承、计算 三种类型，切记fields中不能出现不属于当前模型的字段名 对于存储和继承的字段，通过数据库查找 _read_from_database 内部方法：function valid参数：fname - 字段名称 简介：通过字段是否有组权限，如果有，检查用户有没有这些组权限 user_has_groups。 function user_has_groups参数：groups - (str)完整的组外部数据记录，通过逗号分隔 例如：base.group_user,base.group_system,每一个组前面可选加感叹号’!’，例如：!base.group_user,!base.group_system 返回 - 如果当前用户是给定组(非!前缀)的成员，并且不是任何组给定前缀组(!前缀)的成员，返回t简单理解就是：给了组，用户是非!前缀组的成员，并且不是任何!前缀组的成员。 简介：如果用户是“groups”中至少一个组的成员，并且“groups”不是中以“!”开头的任何组的成员，则返回true！通常用于解析视图和模型定义中的“groups”属性。 首先将groups根据逗号分开，对每一个组外部ID去除空格、换行符。 将提供的groups分成!前缀组集合not_has_groups(添加时去掉前缀!)，和没有!前缀的组集合has_groups。 检查not_has_groups中的每一个组3.1 如果是’base.group_no_one’组，检查用户是否在’base.group_no_one’组中，环境栈中是否是debug模式，满足上述条件，返回 False ，因为是not_has_groups3.2 如果是其他组，检查用户是否在当前组内，如果在，返回 False 上面条件都ok的情况下，检查has_groups中的每一个组4.1 如果是’base.group_no_one’组，检查用户是否在’base.group_no_one’组中，环境栈中是否是debug模式，满足上述条件，返回 True ，因为是has_groups4.2 如果是其他组，检查用户是否在当前组内，如果在，返回 True 如果没有提供groups参数值，返回 True function _read_from_database参数field_names - 存储字段名称列表inherited_field_names - 继承字段名称列表 简介查询self对应的数据库字段，将结果存储在缓存中、如果有错误也存在缓存中 如果self没有记录就跳出， function _where_calc参数domain - 域active_test - 是否用active字段筛选 默认t返回 - Query查询对象 简介如果模型有active字段，参数active_test控制是否添加domain -&gt; (‘active’, ‘=’, 1) class expressionfunction init参数domain - 域列表model - 模型记录 ### function sudo]]></content>
+      <categories>
+        <category>Odoo</category>
+      </categories>
+      <tags>
+        <tag>Odoo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[你不知道的Many2many]]></title>
     <url>%2Fbbs.github.io%2F%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84Many2many%2F</url>
     <content type="text"><![CDATA[你关联我，我关联你，我们同用一个relation1. 举个🌰12_name = "res.groups"users = fields.Many2many('res.users', 'res_groups_users_rel', 'gid', 'uid') 12_name = "res.users"groups_id = fields.Many2many('res.groups', 'res_groups_users_rel', 'uid', 'gid') 2. 分析从上面的例子可以看出，两个字段使用了同一个relation(res_groups_users_rel),之前说好的relation唯一 不能和任何表名重复吗? 对，这也没问题。其实m2m本来就是两张表数据存在的一种互相多关联关系，你关联我，我关联你，只要我们对应的数据位置保持一致就行。数据保持一致，就要求column1必须是本模型model的数据，column2必须是关联表模型comodel_name的数据，切记不能写错咯~]]></content>
@@ -14,7 +58,7 @@
   <entry>
     <title><![CDATA[ir.rule]]></title>
     <url>%2Fbbs.github.io%2Fir-rule%2F</url>
-    <content type="text"><![CDATA[什么是ir.rule前面我们讲过了模型访问规则ir.model.access，这里的ir.rule是数据屏蔽规则，简单的说就是谁能看见哪些数据。 字段name - 名称active - 有效性model_id - 模型groups - 组domain_force - 可访问条件域perm_read - 可读perm_write - 可写perm_create - 可创perm_unlink - 可删 提示：perm = permission(许可) ##]]></content>
+    <content type="text"><![CDATA[什么是ir.rule前面我们讲过了模型访问规则ir.model.access，这里的ir.rule是数据屏蔽规则，简单的说就是谁能看见哪些数据。 字段name - 名称active - 有效性model_id - 模型groups - 组domain_force - 可访问条件域perm_read - 可读perm_write - 可写perm_create - 可创perm_unlink - 可删 提示：perm = permission(许可) 批量写data.xml的权限部分1234567891011121314151617181920212223242526272829303132333435363738def test(): models = [ 'account.account', 'account.move', 'account.move.line', ] """ -- 用这个SQL可以查到对应 有公司字段且为company_id的model select model from ir_model_fields imf where model in ( 'account.account', 'account.move', 'account.move.line', ) and ttype='many2one' and name = 'company_id' and relation = 'res.company'; """ print('&lt;data noupdate="1"&gt;') for model in models: print(""" &lt;record id="&#123;0&#125;" model="ir.rule"&gt; &lt;field name="name"&gt;&#123;1&#125;&lt;/field&gt; &lt;field name="model_id" ref="&#123;2&#125;"/&gt; &lt;field name="global" eval="True"/&gt; &lt;field name="domain_force"&gt; ['|',('company_id', '=', False),'&amp;amp;', ('company_id', 'child_of', [user.company_id.id]), ('company_id', 'in', user.company_ids.ids)] &lt;/field&gt; &lt;/record&gt;""".format(model_name_transfor_table_name('rule_'+model),model_name_transfor_table_name(model+'_rule'),model_name_transfor_table_name('model_'+model))) print('&lt;/data&gt;')# 模型转表def model_name_transfor_table_name(model_name): return model_name.replace('.', '_')test()]]></content>
       <categories>
         <category>Odoo</category>
       </categories>
@@ -255,7 +299,7 @@
   <entry>
     <title><![CDATA[Odoo-翻译]]></title>
     <url>%2Fbbs.github.io%2FOdoo-%E7%BF%BB%E8%AF%91%2F</url>
-    <content type="text"><![CDATA[ir_translation简章[字段]langsrcnameres_idmodulestatecommentsvaluetype 几种翻译的加载方式普通按钮翻译 直接加载翻译 注:(XML上的按钮翻译旧源不认识下划线_) 报表翻译report:report_name:0 直接加载翻译 菜单翻译重启 - 升级 - 加载翻译 字段翻译直接加载翻译 code翻译直接加载翻译 module信息翻译手动删除所有翻译，重新加载翻译 重写源码的字段翻译直接在继承的小模块i18n中重写 module:写原来的或但钱模块的都可以 最后在数据库中会被转换成小模块的 例如:hrp_account翻译的显示值使用的是id最大的那一个匹配值1234#. module: account#: selection:account.invoice,state:0msgid &quot;Open&quot;msgstr &quot;已审批&quot;]]></content>
+    <content type="text"><![CDATA[ir_translation简章[字段]langsrcnameres_idmodulestatecommentsvaluetype 几种翻译的加载方式普通按钮翻译 直接加载翻译 注:(XML上的按钮翻译旧源不认识下划线_) 报表翻译report:report_name:0 直接加载翻译 菜单翻译重启 - 升级 - 加载翻译 字段翻译直接加载翻译 ### 例子： 12345#. module: dy_fin_stock#: model:ir.model.fields,field_description:dy_fin_stock.field_dy_fin_create_move_stock_wizard__summary_rule_id#: model:ir.model.fields,help:dy_fin_stock.field_dy_fin_create_move_stock_wizard__summary_rule_idmsgid &quot;Summary Rule&quot;msgstr &quot;合并规则&quot; code翻译直接加载翻译 module信息翻译手动删除所有翻译，重新加载翻译 xxx_data.xml文件翻译例子：123456789#. module: dy_fin_stock#: model:res.groups,name:dy_fin_stock.account_move_linkmsgid &quot;Account Move Link Group&quot;msgstr &quot;查看凭证权限组&quot;#. module: dy_fin_stock#: model:res.groups,comment:dy_fin_stock.account_move_linkmsgid &quot;Account Move Link！&quot;msgstr &quot;拥有库存移动凭证状态查看权限！&quot; 解释1234#. module: [module]#: model:[model],[field_name]:[module].[external_id]msgid &quot;翻译源&quot;msgstr &quot;翻译值&quot; 重写源码的字段翻译直接在继承的小模块i18n中重写 module:写原来的或但钱模块的都可以 最后在数据库中会被转换成小模块的 例如:hrp_account翻译的显示值使用的是id最大的那一个匹配值1234#. module: account#: selection:account.invoice,state:0msgid &quot;Open&quot;msgstr &quot;已审批&quot;]]></content>
       <categories>
         <category>Odoo</category>
       </categories>
