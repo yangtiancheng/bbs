@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[django新手入门01 - Model]]></title>
+    <url>%2Fbbs.github.io%2Fdjango%E6%96%B0%E6%89%8B%E5%85%A5%E9%97%A801%2F</url>
+    <content type="text"><![CDATA[Queries「查询」Create objects 「创建新对象」使用model实例类 通过**kwargs赋值创建实例 123from blog.models import Blogb = Blog(name='Beatles Blog', tagline='All the latest Beatles news.')b.save() Saving changes to objects which already in DB(Normal UPDATE)12b.name = 'XXX'b.save() Saving ForeignKey and M2m Fields(Special Fields UPDATE)123456789101112131415161718# FKfrom blog.models import Blog, Entryentry = Entry.objects.get(pk=1)cheese_blog = Blog.objects.get(name="Cheddar Talk")entry.blog = cheese_blogentry.save()# M2m TODO:Use add()from blog.models import Authorjoe = Author.objects.create(name="Joe")entry.authors.add(joe)# M2m Multi add()john = Author.objects.create(name="John")paul = Author.objects.create(name="Paul")george = Author.objects.create(name="George")ringo = Author.objects.create(name="Ringo")entry.authors.add(john, paul, george, ringo) Notice: M2m中add的objects如果类型错误，Django将会报错。 Search objects class_name.objects 中 objects就是当前类的Manager，切记实例无法使用objects. QuerySet是Select，而filters是Where。 Class.objects.all() 查找当前表的所有记录。 filter(**kwargs) 筛选 Entry.objects.filter(pub_date__year=2006) 等价 Entry.objects.all().filter(pub_date__year=2006) exclude(**kwargs) 排除 Entry.objects.exclude(pub_date__year=2006) 等价 Entry.objects.all().exclude(pub_date__year=2006) 4和5可以连在一起用 Entry.objects.filter(pub_date__year=2006).exclude(pub_date__year=2007) 4和5尽量分开处理，用变量存储。 定义filter和exclude的时候，代码并不会执行，除非调用当前筛选逻辑 比如print(X) get()1one_entry = Entry.objects.get(pk=1) get()有且必须只能找到1条记录。 get()的用法和filter()相同，不同的是如果get()获取不到对象，则会返回 DoesNotExist 异常。 如果获取到多个记录，则会返回 MultipleObjectsReturned 异常。 除过all、get、filter、exclude 更多请查阅QuerySet API Limit QuerySets1234Entry.objects.all()[Offset:Limit:Step]Entry.objects.all()[:5]Entry.objects.all()[:5:10]Entry.objects.all()[:10:2] # - 使用step会重新从数据库执行查询 其他只是querysets切片成new querysets. Field Lookups field__exact=1 等价SQL-WHERE: field=1 field__iexact=1 不区分大小写 field__contains=’Lennon’ 等价SQL-WHERE:SELECT … WHERE headline LIKE ‘%Lennon%’; field__icontains=’Lennon’ 不区分大小写 startswith\endswith\istartswith\iendswith等. 更多参阅[链接](https://docs.djangoproject.com/en/2.2/ref/models/querysets/#field-lookups) 支持跨越关系（外键表）指定 Blog.objects.filter(entry__headline__contains=’Lennon’) 支持反向搜索(小写class名称) CURRENT ENDSWITH : Spanning multi-valued relationships¶链接]]></content>
+      <categories>
+        <category>Django</category>
+      </categories>
+      <tags>
+        <tag>Django</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[基础字段用法提示]]></title>
     <url>%2Fbbs.github.io%2F%E5%9F%BA%E7%A1%80%E5%AD%97%E6%AE%B5%E7%94%A8%E6%B3%95%E6%8F%90%E7%A4%BA%2F</url>
     <content type="text"><![CDATA[字段default=function123456789@api.modeldef _get_company(self): if 1 == 1: return self.env.user.company_id.id else: return False# 公司company_id = fields.Many2one(comodel_name='res.company', string='Company', help="Company", index=True, default=_get_company) 注意_get_company的方法一般用api.model装饰器修饰，default的属性接收值是对应数据的ID，不是对象，切记!!! 字段domain前后用法]]></content>

@@ -340,6 +340,204 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yangtiancheng.github.io/bbs.github.io/bbs.github.io/django新手入门01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="杨天成">
+      <meta itemprop="description" content="小伙私房菜">
+      <meta itemprop="image" content="/bbs.github.io/images/my_photo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个玩Odoo的小伙">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/bbs.github.io/django新手入门01/" class="post-title-link" itemprop="url">django新手入门01 - Model</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-06-12 10:32:58 / 修改时间：07:34:24" itemprop="dateCreated datePublished" datetime="2019-06-12T10:32:58Z">2019-06-12</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/bbs.github.io/categories/Django/" itemprop="url" rel="index"><span itemprop="name">Django</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Queries「查询」"><a href="#Queries「查询」" class="headerlink" title="Queries「查询」"></a>Queries「查询」</h1><h2 id="Create-objects-「创建新对象」"><a href="#Create-objects-「创建新对象」" class="headerlink" title="Create objects 「创建新对象」"></a>Create objects 「创建新对象」</h2><p>使用model实例类 通过**kwargs赋值创建实例</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> blog.models <span class="keyword">import</span> Blog</span><br><span class="line">b = Blog(name=<span class="string">'Beatles Blog'</span>, tagline=<span class="string">'All the latest Beatles news.'</span>)</span><br><span class="line">b.save()</span><br></pre></td></tr></table></figure>
+<h2 id="Saving-changes-to-objects-which-already-in-DB-Normal-UPDATE"><a href="#Saving-changes-to-objects-which-already-in-DB-Normal-UPDATE" class="headerlink" title="Saving changes to objects which already in DB(Normal UPDATE)"></a>Saving changes to objects which already in DB(Normal UPDATE)</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b.name = <span class="string">'XXX'</span></span><br><span class="line">b.save()</span><br></pre></td></tr></table></figure>
+<h2 id="Saving-ForeignKey-and-M2m-Fields-Special-Fields-UPDATE"><a href="#Saving-ForeignKey-and-M2m-Fields-Special-Fields-UPDATE" class="headerlink" title="Saving ForeignKey and M2m Fields(Special Fields UPDATE)"></a>Saving ForeignKey and M2m Fields(Special Fields UPDATE)</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># FK</span></span><br><span class="line"><span class="keyword">from</span> blog.models <span class="keyword">import</span> Blog, Entry</span><br><span class="line">entry = Entry.objects.get(pk=<span class="number">1</span>)</span><br><span class="line">cheese_blog = Blog.objects.get(name=<span class="string">"Cheddar Talk"</span>)</span><br><span class="line">entry.blog = cheese_blog</span><br><span class="line">entry.save()</span><br><span class="line"></span><br><span class="line"><span class="comment"># M2m <span class="doctag">TODO:</span>Use add()</span></span><br><span class="line"><span class="keyword">from</span> blog.models <span class="keyword">import</span> Author</span><br><span class="line">joe = Author.objects.create(name=<span class="string">"Joe"</span>)</span><br><span class="line">entry.authors.add(joe)</span><br><span class="line"></span><br><span class="line"><span class="comment"># M2m Multi add()</span></span><br><span class="line">john = Author.objects.create(name=<span class="string">"John"</span>)</span><br><span class="line">paul = Author.objects.create(name=<span class="string">"Paul"</span>)</span><br><span class="line">george = Author.objects.create(name=<span class="string">"George"</span>)</span><br><span class="line">ringo = Author.objects.create(name=<span class="string">"Ringo"</span>)</span><br><span class="line">entry.authors.add(john, paul, george, ringo)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Notice: M2m中add的objects如果类型错误，Django将会报错。</li>
+</ul>
+<h2 id="Search-objects"><a href="#Search-objects" class="headerlink" title="Search objects"></a>Search objects</h2><ol>
+<li>class_name.objects 中 objects就是当前类的Manager，切记实例无法使用objects.</li>
+<li>QuerySet是Select，而filters是Where。</li>
+<li>Class.objects.all() 查找当前表的所有记录。</li>
+<li>filter(**kwargs) 筛选 Entry.objects.filter(pub_date__year=2006) 等价 Entry.objects.all().filter(pub_date__year=2006)</li>
+<li>exclude(**kwargs) 排除 Entry.objects.exclude(pub_date__year=2006) 等价 Entry.objects.all().exclude(pub_date__year=2006)</li>
+<li>4和5可以连在一起用 Entry.objects.filter(pub_date__year=2006).exclude(pub_date__year=2007)</li>
+<li>4和5尽量分开处理，用变量存储。</li>
+<li>定义filter和exclude的时候，代码并不会执行，除非调用当前筛选逻辑 比如print(X)</li>
+</ol>
+<h2 id="get"><a href="#get" class="headerlink" title="get()"></a>get()</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">one_entry = Entry.objects.get(pk=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<ol>
+<li>get()有且必须只能找到1条记录。</li>
+<li>get()的用法和filter()相同，不同的是如果get()获取不到对象，则会返回 DoesNotExist 异常。</li>
+<li>如果获取到多个记录，则会返回 MultipleObjectsReturned 异常。</li>
+</ol>
+<ul>
+<li>除过all、get、filter、exclude 更多请查阅<a href="https://docs.djangoproject.com/en/2.2/ref/models/querysets/#queryset-api" target="_blank" rel="noopener">QuerySet API</a></li>
+</ul>
+<h2 id="Limit-QuerySets"><a href="#Limit-QuerySets" class="headerlink" title="Limit QuerySets"></a>Limit QuerySets</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Entry.objects.all()[Offset:Limit:Step]</span><br><span class="line">Entry.objects.all()[:<span class="number">5</span>]</span><br><span class="line">Entry.objects.all()[:<span class="number">5</span>:<span class="number">10</span>]</span><br><span class="line">Entry.objects.all()[:<span class="number">10</span>:<span class="number">2</span>] <span class="comment"># - 使用step会重新从数据库执行查询 其他只是querysets切片成new querysets.</span></span><br></pre></td></tr></table></figure>
+<h2 id="Field-Lookups"><a href="#Field-Lookups" class="headerlink" title="Field Lookups"></a>Field Lookups</h2><ol>
+<li>field__exact=1 等价SQL-WHERE: field=1</li>
+<li>field__iexact=1 不区分大小写</li>
+<li>field__contains=’Lennon’ 等价SQL-WHERE:SELECT … WHERE headline LIKE ‘%Lennon%’;</li>
+<li>field__icontains=’Lennon’ 不区分大小写</li>
+<li><p>startswith\endswith\istartswith\iendswith等.</p>
+<pre><code>更多参阅[链接](https://docs.djangoproject.com/en/2.2/ref/models/querysets/#field-lookups)
+</code></pre></li>
+<li>支持跨越关系（外键表）指定 Blog.objects.filter(entry__headline__contains=’Lennon’) 支持反向搜索(小写class名称)</li>
+</ol>
+<p>CURRENT ENDSWITH : Spanning multi-valued relationships¶<a href="https://docs.djangoproject.com/en/2.2/topics/db/queries/" target="_blank" rel="noopener">链接</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://yangtiancheng.github.io/bbs.github.io/bbs.github.io/基础字段用法提示/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1024,170 +1222,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yangtiancheng.github.io/bbs.github.io/bbs.github.io/你不知道的Many2many/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="杨天成">
-      <meta itemprop="description" content="小伙私房菜">
-      <meta itemprop="image" content="/bbs.github.io/images/my_photo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一个玩Odoo的小伙">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/bbs.github.io/你不知道的Many2many/" class="post-title-link" itemprop="url">你不知道的Many2many</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-04-17 19:03:18 / 修改时间：11:13:16" itemprop="dateCreated datePublished" datetime="2019-04-17T19:03:18Z">2019-04-17</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/bbs.github.io/categories/Odoo/" itemprop="url" rel="index"><span itemprop="name">Odoo</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="你关联我，我关联你，我们同用一个relation"><a href="#你关联我，我关联你，我们同用一个relation" class="headerlink" title="你关联我，我关联你，我们同用一个relation"></a>你关联我，我关联你，我们同用一个relation</h1><h2 id="1-举个🌰"><a href="#1-举个🌰" class="headerlink" title="1. 举个🌰"></a>1. 举个🌰</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_name = <span class="string">"res.groups"</span></span><br><span class="line">users = fields.Many2many(<span class="string">'res.users'</span>, <span class="string">'res_groups_users_rel'</span>, <span class="string">'gid'</span>, <span class="string">'uid'</span>)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_name = <span class="string">"res.users"</span></span><br><span class="line">groups_id = fields.Many2many(<span class="string">'res.groups'</span>, <span class="string">'res_groups_users_rel'</span>, <span class="string">'uid'</span>, <span class="string">'gid'</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="2-分析"><a href="#2-分析" class="headerlink" title="2. 分析"></a>2. 分析</h2><p>从上面的例子可以看出，两个字段使用了同一个relation(res_groups_users_rel),之前说好的relation唯一 不能和任何表名重复吗?<br></p>
-<p>对，这也没问题。其实m2m本来就是两张表数据存在的一种互相多关联关系，你关联我，我关联你，只要我们对应的数据位置保持一致就行。数据保持一致，就要求column1必须是本模型model的数据，column2必须是关联表模型comodel_name的数据，切记不能写错咯~</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1236,7 +1270,7 @@
                 
                   <a href="/bbs.github.io/archives/">
                 
-                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1281,7 +1315,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -1320,7 +1356,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>
