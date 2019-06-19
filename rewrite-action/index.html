@@ -106,7 +106,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://yangtiancheng.github.io/bbs.github.io/rewrite-action/action00.jpg">
 <meta property="og:image" content="https://yangtiancheng.github.io/bbs.github.io/rewrite-action/action01.jpg">
-<meta property="og:updated_time" content="2019-06-19T04:58:57.633Z">
+<meta property="og:updated_time" content="2019-06-19T05:10:35.929Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="重写源码action">
 <meta name="twitter:description" content="重写源码action或者更新record数据柄属性场景简述也许一个源码的菜单，限制了展示的值范围为id &amp;gt; 100的数据 domain = [(‘id’,’&amp;gt;’,100)]在我们自己的个性化代码中，可能需要将显示范围改成 id &amp;gt; 200。 操作及理念 Odoo通过XML产生的数据，不仅仅会创建对应的模型记录数据，同时会将数据集绑定创建一条ir.model.data的数据。 我们">
@@ -386,7 +386,7 @@
                 
               
 
-              <time title="创建时间：2019-06-19 11:07:11 / 修改时间：04:58:57" itemprop="dateCreated datePublished" datetime="2019-06-19T11:07:11Z">2019-06-19</time>
+              <time title="创建时间：2019-06-19 11:07:11 / 修改时间：05:10:35" itemprop="dateCreated datePublished" datetime="2019-06-19T11:07:11Z">2019-06-19</time>
             
 
             
@@ -447,10 +447,11 @@
 <h2 id="操作及理念"><a href="#操作及理念" class="headerlink" title="操作及理念"></a>操作及理念</h2><ol>
 <li>Odoo通过XML产生的数据，不仅仅会创建对应的模型记录数据，同时会将数据集绑定创建一条ir.model.data的数据。</li>
 <li>我们只需要在自己的个性化模块中重写对应的action修改domain属性即可，但是由于所处模块(module)的不同，我们重写的action必须指定要覆盖的模块。</li>
-<li>所以在外部ID-extend_id前面加上module的前缀，即module.action_extend_id格式即可。</li>
-</ol>
-<h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><ol>
-<li>查看信息<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-- 查询当前action与data的关键参数</span><br><span class="line">select imd.id,imd.module 所处模块,iaw.id 动作ID, iaw.domain 动作域</span><br><span class="line">from ir_model_data imd,ir_act_window iaw</span><br><span class="line">where imd.res_id = iaw.id</span><br><span class="line">and imd.name = &apos;rounding_list_action&apos;;</span><br></pre></td></tr></table></figure>
+<li><p>所以在外部ID-extend_id前面加上module的前缀，即module.action_extend_id格式即可。</p>
+<a id="more"></a>
+<h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2></li>
+<li><p>查看信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-- 查询当前action与data的关键参数</span><br><span class="line">select imd.id,imd.module 所处模块,iaw.id 动作ID, iaw.domain 动作域</span><br><span class="line">from ir_model_data imd,ir_act_window iaw</span><br><span class="line">where imd.res_id = iaw.id</span><br><span class="line">and imd.name = &apos;rounding_list_action&apos;;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <p><img src="/bbs.github.io/rewrite-action/action00.jpg" alt="原始信息"></p>
