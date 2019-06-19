@@ -340,6 +340,217 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yangtiancheng.github.io/bbs.github.io/bbs.github.io/model文件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="杨天成">
+      <meta itemprop="description" content="小伙私房菜">
+      <meta itemprop="image" content="/bbs.github.io/images/my_photo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个玩Odoo的小伙">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/bbs.github.io/model文件/" class="post-title-link" itemprop="url">model文件</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-19 09:26:46" itemprop="dateCreated datePublished" datetime="2019-04-19T09:26:46Z">2019-04-19</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-20 11:27:31" itemprop="dateModified" datetime="2019-04-20T11:27:31Z">2019-04-20</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/bbs.github.io/categories/Odoo/" itemprop="url" rel="index"><span itemprop="name">Odoo</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="function-read"><a href="#function-read" class="headerlink" title="function read"></a>function read</h1><h2 id="参数："><a href="#参数：" class="headerlink" title="参数："></a>参数：</h2><p>fields - 记录返回字段列表<br>load - 暂时不知</p>
+<h2 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h2><p>Read方法其实就是读指定self中字段的数据记录，通常在python代码里用browse方法代替<br>可能会出现异常: 给定的记录当前用户没有可读的权限</p>
+<ol>
+<li>首先检查用户对模型的访问权限 check_access_rights</li>
+<li>检查用户对字段模型的访问权限 check_field_access_rights</li>
+</ol>
+<hr>
+<h1 id="function-check-access-rights"><a href="#function-check-access-rights" class="headerlink" title="function check_access_rights"></a>function check_access_rights</h1><h2 id="参数：-1"><a href="#参数：-1" class="headerlink" title="参数："></a>参数：</h2><p>operation - 操作方式 read\write\create\unlink<br>raise_exception - 异常是否抛出 默认t</p>
+<h2 id="简介：-1"><a href="#简介：-1" class="headerlink" title="简介："></a>简介：</h2><p>查询当前用户对于当前模型是否有相关的权限</p>
+<hr>
+<h1 id="function-check-field-access-rights"><a href="#function-check-field-access-rights" class="headerlink" title="function check_field_access_rights"></a>function check_field_access_rights</h1><h2 id="参数：-2"><a href="#参数：-2" class="headerlink" title="参数："></a>参数：</h2><p>operation - 操作方式 read\write\create\unlink<br>fields - 检查的字段</p>
+<h2 id="简介：-2"><a href="#简介：-2" class="headerlink" title="简介："></a>简介：</h2><p>检查当前用户对给定的字段是否有访问权限，如果没有抛出例外，否则将会返回字段列表</p>
+<ol>
+<li>超级管理员直接返回随影的字段</li>
+<li>普通人员 对于没提供fields参数字段时，查询当前记录的所有字段_fields,并验证每一个字段是否有效(valid)</li>
+<li>将提供的字段分为 存储、继承、计算 三种类型，切记fields中不能出现不属于当前模型的字段名</li>
+<li>对于存储和继承的字段，通过数据库查找 _read_from_database</li>
+</ol>
+<h2 id="内部方法："><a href="#内部方法：" class="headerlink" title="内部方法："></a>内部方法：</h2><h3 id="function-valid"><a href="#function-valid" class="headerlink" title="function valid"></a>function valid</h3><h4 id="参数：-3"><a href="#参数：-3" class="headerlink" title="参数："></a>参数：</h4><p>fname - 字段名称</p>
+<h4 id="简介：-3"><a href="#简介：-3" class="headerlink" title="简介："></a>简介：</h4><p>通过字段是否有组权限，如果有，检查用户有没有这些组权限 user_has_groups。</p>
+<hr>
+<h1 id="function-user-has-groups"><a href="#function-user-has-groups" class="headerlink" title="function user_has_groups"></a>function user_has_groups</h1><h2 id="参数：-4"><a href="#参数：-4" class="headerlink" title="参数："></a>参数：</h2><p>groups - (str)完整的组外部数据记录，通过逗号分隔 例如：base.group_user,base.group_system,每一个组前面可选加感叹号’!’，<br>例如：!base.group_user,!base.group_system</p>
+<p>返回 - 如果当前用户是给定组(非!前缀)的成员，并且不是任何组给定前缀组(!前缀)的成员，返回t<br>简单理解就是：给了组，用户是非!前缀组的成员，并且不是任何!前缀组的成员。</p>
+<h2 id="简介：-4"><a href="#简介：-4" class="headerlink" title="简介："></a>简介：</h2><p>如果用户是“groups”中至少一个组的成员，并且“groups”不是中以“!”开头的任何组的成员，则返回true！<br>通常用于解析视图和模型定义中的“groups”属性。</p>
+<ol>
+<li>首先将groups根据逗号分开，对每一个组外部ID去除空格、换行符。</li>
+<li>将提供的groups分成!前缀组集合not_has_groups(添加时去掉前缀!)，和没有!前缀的组集合has_groups。</li>
+<li>检查not_has_groups中的每一个组<br>3.1 如果是’base.group_no_one’组，检查用户是否在’base.group_no_one’组中，环境栈中是否是debug模式，满足上述条件，返回 False ，因为是not_has_groups<br>3.2 如果是其他组，检查用户是否在当前组内，如果在，返回 False</li>
+<li>上面条件都ok的情况下，检查has_groups中的每一个组<br>4.1 如果是’base.group_no_one’组，检查用户是否在’base.group_no_one’组中，环境栈中是否是debug模式，满足上述条件，返回 True ，因为是has_groups<br>4.2 如果是其他组，检查用户是否在当前组内，如果在，返回 True </li>
+<li>如果没有提供groups参数值，返回 True</li>
+</ol>
+<h1 id="function-read-from-database"><a href="#function-read-from-database" class="headerlink" title="function _read_from_database"></a>function _read_from_database</h1><h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><p>field_names - 存储字段名称列表<br>inherited_field_names - 继承字段名称列表</p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>查询self对应的数据库字段，将结果存储在缓存中、如果有错误也存在缓存中</p>
+<p>如果self没有记录就跳出，</p>
+<h1 id="function-where-calc"><a href="#function-where-calc" class="headerlink" title="function _where_calc"></a>function _where_calc</h1><h2 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h2><p>domain - 域<br>active_test - 是否用active字段筛选 默认t<br>返回 - Query查询对象</p>
+<h2 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h2><p>如果模型有active字段，参数active_test控制是否添加domain -&gt; (‘active’, ‘=’, 1)</p>
+<h1 id="class-expression"><a href="#class-expression" class="headerlink" title="class expression"></a>class expression</h1><h2 id="function-init"><a href="#function-init" class="headerlink" title="function init"></a>function <strong>init</strong></h2><h3 id="参数-2"><a href="#参数-2" class="headerlink" title="参数"></a>参数</h3><p>domain - 域列表<br>model - 模型记录</p>
+<p>### </p>
+<hr>
+<h1 id="function-sudo"><a href="#function-sudo" class="headerlink" title="function sudo"></a>function sudo</h1>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://yangtiancheng.github.io/bbs.github.io/bbs.github.io/你不知道的Many2many/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1024,191 +1235,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yangtiancheng.github.io/bbs.github.io/bbs.github.io/Odoo-浅谈Odoo提供的附件机制/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="杨天成">
-      <meta itemprop="description" content="小伙私房菜">
-      <meta itemprop="image" content="/bbs.github.io/images/my_photo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一个玩Odoo的小伙">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/bbs.github.io/Odoo-浅谈Odoo提供的附件机制/" class="post-title-link" itemprop="url">Odoo 浅谈Odoo提供的附件机制</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-04-06 09:13:38" itemprop="dateCreated datePublished" datetime="2019-04-06T09:13:38Z">2019-04-06</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-17 03:15:28" itemprop="dateModified" datetime="2019-04-17T03:15:28Z">2019-04-17</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/bbs.github.io/categories/Odoo/" itemprop="url" rel="index"><span itemprop="name">Odoo</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Odoo提供的附件机制</p>
-<p><img src="https://img-blog.csdn.net/20180326101437554?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5NjU0MzI1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/bbs.github.io/Odoo-浅谈Odoo提供的附件机制/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/bbs.github.io/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/bbs.github.io/">1</a><span class="page-number current">2</span><a class="page-number" href="/bbs.github.io/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/bbs.github.io/page/8/">8</a><a class="extend next" rel="next" href="/bbs.github.io/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/bbs.github.io/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/bbs.github.io/">1</a><span class="page-number current">2</span><a class="page-number" href="/bbs.github.io/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/bbs.github.io/page/9/">9</a><a class="extend next" rel="next" href="/bbs.github.io/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1252,7 +1283,7 @@
                 
                   <a href="/bbs.github.io/archives/">
                 
-                    <span class="site-state-item-count">40</span>
+                    <span class="site-state-item-count">41</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

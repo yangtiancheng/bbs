@@ -6,7 +6,7 @@
   <link href="/bbs.github.io/atom.xml" rel="self"/>
   
   <link href="https://yangtiancheng.github.io/bbs.github.io/"/>
-  <updated>2019-06-12T07:37:43.907Z</updated>
+  <updated>2019-06-19T03:42:18.217Z</updated>
   <id>https://yangtiancheng.github.io/bbs.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://yangtiancheng.github.io/bbs.github.io/%E9%87%8D%E5%86%99%E6%BA%90%E7%A0%81action/"/>
+    <id>https://yangtiancheng.github.io/bbs.github.io/重写源码action/</id>
+    <published>2019-06-19T03:42:18.217Z</published>
+    <updated>2019-06-19T03:42:18.217Z</updated>
+    
+    <content type="html"><![CDATA[<hr><p>title: 重写源码action<br>date: 2019-06-19 11:07:11<br>tags: Odoo,XML</p><h2 id="categories-Odoo-XML"><a href="#categories-Odoo-XML" class="headerlink" title="categories: Odoo,XML"></a>categories: Odoo,XML</h2><h1 id="重写源码action或者更新record数据柄属性"><a href="#重写源码action或者更新record数据柄属性" class="headerlink" title="重写源码action或者更新record数据柄属性"></a>重写源码action或者更新record数据柄属性</h1><h2 id="场景简述"><a href="#场景简述" class="headerlink" title="场景简述"></a>场景简述</h2><p>也许一个源码的菜单，限制了展示的值范围为id &gt; 100的数据 domain = [(‘id’,’&gt;’,100)]<br>在我们自己的个性化代码中，可能需要将显示范围改成 id &gt; 200。</p><h2 id="操作及理念"><a href="#操作及理念" class="headerlink" title="操作及理念"></a>操作及理念</h2><ol><li>Odoo通过XML产生的数据，不仅仅会创建对应的模型记录数据，同时会将数据集绑定创建一条ir.model.data的数据。</li><li>我们只需要在自己的个性化模块中重写对应的action修改domain属性即可，但是由于所处模块(module)的不同，我们重写的action必须指定要覆盖的模块。</li><li>所以在外部ID-extend_id前面加上module的前缀，即module.action_extend_id格式即可。</li></ol><h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-- 查询当前action与data的关键参数</span><br><span class="line">select imd.id,imd.module 所处模块,iaw.id 动作ID, iaw.domain 动作域</span><br><span class="line">from ir_model_data imd,ir_act_window iaw</span><br><span class="line">where imd.res_id = iaw.id</span><br><span class="line">and imd.name = &apos;rounding_list_action&apos;;</span><br></pre></td></tr></table></figure><p><img src="重写源码action/重写源码action01.jpg" alt="你想输入的替代文字"></p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 所处模块(module)为源码account 原始action--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">record</span> <span class="attr">id</span>=<span class="string">"rounding_list_action"</span> <span class="attr">model</span>=<span class="string">"ir.actions.act_window"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"name"</span>&gt;</span>Cash Roundings<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"res_model"</span>&gt;</span>account.cash.rounding<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"view_type"</span>&gt;</span>form<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"view_mode"</span>&gt;</span>tree,form<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"domain"</span>&gt;</span>[('id','&gt;',100)]<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"help"</span> <span class="attr">type</span>=<span class="string">"html"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"o_view_nocontent_smiling_face"</span>&gt;</span>Create the first cash rounding<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">record</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--所处模块(module)为个性化my_module --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">record</span> <span class="attr">id</span>=<span class="string">"account.rounding_list_action"</span> <span class="attr">model</span>=<span class="string">"ir.actions.act_window"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"name"</span>&gt;</span>Cash Roundings<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"res_model"</span>&gt;</span>account.cash.rounding<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"view_type"</span>&gt;</span>form<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"view_mode"</span>&gt;</span>tree,form<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"domain"</span>&gt;</span>[('id','&gt;',200)]<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"help"</span> <span class="attr">type</span>=<span class="string">"html"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"o_view_nocontent_smiling_face"</span>&gt;</span>Create the first cash rounding<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">record</span>&gt;</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;hr&gt;
+&lt;p&gt;title: 重写源码action&lt;br&gt;date: 2019-06-19 11:07:11&lt;br&gt;tags: Odoo,XML&lt;/p&gt;
+&lt;h2 id=&quot;categories-Odoo-XML&quot;&gt;&lt;a href=&quot;#categories-Odoo-XML&quot; cla
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>django新手入门01 - Model</title>
@@ -484,29 +507,6 @@
     
     
       <category term="Odoo" scheme="https://yangtiancheng.github.io/bbs.github.io/tags/Odoo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python统计文件行数</title>
-    <link href="https://yangtiancheng.github.io/bbs.github.io/Python%E7%BB%9F%E8%AE%A1%E6%96%87%E4%BB%B6%E8%A1%8C%E6%95%B0/"/>
-    <id>https://yangtiancheng.github.io/bbs.github.io/Python统计文件行数/</id>
-    <published>2019-04-05T22:02:47.000Z</published>
-    <updated>2019-04-17T03:15:28.765Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="basedirs-‘-Users-tc-code-odoo8-hrp’"><a href="#basedirs-‘-Users-tc-code-odoo8-hrp’" class="headerlink" title="basedirs = [‘/Users/tc/code/odoo8/hrp’]"></a>basedirs = [‘/Users/tc/code/odoo8/hrp’]</h4><p>filelists = []</p><h4 id="指定想要统计的文件类型"><a href="#指定想要统计的文件类型" class="headerlink" title="指定想要统计的文件类型"></a>指定想要统计的文件类型</h4><p>whitelist = [‘xml’, ‘py’, ‘js’, ‘css’]<br><a id="more"></a></p><h4 id="遍历文件-递归遍历文件夹中的所有"><a href="#遍历文件-递归遍历文件夹中的所有" class="headerlink" title="遍历文件, 递归遍历文件夹中的所有"></a>遍历文件, 递归遍历文件夹中的所有</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getFile</span><span class="params">(basedir)</span>:</span></span><br><span class="line">    <span class="keyword">global</span> filelists</span><br><span class="line">    local_filelists = []</span><br><span class="line">    <span class="keyword">for</span> parent,dirnames,filenames <span class="keyword">in</span> os.walk(basedir):</span><br><span class="line">        <span class="comment">#for dirname in dirnames:</span></span><br><span class="line">        <span class="comment">#    getFile(os.path.join(parent,dirname)) #递归</span></span><br><span class="line">        <span class="keyword">for</span> filename <span class="keyword">in</span> filenames:</span><br><span class="line">            ext = filename.split(<span class="string">'.'</span>)[<span class="number">-1</span>]</span><br><span class="line">            <span class="comment">#只统计指定的文件类型，略过一些log和cache文件</span></span><br><span class="line">            <span class="keyword">if</span> ext <span class="keyword">in</span> whitelist:</span><br><span class="line">                local_filelists.append(os.path.join(parent,filename))</span><br><span class="line">                filelists.append(os.path.join(parent,filename))</span><br><span class="line">    <span class="keyword">return</span> local_filelists</span><br></pre></td></tr></table></figure><h4 id="统计一个文件的行数"><a href="#统计一个文件的行数" class="headerlink" title="统计一个文件的行数"></a>统计一个文件的行数</h4><p>def countLine(fname):<br>    count = 0<br>    for file_line in open(fname).xreadlines():<br>        if file_line != ‘’ and file_line != ‘\n’: #过滤掉空行<br>            count += 1<br>    return count<br>if <strong>name</strong> == ‘<strong>main</strong>‘ :<br>    startTime = time.clock()<br>    all_line = 0<br>    for basedir in basedirs:<br>        local_filelists = getFile(basedir)<br>        totalline = 0<br>        for filelist in local_filelists:<br>            totalline = totalline + countLine(filelist)<br>        all_line += totalline<br>        print str(basedir.split(“/“)[-1])+’,’,totalline<br>    print ‘ =&gt; ALL LINES:’+str(all_line)</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;basedirs-‘-Users-tc-code-odoo8-hrp’&quot;&gt;&lt;a href=&quot;#basedirs-‘-Users-tc-code-odoo8-hrp’&quot; class=&quot;headerlink&quot; title=&quot;basedirs = [‘/Users/tc/code/odoo8/hrp’]&quot;&gt;&lt;/a&gt;basedirs = [‘/Users/tc/code/odoo8/hrp’]&lt;/h4&gt;&lt;p&gt;filelists = []&lt;/p&gt;
-&lt;h4 id=&quot;指定想要统计的文件类型&quot;&gt;&lt;a href=&quot;#指定想要统计的文件类型&quot; class=&quot;headerlink&quot; title=&quot;指定想要统计的文件类型&quot;&gt;&lt;/a&gt;指定想要统计的文件类型&lt;/h4&gt;&lt;p&gt;whitelist = [‘xml’, ‘py’, ‘js’, ‘css’]&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Python" scheme="https://yangtiancheng.github.io/bbs.github.io/categories/Python/"/>
-    
-    
-      <category term="Python" scheme="https://yangtiancheng.github.io/bbs.github.io/tags/Python/"/>
     
   </entry>
   
