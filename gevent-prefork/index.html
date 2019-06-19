@@ -96,17 +96,18 @@
 
 
 
-  <meta name="description" content="小伙私房菜">
+  <meta name="description" content="osos.fork()">
 <meta name="keywords" content="Odoo,Python,XML">
-<meta property="og:type" content="website">
-<meta property="og:title" content="一个玩Odoo的小伙">
-<meta property="og:url" content="https://yangtiancheng.github.io/bbs.github.io/page/7/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gevent+prefork">
+<meta property="og:url" content="https://yangtiancheng.github.io/bbs.github.io/gevent-prefork/index.html">
 <meta property="og:site_name" content="一个玩Odoo的小伙">
-<meta property="og:description" content="小伙私房菜">
+<meta property="og:description" content="osos.fork()">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-06-19T04:14:43.041Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一个玩Odoo的小伙">
-<meta name="twitter:description" content="小伙私房菜">
+<meta name="twitter:title" content="gevent+prefork">
+<meta name="twitter:description" content="osos.fork()">
 
 
 
@@ -114,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="https://yangtiancheng.github.io/bbs.github.io/page/7/">
+  <link rel="canonical" href="https://yangtiancheng.github.io/bbs.github.io/gevent-prefork/">
 
 
 
@@ -124,7 +125,7 @@
   };
 </script>
 
-  <title>一个玩Odoo的小伙</title>
+  <title>gevent+prefork | 一个玩Odoo的小伙</title>
   
 
 
@@ -172,8 +173,7 @@
     
   
 
-  <div class="container sidebar-position-right 
-  page-home">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -323,9 +323,9 @@
           
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -340,7 +340,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yangtiancheng.github.io/bbs.github.io/bbs.github.io/Odoo-XML/">
+    <link itemprop="mainEntityOfPage" href="https://yangtiancheng.github.io/bbs.github.io/bbs.github.io/gevent-prefork/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="杨天成">
@@ -357,10 +357,8 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/bbs.github.io/Odoo-XML/" class="post-title-link" itemprop="url">Odoo,XML</a>
+          <h1 class="post-title" itemprop="name headline">gevent+prefork
+
               
             
           </h1>
@@ -385,7 +383,7 @@
                 
               
 
-              <time title="创建时间：2019-04-05 21:37:51" itemprop="dateCreated datePublished" datetime="2019-04-05T21:37:51Z">2019-04-05</time>
+              <time title="创建时间：2019-05-19 12:04:58" itemprop="dateCreated datePublished" datetime="2019-05-19T12:04:58Z">2019-05-19</time>
             
 
             
@@ -402,36 +400,11 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-17 05:00:06" itemprop="dateModified" datetime="2019-04-17T05:00:06Z">2019-04-17</time>
+                <time title="修改时间：2019-06-19 04:14:43" itemprop="dateModified" datetime="2019-06-19T04:14:43Z">2019-06-19</time>
               
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/bbs.github.io/categories/Odoo/" itemprop="url" rel="index"><span itemprop="name">Odoo</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/bbs.github.io/categories/Odoo/XML/" itemprop="url" rel="index"><span itemprop="name">XML</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -461,19 +434,7 @@
       
 
       
-        
-          <h1 id="xml"><a href="#xml" class="headerlink" title="xml"></a>xml</h1><h2 id="data文件初始化中的知识点"><a href="#data文件初始化中的知识点" class="headerlink" title="data文件初始化中的知识点"></a>data文件初始化中的知识点</h2><h3 id="1-结构"><a href="#1-结构" class="headerlink" title="1.结构"></a>1.结构</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">openerp</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">data</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">record</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">filed</span>&gt;</span><span class="tag">&lt;/<span class="name">filed</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">record</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">data</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">data</span>&gt;</span>...<span class="tag">&lt;/<span class="name">data</span>&gt;</span></span><br><span class="line">    ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">openerp</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="属性篇"><a href="#属性篇" class="headerlink" title="属性篇"></a>属性篇</h2><h3 id="attrs-公共属性"><a href="#attrs-公共属性" class="headerlink" title="attrs(公共属性)"></a>attrs(公共属性)</h3>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/bbs.github.io/Odoo-XML/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
+        <h2 id="os"><a href="#os" class="headerlink" title="os"></a>os</h2><h3 id="os-fork"><a href="#os-fork" class="headerlink" title="os.fork()"></a>os.fork()</h3>
       
     </div>
 
@@ -484,10 +445,49 @@
     
 
     
+      <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center;">
+  <img id="wechat_subscriber_qcode" src="/bbs.github.io/images/wechat-qcode.jpg" alt="杨天成 wechat" style="width: 200px; max-width: 100%;">
+  <div>微信扫码关注</div>
+</div>
+
+    
 
     
       
     
+    
+      <div>
+        <div id="reward-container">
+  <div></div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/bbs.github.io/images/wechat-pay.jpg" alt="杨天成 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/bbs.github.io/images/alipay.jpg" alt="杨天成 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
     
 
     
@@ -496,551 +496,32 @@
       
 
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yangtiancheng.github.io/bbs.github.io/bbs.github.io/Odoo-onchange的动态domain/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="杨天成">
-      <meta itemprop="description" content="小伙私房菜">
-      <meta itemprop="image" content="/bbs.github.io/images/my_photo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一个玩Odoo的小伙">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/bbs.github.io/Odoo-onchange的动态domain/" class="post-title-link" itemprop="url">Odoo-onchange的动态domain</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-04-05 21:36:53" itemprop="dateCreated datePublished" datetime="2019-04-05T21:36:53Z">2019-04-05</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-17 03:15:28" itemprop="dateModified" datetime="2019-04-17T03:15:28Z">2019-04-17</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/bbs.github.io/categories/Odoo/" itemprop="url" rel="index"><span itemprop="name">Odoo</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
       
       
 
       
-        
-          <h1 id="onchange的动态domain"><a href="#onchange的动态domain" class="headerlink" title="onchange的动态domain"></a>onchange的动态domain</h1><h2 id="Onchange函数可以返回一个字典"><a href="#Onchange函数可以返回一个字典" class="headerlink" title="Onchange函数可以返回一个字典"></a>Onchange函数可以返回一个字典</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">on_change in OpenERP has 3 possible values returned finally in a dictionary or a &#123;&#125; .</span><br><span class="line"></span><br><span class="line">1: The value dictionary i.e &#123;field1:value1,field2:value2&#125;</span><br><span class="line"></span><br><span class="line">2: The domain dictionary i.e &#123;field1:domain1&#125;</span><br><span class="line"></span><br><span class="line">3: The warning</span><br><span class="line"></span><br><span class="line">Syntax:</span><br><span class="line"></span><br><span class="line">res = &#123;&apos;value&apos;:&#123;&#125;,&apos;domain&apos;:&#123;&#125;,&apos;warning&apos;:&apos;Warning Message&apos;&#125;</span><br><span class="line">According to your case add this to the return dictionary.</span><br><span class="line"></span><br><span class="line">&#123;&apos;domain&apos;:&#123;&apos;partner_id&apos;:[(&apos;customer&apos;,&apos;=&apos;,True)]&#125;&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/bbs.github.io/Odoo-onchange的动态domain/#more" rel="contents">
-                阅读全文 &raquo;
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/bbs.github.io/基础字段用法提示/" rel="next" title="基础字段用法提示">
+                <i class="fa fa-chevron-left"></i> 基础字段用法提示
               </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yangtiancheng.github.io/bbs.github.io/bbs.github.io/Odoo-后台任务/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="杨天成">
-      <meta itemprop="description" content="小伙私房菜">
-      <meta itemprop="image" content="/bbs.github.io/images/my_photo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一个玩Odoo的小伙">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/bbs.github.io/Odoo-后台任务/" class="post-title-link" itemprop="url">Odoo-后台任务</a>
-              
             
-          </h1>
-        
+          </div>
 
-        <div class="post-meta">
-          <span class="post-time">
+          <span class="post-nav-divider"></span>
 
+          <div class="post-nav-prev post-nav-item">
             
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-04-05 21:36:20" itemprop="dateCreated datePublished" datetime="2019-04-05T21:36:20Z">2019-04-05</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-17 03:15:28" itemprop="dateModified" datetime="2019-04-17T03:15:28Z">2019-04-17</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/bbs.github.io/categories/Odoo/" itemprop="url" rel="index"><span itemprop="name">Odoo</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="后台任务"><a href="#后台任务" class="headerlink" title="后台任务"></a>后台任务</h1><h2 id="目前后台任务分为三种"><a href="#目前后台任务分为三种" class="headerlink" title="目前后台任务分为三种:"></a>目前后台任务分为三种:</h2><hr>
-
-<h3 id="自动化任务"><a href="#自动化任务" class="headerlink" title="自动化任务"></a>自动化任务</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># - 获取cron_job对象</span></span><br><span class="line">hrp_cron_job_obj = self.env[<span class="string">'hrp.cron.job'</span>]</span><br><span class="line"><span class="comment"># - 定义延时执行的时间</span></span><br><span class="line">cron_job_date = fields.Datetime.to_string(datetime.now() + timedelta(seconds=<span class="number">30</span>))</span><br><span class="line"><span class="comment"># - 直接执行不走cron_job的方法(前期测试使用)</span></span><br><span class="line"><span class="comment"># self.create_asset_acceptance_account_move(args)</span></span><br><span class="line"><span class="comment"># - 延时凭证生成的方法 必须有需要生成的数据项 这里args如果没有数据 也同样会被封装成 元组|所以需要做一个判断</span></span><br><span class="line"><span class="keyword">if</span> len(args) &gt; <span class="number">0</span> <span class="keyword">and</span> len(args[<span class="number">0</span>]) &gt; <span class="number">0</span>:</span><br><span class="line">    hrp_cron_job_obj.run_by_cron(_(<span class="string">"Create Asset Receiving Account Move"</span>),<span class="comment"># 自动化任务名称</span></span><br><span class="line">                                 <span class="string">'hrp.asset.receiving.application'</span>,<span class="comment"># 自动化任务需要调用的方法所在model</span></span><br><span class="line">                                 <span class="string">'create_asset_acceptance_account_move'</span>,<span class="comment"># 方法名</span></span><br><span class="line">                                 [args],<span class="comment"># 参数</span></span><br><span class="line">                                 date_created=cron_job_date)<span class="comment"># 延时时间</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/bbs.github.io/Odoo-后台任务/#more" rel="contents">
-                阅读全文 &raquo;
+              <a href="/bbs.github.io/django新手入门01/" rel="prev" title="django新手入门01 - Model">
+                django新手入门01 - Model <i class="fa fa-chevron-right"></i>
               </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yangtiancheng.github.io/bbs.github.io/bbs.github.io/name-get/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="杨天成">
-      <meta itemprop="description" content="小伙私房菜">
-      <meta itemprop="image" content="/bbs.github.io/images/my_photo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一个玩Odoo的小伙">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/bbs.github.io/name-get/" class="post-title-link" itemprop="url">name_get</a>
-              
             
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-04-05 21:35:11" itemprop="dateCreated datePublished" datetime="2019-04-05T21:35:11Z">2019-04-05</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-17 03:13:30" itemprop="dateModified" datetime="2019-04-17T03:13:30Z">2019-04-17</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/bbs.github.io/categories/Odoo/" itemprop="url" rel="index"><span itemprop="name">Odoo</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <h2 id="数据筛选"><a href="#数据筛选" class="headerlink" title="数据筛选"></a>数据筛选</h2><p>通常我们使用的数据筛选，可能是通过某一个字段A关联的字段范围，来控制B字段的取值，常见的方式就是<br>以添加compute字段的m2m辅助字段来限制B字段的取值范围。这样可能会因为辅助字段上存在_id或者_ids<br>的字段，而使得前台界面加载几十次对应的name_get而转圈。<br>替换方式，去掉辅助字段，在需要被限制字段的XML视图定义中加入相应的context，然后在相应的name_search方法中，<br>获取context，通过中间传入的参数进行数据获取判断后拼接domain，使得界面的值域被修正。<br>例如:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"partner_id"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">options</span>=<span class="string">"&#123;'no_create_edit':'1','no_create':'1','no_open':'1'&#125;"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">attrs</span>=<span class="string">"&#123;'required':[('partner_force_analytic','=',True)]&#125;"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">context</span>=<span class="string">"&#123;'display_name_and_code':True，'account_id':account_id&#125;"</span>/&gt;</span></span><br></pre></td></tr></table></figure></p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/bbs.github.io/name-get/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -1050,197 +531,20 @@
   </article>
 
 
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yangtiancheng.github.io/bbs.github.io/bbs.github.io/ir-sequence序列/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="杨天成">
-      <meta itemprop="description" content="小伙私房菜">
-      <meta itemprop="image" content="/bbs.github.io/images/my_photo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一个玩Odoo的小伙">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/bbs.github.io/ir-sequence序列/" class="post-title-link" itemprop="url">ir_sequence序列</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-04-05 21:34:09" itemprop="dateCreated datePublished" datetime="2019-04-05T21:34:09Z">2019-04-05</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-17 03:13:30" itemprop="dateModified" datetime="2019-04-17T03:13:30Z">2019-04-17</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/bbs.github.io/categories/Odoo/" itemprop="url" rel="index"><span itemprop="name">Odoo</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="ir-sequence"><a href="#ir-sequence" class="headerlink" title="ir_sequence"></a>ir_sequence</h1><h2 id="修改序列"><a href="#修改序列" class="headerlink" title="修改序列"></a>修改序列</h2><p>分析一下，系统中的序列ir.sequence最终还是使用的postgresql的sequence,我们可以通过查找pg_class,通过ir_sequence_(odoo的ir_sequence对应记录的id),<br>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/bbs.github.io/ir-sequence序列/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </p></div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/bbs.github.io/page/6/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/bbs.github.io/">1</a><span class="space">&hellip;</span><a class="page-number" href="/bbs.github.io/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/bbs.github.io/page/8/">8</a><a class="page-number" href="/bbs.github.io/page/9/">9</a><a class="extend next" rel="next" href="/bbs.github.io/page/8/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
-
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80Mzc2My8yMDMwMg=="></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -1260,8 +564,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1420,6 +733,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#os"><span class="nav-number">1.</span> <span class="nav-text">os</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#os-fork"><span class="nav-number">1.1.</span> <span class="nav-text">os.fork()</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -1564,6 +894,10 @@
 
 
   
+  <script src="/bbs.github.io/js/scrollspy.js?v=7.1.0"></script>
+<script src="/bbs.github.io/js/post-details.js?v=7.1.0"></script>
+
+
 
   
 
@@ -1579,6 +913,23 @@
 
   
 
+
+  
+    <script>
+  window.livereOptions = {
+    refer: 'gevent-prefork/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  
 
 
   
@@ -1914,18 +1265,6 @@
   
 
   
-  
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
   
 
   
