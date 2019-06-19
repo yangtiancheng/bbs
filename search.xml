@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[t]]></title>
-    <url>%2Fbbs.github.io%2Ft%2F</url>
-    <content type="text"><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title></title>
     <url>%2Fbbs.github.io%2Frewrite-action%2F</url>
     <content type="text"><![CDATA[title: 重写源码actiondate: 2019-06-19 11:07:11tags: Odoo,XML categories: Odoo,XML重写源码action或者更新record数据柄属性场景简述也许一个源码的菜单，限制了展示的值范围为id &gt; 100的数据 domain = [(‘id’,’&gt;’,100)]在我们自己的个性化代码中，可能需要将显示范围改成 id &gt; 200。 操作及理念 Odoo通过XML产生的数据，不仅仅会创建对应的模型记录数据，同时会将数据集绑定创建一条ir.model.data的数据。 我们只需要在自己的个性化模块中重写对应的action修改domain属性即可，但是由于所处模块(module)的不同，我们重写的action必须指定要覆盖的模块。 所以在外部ID-extend_id前面加上module的前缀，即module.action_extend_id格式即可。 代码示例12345-- 查询当前action与data的关键参数select imd.id,imd.module 所处模块,iaw.id 动作ID, iaw.domain 动作域from ir_model_data imd,ir_act_window iawwhere imd.res_id = iaw.idand imd.name = &apos;rounding_list_action&apos;; 1234567891011121314151617181920212223&lt;!-- 所处模块(module)为源码account 原始action--&gt;&lt;record id="rounding_list_action" model="ir.actions.act_window"&gt; &lt;field name="name"&gt;Cash Roundings&lt;/field&gt; &lt;field name="res_model"&gt;account.cash.rounding&lt;/field&gt; &lt;field name="view_type"&gt;form&lt;/field&gt; &lt;field name="view_mode"&gt;tree,form&lt;/field&gt; &lt;field name="domain"&gt;[('id','&gt;',100)]&lt;/field&gt; &lt;field name="help" type="html"&gt; &lt;p class="o_view_nocontent_smiling_face"&gt;Create the first cash rounding&lt;/p&gt; &lt;/field&gt;&lt;/record&gt;&lt;!--所处模块(module)为个性化my_module --&gt;&lt;record id="account.rounding_list_action" model="ir.actions.act_window"&gt; &lt;field name="name"&gt;Cash Roundings&lt;/field&gt; &lt;field name="res_model"&gt;account.cash.rounding&lt;/field&gt; &lt;field name="view_type"&gt;form&lt;/field&gt; &lt;field name="view_mode"&gt;tree,form&lt;/field&gt; &lt;field name="domain"&gt;[('id','&gt;',200)]&lt;/field&gt; &lt;field name="help" type="html"&gt; &lt;p class="o_view_nocontent_smiling_face"&gt;Create the first cash rounding&lt;/p&gt; &lt;/field&gt;&lt;/record&gt;]]></content>

@@ -104,16 +104,16 @@
 <meta property="og:site_name" content="一个玩Odoo的小伙">
 <meta property="og:description" content="Odoo的数据约束抛错可分为三种情况   手动判断约束(create/write) ORM层约束(api constrains) 数据库层约束(_sql_constrains)">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://yangtiancheng.github.io/bbs.github.io/bbs.github.io/Odoo数据校验约束/WeChat8e9179e00838488f131c248d7f0394f7.png">
-<meta property="og:image" content="https://yangtiancheng.github.io/bbs.github.io/bbs.github.io/Odoo数据校验约束/WeChatf03a46f89ca5e88e713387269490f300.png">
-<meta property="og:image" content="https://yangtiancheng.github.io/bbs.github.io/bbs.github.io/Odoo数据校验约束/WeChat53576082469210f957c42e781680d79c.png">
-<meta property="og:image" content="https://yangtiancheng.github.io/bbs.github.io/bbs.github.io/Odoo数据校验约束/WeChat521346a7c230ceaac6d0002b8dedec1e.png">
-<meta property="og:image" content="https://yangtiancheng.github.io/bbs.github.io/bbs.github.io/Odoo数据校验约束/WeChat10aa488aa44dca4114616e096d42c629.png">
+<meta property="og:image" content="https://yangtiancheng.github.io/bbs.github.io/Odoo数据校验约束/WeChat8e9179e00838488f131c248d7f0394f7.png">
+<meta property="og:image" content="https://yangtiancheng.github.io/bbs.github.io/Odoo数据校验约束/WeChatf03a46f89ca5e88e713387269490f300.png">
+<meta property="og:image" content="https://yangtiancheng.github.io/bbs.github.io/Odoo数据校验约束/WeChat53576082469210f957c42e781680d79c.png">
+<meta property="og:image" content="https://yangtiancheng.github.io/bbs.github.io/Odoo数据校验约束/WeChat521346a7c230ceaac6d0002b8dedec1e.png">
+<meta property="og:image" content="https://yangtiancheng.github.io/bbs.github.io/Odoo数据校验约束/WeChat10aa488aa44dca4114616e096d42c629.png">
 <meta property="og:updated_time" content="2019-04-17T03:15:28.747Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Odoo数据校验约束">
 <meta name="twitter:description" content="Odoo的数据约束抛错可分为三种情况   手动判断约束(create/write) ORM层约束(api constrains) 数据库层约束(_sql_constrains)">
-<meta name="twitter:image" content="https://yangtiancheng.github.io/bbs.github.io/bbs.github.io/Odoo数据校验约束/WeChat8e9179e00838488f131c248d7f0394f7.png">
+<meta name="twitter:image" content="https://yangtiancheng.github.io/bbs.github.io/Odoo数据校验约束/WeChat8e9179e00838488f131c248d7f0394f7.png">
 
 
 
@@ -468,10 +468,10 @@
 从系统的执行优先级来看，顺序依次是 手动判断约束 -&gt; 数据库层约束 -&gt; ORM层约束</li>
 </ol>
 <p>三种约束尽量不要同时使用，比如如果使用了手动判断约束，如果再添加了ORM层约束，通过ORM的search或者search_count方法搜出来的数据是包含当前正在创建并没有写入数据库的数据项。</p>
-<p>1.手动约束：通过在model的create或者write方法中写条件判断，然后手动raise信息，这样可以控制抛错逻辑和抛错提示信息，比较常见。但需要注意的是，也许create/write的vals中需要校验的字段不一定是必输的，也就是说vals中可能缺失需要校验的值，这个一定好考虑到。<br><img src="/bbs.github.io/bbs.github.io/Odoo数据校验约束/WeChat8e9179e00838488f131c248d7f0394f7.png" alt></p>
-<p>2.ORM层约束：通过写@api.constrains方法，来对数据库列进行进行判断，可以控制判断逻辑和抛错。但需要注意，如果新创建单据的话，这个地方通过ORM会搜索到新创建的记录对象，可能需求是校验唯一性，这样的话ORM方法来判断就不是适用了。而且只有单据执行create和write方法后，才能走此校验api.<br><img src="/bbs.github.io/bbs.github.io/Odoo数据校验约束/WeChatf03a46f89ca5e88e713387269490f300.png" alt></p>
-<p>3.数据库层约束：直接给数据库表添加约束条件，无论是前台还是后台创建数据都会被校验，缺点是不能不能自己写复杂的判断逻辑，而且抛错会抛系统的key重复错误之类的。<br><img src="/bbs.github.io/bbs.github.io/Odoo数据校验约束/WeChat53576082469210f957c42e781680d79c.png" alt></p>
-<p>1-2抛错：<img src="/bbs.github.io/bbs.github.io/Odoo数据校验约束/WeChat521346a7c230ceaac6d0002b8dedec1e.png" alt><br>3抛错：<img src="/bbs.github.io/bbs.github.io/Odoo数据校验约束/WeChat10aa488aa44dca4114616e096d42c629.png" alt></p>
+<p>1.手动约束：通过在model的create或者write方法中写条件判断，然后手动raise信息，这样可以控制抛错逻辑和抛错提示信息，比较常见。但需要注意的是，也许create/write的vals中需要校验的字段不一定是必输的，也就是说vals中可能缺失需要校验的值，这个一定好考虑到。<br><img src="/bbs.github.io/Odoo数据校验约束/WeChat8e9179e00838488f131c248d7f0394f7.png" alt></p>
+<p>2.ORM层约束：通过写@api.constrains方法，来对数据库列进行进行判断，可以控制判断逻辑和抛错。但需要注意，如果新创建单据的话，这个地方通过ORM会搜索到新创建的记录对象，可能需求是校验唯一性，这样的话ORM方法来判断就不是适用了。而且只有单据执行create和write方法后，才能走此校验api.<br><img src="/bbs.github.io/Odoo数据校验约束/WeChatf03a46f89ca5e88e713387269490f300.png" alt></p>
+<p>3.数据库层约束：直接给数据库表添加约束条件，无论是前台还是后台创建数据都会被校验，缺点是不能不能自己写复杂的判断逻辑，而且抛错会抛系统的key重复错误之类的。<br><img src="/bbs.github.io/Odoo数据校验约束/WeChat53576082469210f957c42e781680d79c.png" alt></p>
+<p>1-2抛错：<img src="/bbs.github.io/Odoo数据校验约束/WeChat521346a7c230ceaac6d0002b8dedec1e.png" alt><br>3抛错：<img src="/bbs.github.io/Odoo数据校验约束/WeChat10aa488aa44dca4114616e096d42c629.png" alt></p>
 
       
     </div>
@@ -626,7 +626,7 @@
                 
                   <a href="/bbs.github.io/archives/">
                 
-                    <span class="site-state-item-count">43</span>
+                    <span class="site-state-item-count">42</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

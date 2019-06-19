@@ -340,171 +340,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yangtiancheng.github.io/bbs.github.io/动态显示Selection的选项域/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="杨天成">
-      <meta itemprop="description" content="小伙私房菜">
-      <meta itemprop="image" content="/bbs.github.io/images/my_photo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一个玩Odoo的小伙">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/bbs.github.io/动态显示Selection的选项域/" class="post-title-link" itemprop="url">动态显示Selection的选项域</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-04-29 14:07:16 / 修改时间：06:15:51" itemprop="dateCreated datePublished" datetime="2019-04-29T14:07:16Z">2019-04-29</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/bbs.github.io/categories/Odoo-JS-Selection/" itemprop="url" rel="index"><span itemprop="name">Odoo,JS,Selection</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>一个模型，两个form视图，对应的selection字段值域不同</p>
-<h1 id="直接代码上代码"><a href="#直接代码上代码" class="headerlink" title="直接代码上代码"></a>直接代码上代码</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">odoo.define(<span class="string">'select_hide.hide_selection_units'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">require</span>) </span>&#123;</span><br><span class="line"><span class="meta">    "use strict"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> registry = <span class="built_in">require</span>(<span class="string">'web.field_registry'</span>);</span><br><span class="line">    <span class="keyword">var</span> relational_fields = <span class="built_in">require</span>(<span class="string">'web.relational_fields'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> FieldSelection = relational_fields.FieldSelection;</span><br><span class="line">    <span class="keyword">var</span> rpc = <span class="built_in">require</span>(<span class="string">'web.rpc'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> select_hide_by_condition = FieldSelection.extend(&#123;</span><br><span class="line">        _renderEdit: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            self = <span class="keyword">this</span>;</span><br><span class="line">            <span class="comment">// model function_model function_name field_name</span></span><br><span class="line">            <span class="keyword">var</span> function_name = self.attrs.function;</span><br><span class="line">            <span class="keyword">var</span> value = <span class="keyword">this</span>.value;</span><br><span class="line">            <span class="keyword">if</span> (self.$el[<span class="number">0</span>].options.length == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="keyword">this</span>.field.type === <span class="string">'selection'</span>) &#123;</span><br><span class="line">                    rpc.query(&#123;</span><br><span class="line">                        <span class="string">"model"</span>: <span class="keyword">this</span>.model,</span><br><span class="line">                        <span class="string">"method"</span>: function_name,</span><br><span class="line">                        <span class="string">"args"</span>: [&#123;<span class="string">'args'</span>: <span class="keyword">this</span>.recordData&#125;],</span><br><span class="line">                    &#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params">result</span>) </span>&#123;</span><br><span class="line">                        <span class="keyword">if</span> (!!result) &#123;</span><br><span class="line">                            self.$el.empty();</span><br><span class="line">                            <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; result.length; i++) &#123;</span><br><span class="line">                                self.$el.append($(<span class="string">'&lt;option/&gt;'</span>, &#123;</span><br><span class="line">                                    value: <span class="built_in">JSON</span>.stringify(result[i][<span class="number">0</span>]),</span><br><span class="line">                                    text: result[i][<span class="number">1</span>]</span><br><span class="line">                                &#125;));</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.field.selection.length; i++) &#123;</span><br><span class="line">                        <span class="keyword">this</span>.$el.append($(<span class="string">'&lt;option/&gt;'</span>, &#123;</span><br><span class="line">                            value: <span class="built_in">JSON</span>.stringify(<span class="keyword">this</span>.field.selection[i][<span class="number">0</span>]),</span><br><span class="line">                            text: <span class="keyword">this</span>.field.selection[i][<span class="number">1</span>]</span><br><span class="line">                        &#125;));</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">this</span>.field.type === <span class="string">'many2one'</span> &amp;&amp; value) &#123;</span><br><span class="line">                value = value.data.id;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;);</span><br><span class="line">    registry</span><br><span class="line">        .add(<span class="string">'select_hide_by_condition'</span>, select_hide_by_condition);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"source_type"</span> <span class="attr">widget</span>=<span class="string">"select_hide_by_condition"</span> <span class="attr">function</span>=<span class="string">"select_hide_by_condition"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@api.model</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">select_hide_by_condition</span><span class="params">(self, datas)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    来源类型 选择框数据限制</span></span><br><span class="line"><span class="string">    :param datas: 当前数据行的所有字段信息</span></span><br><span class="line"><span class="string">    :return: 新的选择框值域</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="keyword">if</span> datas[<span class="string">'args'</span>][<span class="string">'XXX'</span>]:</span><br><span class="line">        <span class="keyword">return</span> [</span><br><span class="line">            (<span class="string">'table_item'</span>, _(<span class="string">'Table Item'</span>)),</span><br><span class="line">            (<span class="string">'code'</span>, _(<span class="string">'Code'</span>)),</span><br><span class="line">            (<span class="string">'mapping_table'</span>, _(<span class="string">'Mapping Table'</span>)),</span><br><span class="line">        ]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> [</span><br><span class="line">            (<span class="string">''</span>, <span class="string">''</span>),</span><br><span class="line">            (<span class="string">'table_item'</span>, _(<span class="string">'Table Item'</span>)),</span><br><span class="line">            (<span class="string">'code'</span>, _(<span class="string">'Code'</span>)),</span><br><span class="line">            (<span class="string">'mapping_table'</span>, _(<span class="string">'Mapping Table'</span>)),</span><br><span class="line">        ]</span><br></pre></td></tr></table></figure>
-<p><img src="/Users/tc/code/Githubs/bbs/source/images/selection_hide_001.png" alt="无限制"><br><img src="/Users/tc/code/Githubs/bbs/source/images/selection_hide_002.png" alt="有限制"></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://yangtiancheng.github.io/bbs.github.io/res-users/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1203,6 +1038,187 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yangtiancheng.github.io/bbs.github.io/ir-model-access/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="杨天成">
+      <meta itemprop="description" content="小伙私房菜">
+      <meta itemprop="image" content="/bbs.github.io/images/my_photo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个玩Odoo的小伙">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/bbs.github.io/ir-model-access/" class="post-title-link" itemprop="url">ir.model.access</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-13 18:46:42" itemprop="dateCreated datePublished" datetime="2019-04-13T18:46:42Z">2019-04-13</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-17 09:03:29" itemprop="dateModified" datetime="2019-04-17T09:03:29Z">2019-04-17</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/bbs.github.io/categories/Odoo/" itemprop="url" rel="index"><span itemprop="name">Odoo</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="什么是ir-model-access"><a href="#什么是ir-model-access" class="headerlink" title="什么是ir.model.access"></a>什么是ir.model.access</h2><p>简单的说，ERP的资源管理，其实不外四种情况（增删改查），<br>那么对于登录用户来说，你有权限做这些操作码？如果不做限<br>制，岂不是随便的一个用户就能轻易的动系统的数据，这是很<br>可怕的。</p>
+<hr>
+<p>模型权限文件有name,active,model_id(非TransientModel<br>模型),group_id,perm_read,perm_write,perm_create,<br>perm_unlink几个字段。<br></p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/bbs.github.io/ir-model-access/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -1251,7 +1267,7 @@
                 
                   <a href="/bbs.github.io/archives/">
                 
-                    <span class="site-state-item-count">43</span>
+                    <span class="site-state-item-count">42</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

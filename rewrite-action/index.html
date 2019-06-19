@@ -104,12 +104,12 @@
 <meta property="og:site_name" content="一个玩Odoo的小伙">
 <meta property="og:description" content="title: 重写源码actiondate: 2019-06-19 11:07:11tags: Odoo,XML categories: Odoo,XML重写源码action或者更新record数据柄属性场景简述也许一个源码的菜单，限制了展示的值范围为id &amp;gt; 100的数据 domain = [(‘id’,’&amp;gt;’,100)]在我们自己的个性化代码中，可能需要将显示范围改成 id &amp;g">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://yangtiancheng.github.io/bbs.github.io/bbs.github.io/rewrite-action/action01.jpg">
+<meta property="og:image" content="https://yangtiancheng.github.io/bbs.github.io/rewrite-action/action01.jpg">
 <meta property="og:updated_time" content="2019-06-19T04:31:15.453Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一个玩Odoo的小伙">
 <meta name="twitter:description" content="title: 重写源码actiondate: 2019-06-19 11:07:11tags: Odoo,XML categories: Odoo,XML重写源码action或者更新record数据柄属性场景简述也许一个源码的菜单，限制了展示的值范围为id &amp;gt; 100的数据 domain = [(‘id’,’&amp;gt;’,100)]在我们自己的个性化代码中，可能需要将显示范围改成 id &amp;g">
-<meta name="twitter:image" content="https://yangtiancheng.github.io/bbs.github.io/bbs.github.io/rewrite-action/action01.jpg">
+<meta name="twitter:image" content="https://yangtiancheng.github.io/bbs.github.io/rewrite-action/action01.jpg">
 
 
 
@@ -429,7 +429,7 @@
 <li>所以在外部ID-extend_id前面加上module的前缀，即module.action_extend_id格式即可。</li>
 </ol>
 <h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-- 查询当前action与data的关键参数</span><br><span class="line">select imd.id,imd.module 所处模块,iaw.id 动作ID, iaw.domain 动作域</span><br><span class="line">from ir_model_data imd,ir_act_window iaw</span><br><span class="line">where imd.res_id = iaw.id</span><br><span class="line">and imd.name = &apos;rounding_list_action&apos;;</span><br></pre></td></tr></table></figure>
-<p><img src="/bbs.github.io/bbs.github.io/rewrite-action/action01.jpg" alt="你想输入的替代文字"></p>
+<p><img src="/bbs.github.io/rewrite-action/action01.jpg" alt="你想输入的替代文字"></p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 所处模块(module)为源码account 原始action--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">record</span> <span class="attr">id</span>=<span class="string">"rounding_list_action"</span> <span class="attr">model</span>=<span class="string">"ir.actions.act_window"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"name"</span>&gt;</span>Cash Roundings<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"res_model"</span>&gt;</span>account.cash.rounding<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"view_type"</span>&gt;</span>form<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"view_mode"</span>&gt;</span>tree,form<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"domain"</span>&gt;</span>[('id','&gt;',100)]<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"help"</span> <span class="attr">type</span>=<span class="string">"html"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"o_view_nocontent_smiling_face"</span>&gt;</span>Create the first cash rounding<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">record</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--所处模块(module)为个性化my_module --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">record</span> <span class="attr">id</span>=<span class="string">"account.rounding_list_action"</span> <span class="attr">model</span>=<span class="string">"ir.actions.act_window"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"name"</span>&gt;</span>Cash Roundings<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"res_model"</span>&gt;</span>account.cash.rounding<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"view_type"</span>&gt;</span>form<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"view_mode"</span>&gt;</span>tree,form<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"domain"</span>&gt;</span>[('id','&gt;',200)]<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"help"</span> <span class="attr">type</span>=<span class="string">"html"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"o_view_nocontent_smiling_face"</span>&gt;</span>Create the first cash rounding<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">record</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
       
@@ -510,10 +510,6 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/bbs.github.io/t/" rel="prev" title="t">
-                t <i class="fa fa-chevron-right"></i>
-              </a>
-            
           </div>
         </div>
       
@@ -588,7 +584,7 @@
                 
                   <a href="/bbs.github.io/archives/">
                 
-                    <span class="site-state-item-count">43</span>
+                    <span class="site-state-item-count">42</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
