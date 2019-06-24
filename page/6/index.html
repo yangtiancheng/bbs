@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="小伙私房菜">
+  <meta name="description" content="Dripping water wears through a stone.">
 <meta name="keywords" content="Odoo,Python,XML">
 <meta property="og:type" content="website">
-<meta property="og:title" content="一个玩Odoo的小伙">
+<meta property="og:title" content="WGPCGR">
 <meta property="og:url" content="https://yangtiancheng.github.io/page/6/index.html">
-<meta property="og:site_name" content="一个玩Odoo的小伙">
-<meta property="og:description" content="小伙私房菜">
+<meta property="og:site_name" content="WGPCGR">
+<meta property="og:description" content="Dripping water wears through a stone.">
 <meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一个玩Odoo的小伙">
-<meta name="twitter:description" content="小伙私房菜">
+<meta name="twitter:title" content="WGPCGR">
+<meta name="twitter:description" content="Dripping water wears through a stone.">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>一个玩Odoo的小伙</title>
+  <title>WGPCGR</title>
   
 
 
@@ -184,13 +184,13 @@
     <div class="custom-logo-site-title">
       <a href="/bbs.github.io/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">一个玩Odoo的小伙</span>
+        <span class="site-title">WGPCGR</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
     
       
-        <p class="site-subtitle">总结一尺，成长一寸</p>
+        <p class="site-subtitle">With great power comes great responsibility.</p>
       
     
     
@@ -340,16 +340,212 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yangtiancheng.github.io/bbs.github.io/Odoo-报表/">
+    <link itemprop="mainEntityOfPage" href="https://yangtiancheng.github.io/bbs.github.io/Odoo-QWeb/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="杨天成">
-      <meta itemprop="description" content="小伙私房菜">
+      <meta itemprop="name" content="一个玩Odoo的小伙">
+      <meta itemprop="description" content="Dripping water wears through a stone.">
       <meta itemprop="image" content="/bbs.github.io/images/my_photo.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WGPCGR">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/bbs.github.io/Odoo-QWeb/" class="post-title-link" itemprop="url">Odoo-QWeb</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-05 21:57:58" itemprop="dateCreated datePublished" datetime="2019-04-05T21:57:58Z">2019-04-05</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-17 05:00:46" itemprop="dateModified" datetime="2019-04-17T05:00:46Z">2019-04-17</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/bbs.github.io/categories/Odoo/" itemprop="url" rel="index"><span itemprop="name">Odoo</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/bbs.github.io/categories/Odoo/Qweb/" itemprop="url" rel="index"><span itemprop="name">Qweb</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="Base"><a href="#Base" class="headerlink" title="Base"></a>Base</h1><hr>
+
+<h2 id="Template"><a href="#Template" class="headerlink" title="Template"></a>Template</h2><ul>
+<li>/static/src/xml/*.xml 定义模板。</li>
+<li><strong>openerp</strong>.py的qweb中注册*.xml文件</li>
+</ul>
+<hr>
+
+<h2 id="JS加载模板-两种"><a href="#JS加载模板-两种" class="headerlink" title="JS加载模板(两种)"></a>JS加载模板(两种)</h2><ul>
+<li>QWeb.render(模板名称)</li>
+<li>template: “模板名称”</li></ul>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/bbs.github.io/Odoo-QWeb/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yangtiancheng.github.io/bbs.github.io/Odoo-报表/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="一个玩Odoo的小伙">
+      <meta itemprop="description" content="Dripping water wears through a stone.">
+      <meta itemprop="image" content="/bbs.github.io/images/my_photo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WGPCGR">
     </span>
 
     
@@ -526,13 +722,13 @@
     <link itemprop="mainEntityOfPage" href="https://yangtiancheng.github.io/bbs.github.io/Excel下载/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="杨天成">
-      <meta itemprop="description" content="小伙私房菜">
+      <meta itemprop="name" content="一个玩Odoo的小伙">
+      <meta itemprop="description" content="Dripping water wears through a stone.">
       <meta itemprop="image" content="/bbs.github.io/images/my_photo.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一个玩Odoo的小伙">
+      <meta itemprop="name" content="WGPCGR">
     </span>
 
     
@@ -709,13 +905,13 @@
     <link itemprop="mainEntityOfPage" href="https://yangtiancheng.github.io/bbs.github.io/Odoo8-JS小记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="杨天成">
-      <meta itemprop="description" content="小伙私房菜">
+      <meta itemprop="name" content="一个玩Odoo的小伙">
+      <meta itemprop="description" content="Dripping water wears through a stone.">
       <meta itemprop="image" content="/bbs.github.io/images/my_photo.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一个玩Odoo的小伙">
+      <meta itemprop="name" content="WGPCGR">
     </span>
 
     
@@ -898,13 +1094,13 @@
     <link itemprop="mainEntityOfPage" href="https://yangtiancheng.github.io/bbs.github.io/git基本操作指令笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="杨天成">
-      <meta itemprop="description" content="小伙私房菜">
+      <meta itemprop="name" content="一个玩Odoo的小伙">
+      <meta itemprop="description" content="Dripping water wears through a stone.">
       <meta itemprop="image" content="/bbs.github.io/images/my_photo.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一个玩Odoo的小伙">
+      <meta itemprop="name" content="WGPCGR">
     </span>
 
     
@@ -1061,185 +1257,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yangtiancheng.github.io/bbs.github.io/Odoo-翻译/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="杨天成">
-      <meta itemprop="description" content="小伙私房菜">
-      <meta itemprop="image" content="/bbs.github.io/images/my_photo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一个玩Odoo的小伙">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/bbs.github.io/Odoo-翻译/" class="post-title-link" itemprop="url">Odoo-翻译</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-04-05 21:43:56" itemprop="dateCreated datePublished" datetime="2019-04-05T21:43:56Z">2019-04-05</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-05-21 01:45:06" itemprop="dateModified" datetime="2019-05-21T01:45:06Z">2019-05-21</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/bbs.github.io/categories/Odoo/" itemprop="url" rel="index"><span itemprop="name">Odoo</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="ir-translation简章"><a href="#ir-translation简章" class="headerlink" title="ir_translation简章"></a>ir_translation简章</h1><p>[字段]<br>lang<br>src<br>name<br>res_id<br>module<br>state<br>comments<br>value<br>type<br></p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/bbs.github.io/Odoo-翻译/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1275,10 +1292,10 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/bbs.github.io/images/my_photo.jpg" alt="杨天成">
+              <img class="site-author-image" itemprop="image" src="/bbs.github.io/images/my_photo.jpg" alt="一个玩Odoo的小伙">
             
-              <p class="site-author-name" itemprop="name">杨天成</p>
-              <div class="site-description motion-element" itemprop="description">小伙私房菜</div>
+              <p class="site-author-name" itemprop="name">一个玩Odoo的小伙</p>
+              <div class="site-description motion-element" itemprop="description">Dripping water wears through a stone.</div>
           </div>
 
           
@@ -1288,7 +1305,7 @@
                 
                   <a href="/bbs.github.io/archives/">
                 
-                    <span class="site-state-item-count">42</span>
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1337,7 +1354,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">16</span>
+                      
+                    
+                    <span class="site-state-item-count">17</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -1380,7 +1399,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">15</span>
+                      
+                    
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>
@@ -1454,7 +1475,7 @@
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">杨天成</span>
+  <span class="author" itemprop="copyrightHolder">一个玩Odoo的小伙</span>
 
   
 
